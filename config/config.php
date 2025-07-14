@@ -11,21 +11,9 @@
  * 
  */
 
-$config['base_url'] = "http://localhost/unitop/back-end/lesson/section-26/projectmvc.vn/";
+$config['base_url'] = "http://localhost/LIVERPOOL_TICKETING_SYSTEM/";
 
 
-$config['default_module'] = 'home';
-$config['default_controller'] = 'index';
-$config['default_action'] = 'index';
-
-
-
-
-
-
-
-
-
-
-
-
+$config['default_module'] = 'admin_accounts';
+$config['default_controller'] = 'accounts';
+$config['default_action'] = 'show';
