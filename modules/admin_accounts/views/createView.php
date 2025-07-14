@@ -1,12 +1,10 @@
-<?php 
-global $config;
-?>
+<?php global $config; ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=   1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/reset.css" />
     <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/style__create.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,18 +13,31 @@ global $config;
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=PT+Serif+Caption:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
     <title>Create Account</title>
+    <style>
+    .error {
+        color: red;
+        font-size: 0.9rem;
+        margin-top: 4px;
+        display: block;
+        padding: 0;
+    }
+    </style>
 </head>
 
 <body>
     <div class="khoichung">
+
+        <!-- Bên trái -->
         <div class="khoitrai">
             <div class="trai__desc">
                 <a href="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=show"
-                    class="link"><img
-                        src="<?php echo $config['base_url']; ?>public/admin_accounts/images/arrow-left-solid.svg"
-                        alt="" /></a>
+                    class="link">
+                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/arrow-left-solid.svg"
+                        alt="" />
+                </a>
                 <p class="desc">You will never walk alone</p>
             </div>
+
             <div class="trai__img">
                 <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/bills.jpg" alt=""
                     class="trai__img--item trai__img--1" />
@@ -35,6 +46,7 @@ global $config;
                 <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/g8.jpg" alt=""
                     class="trai__img--item trai__img--3" />
             </div>
+
             <div class="trai__point">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="point-1">
                     <path
@@ -50,40 +62,66 @@ global $config;
                 </svg>
             </div>
         </div>
+
+        <!-- Bên phải -->
         <div class="khoiphai">
             <div class="khoitren">
                 <p class="create">Create Account</p>
             </div>
-            <div class="nhaplieu">
-                <form action="" class="form username">
-                    <label for="" class="label">Username</label>
-                    <input type="text" class="input" />
-                </form>
-                <form action="" class="form password">
-                    <label for="" class="label">Password</label>
-                    <input type="password" class="input" />
-                </form>
-                <form action="" class="form email">
-                    <label for="" class="label">Email</label>
-                    <input type="email" class="input" />
-                </form>
-                <form action="" class="form role">
-                    <label for="" class="label">Role</label>
-                    <div class="thechon">
-                        <label class="label"><input type="radio" name="role" class="input" />ADMIN</label>
-                        <label class="label"><input type="radio" name="role" class="input" />USER</label>
+
+            <form action="" method="POST">
+                <div class="nhaplieu">
+
+                    <!-- Username -->
+                    <div class="form username">
+                        <label class="label">Username</label>
+                        <input type="text" name="username" class="input" value="<?php echo set_value('username'); ?>" />
+                        <p class="error"><?php echo form_error('username'); ?></p>
                     </div>
-                </form>
-            </div>
-            <div class="khoiduoi">
-                <button class="btn">
-                    <a href="" class="link">Create Account</a>
-                </button>
-            </div>
+
+                    <!-- Email -->
+                    <div class="form email">
+                        <label class="label">Email</label>
+                        <input type="email" name="email" class="input" value="<?php echo set_value('email'); ?>" />
+                        <p class="error"><?php echo form_error('email'); ?></p>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form password">
+                        <label class="label">Password</label>
+                        <input type="password" name="password" class="input" />
+                        <p class="error"><?php echo form_error('password'); ?></p>
+                    </div>
+
+                    <!-- Role -->
+                    <div class="form role">
+                        <label class="label">Role</label>
+                        <div class="thechon">
+                            <span>
+                                <input type="radio" name="role" value="ADMIN"
+                                    <?php echo (set_value('role') == 'ADMIN') ? 'checked' : ''; ?> />
+                                ADMIN
+                            </span>
+                            <span>
+                                <input type="radio" name="role" value="USER"
+                                    <?php echo (set_value('role') == 'USER') ? 'checked' : ''; ?> />
+                                USER
+                            </span>
+                        </div>
+                        <p class="error"><?php echo form_error('role'); ?></p>
+                    </div>
+
+                </div>
+
+                <!-- Submit -->
+                <div class="khoiduoi">
+                    <button type="submit" name="btn-submit" class="btn">Create Account</button>
+                </div>
+            </form>
+
         </div>
     </div>
     <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/thaotac.js"></script>
-    `
 </body>
 
 </html>

@@ -1,11 +1,20 @@
-<?php
+<?php 
 
-function get_list_users() {
-    $result = db_fetch_array("SELECT * FROM `tbl_users`");
-    return $result;
+function username_exists($username)
+{
+    $sql = "SELECT * FROM accounts WHERE username = '{$username}'";
+    $result = db_num_rows($sql);
+    return ($result > 0);
 }
 
-function get_user_by_id($id) {
-    $item = db_fetch_row("SELECT * FROM `tbl_users` WHERE `user_id` = {$id}");
-    return $item;
+function email_exists($email)
+{
+    $sql = "SELECT * FROM accounts WHERE email = '{$email}'";
+    $result = db_num_rows($sql);
+    return ($result > 0);
+}
+
+function insert_account($data)
+{
+    return db_insert('accounts', $data);
 }

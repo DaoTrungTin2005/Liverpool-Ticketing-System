@@ -76,6 +76,7 @@ function db_insert($table, $data)
 
 function db_update($table, $data, $where)
 {
+    global $conn;
     $sql = "";
     foreach ($data as $field => $value) {
         if ($value === NULL)
