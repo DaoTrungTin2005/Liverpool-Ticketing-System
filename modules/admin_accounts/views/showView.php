@@ -1,5 +1,6 @@
 <?php
 
+global $config;
 //show_array($list_users);
 ?>
 <!DOCTYPE html>
@@ -8,9 +9,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/style__admin.css" />
-    <link rel="stylesheet" href="./css/repo.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/reset.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/style__admin.css">
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/repo.css" />
     <title>Admin</title>
 </head>
 
@@ -18,22 +19,27 @@
     <div class="khoichung">
         <div class="khoitrai">
             <div class="khoiadmin">
-                <img src="./img/setting 1.jpg" alt="icon cai dat" class="admin__img" />
+                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/setting 1.jpg"
+                    alt="icon cai dat" class="admin__img" />
                 <p class="admin__noidung">Administrator</p>
             </div>
             <div class="khoiicon">
                 <div class="item__list">
                     <!-- icon-1 -->
                     <div class="item__list-item">
-                        <img src="./img/key-square.png" alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/key-square.png" alt=""
+                            class="item__img" />
                         <a href="" class="item__desc">Infomation</a>
-                        <img src="./img/chevron-right 2.png" alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
+                            alt="" class="item__svg" />
                     </div>
                     <!-- item2 -->
                     <div class="item__list-item">
-                        <img src="./img/3d-square 1.png" alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/3d-square 1.png" alt=""
+                            class="item__img" />
                         <a href="" class="item__desc">Match</a>
-                        <img src="./img/chevron-right 2.png" alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
+                            alt="" class="item__svg" />
                     </div>
                     <!-- item3 -->
                     <div class="item__list-item item3">
@@ -42,14 +48,18 @@
                             <path
                                 d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                         </svg>
-                        <a href="" class="item__desc">Customers</a>
-                        <img src="./img/chevron-right 2.png" alt="" class="item__svg" />
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=show"
+                            class="item__desc">Accounts</a>
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
+                            alt="" class="item__svg" />
                     </div>
                     <!--item4  -->
                     <div class="item__list-item">
-                        <img src="./img/wallet-money 2.png" alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/wallet-money 2.png"
+                            alt="" class="item__img" />
                         <a href="" class="item__desc">Notification</a>
-                        <img src="./img/chevron-right 2.png" alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
+                            alt="" class="item__svg" />
                     </div>
                 </div>
             </div>
@@ -57,11 +67,13 @@
                 <div class="item__listmb">
                     <!-- icon-1 -->
                     <div class="item__list-item">
-                        <img src="./img/key-square.png" alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/key-square.png" alt=""
+                            class="item__img" />
                     </div>
                     <!-- item2 -->
                     <div class="item__list-item">
-                        <img src="./img/3d-square 1.png" alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/3d-square 1.png" alt=""
+                            class="item__img" />
                     </div>
                     <!-- item3 -->
                     <div class="item__list-item item3">
@@ -73,22 +85,25 @@
                     </div>
                     <!--item4  -->
                     <div class="item__list-item">
-                        <img src="./img/wallet-money 2.png" alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/wallet-money 2.png"
+                            alt="" class="item__img" />
                     </div>
                 </div>
                 <script>
                 const navPC = document.querySelector(".item__list");
-                const navMB = document.querySelector("item__listmb");
+                const navMB = document.querySelector(".item__listmb");
                 navMB.innerHTML = navPC.innerHTML;
                 </script>
             </div>
             <div class="khoiavt">
-                <img src="./img/tindao.png" alt="" class="hinhtindao" />
+                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/tindao.png" alt=""
+                    class="hinhtindao" />
                 <div class="item__content">
                     <p class="content-top">Tin Dao Trung</p>
                     <p class="content-bot">Project Manager</p>
                 </div>
-                <img src="./img/chevron-right 2.png" alt="" class="item__svg" />
+                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png" alt=""
+                    class="item__svg" />
             </div>
         </div>
         <div class="khoiphai">
@@ -97,34 +112,40 @@
             </div>
             <div class="khoitieude">
                 <div class="khoitieude-item">
-                    <img src="./img/liver.png" alt="" class="tieude-img" />
+                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/liver.png" alt=""
+                        class="tieude-img" />
                     <div class="khoicontent">
                         <p class="liver__content">Big Match</p>
                         <p class="liver__number">12,345</p>
                         <div class="liver__topic">
-                            <img src="./img/muitenlen.png" alt="" class="liver__img" />
+                            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/muitenlen.png"
+                                alt="" class="liver__img" />
                             <p class="liver__desc">Sold</p>
                         </div>
                     </div>
                 </div>
                 <div class="khoitieude-item">
-                    <img src="./img/c1.png" alt="" class="tieude-img" />
+                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/c1.png" alt=""
+                        class="tieude-img" />
                     <div class="khoicontent">
-                        <p class="liver__content">Customers</p>
+                        <p class="liver__content">Accounts</p>
                         <p class="liver__number">1</p>
                         <div class="liver__topic">
-                            <img src="./img/c1khangia.png" alt="" class="liver__img" />
+                            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/c1khangia.png"
+                                alt="" class="liver__img" />
                             <p class="liver__desc">This month</p>
                         </div>
                     </div>
                 </div>
                 <div class="khoitieude-item khoionline">
-                    <img src="./img/epl.png" alt="" class="tieude-img" />
+                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/epl.png" alt=""
+                        class="tieude-img" />
                     <div class="khoicontent">
                         <p class="liver__content">Online</p>
                         <p class="liver__number">1</p>
                         <div class="liver__topic">
-                            <img src="./img/tindao.png" alt="" class="liver__img" />
+                            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/tindao.png" alt=""
+                                class="liver__img" />
                             <p class="liver__desc">Account</p>
                         </div>
                     </div>
@@ -132,7 +153,7 @@
             </div>
             <div class="khoinhap">
                 <div class="khoitren">
-                    <p class="tren-desc">All Customers</p>
+                    <p class="tren-desc">All Accounts</p>
                     <div class="tren-topic">
                         <form action="" class="form">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -174,16 +195,14 @@
                             <button class="btn btn__delete" id="delete">
                                 <a href="#!" class="link">Delete</a>
                             </button>
-                            <button class="btn btn__read" id="view">
-                                <a href="#!" class="link">View</a>
-                            </button>
                         </form>
                     </div>
                 </div>
                 <div class="khoiduoi">
                     <p class="show">Showing data</p>
                     <button class="but btn">
-                        <a href="" class="link">Create User</a>
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=create"
+                            class="link">Create User</a>
                     </button>
                 </div>
             </div>
@@ -248,7 +267,7 @@
                 </button>
             </div>
         </div>
-        <script src="./thaotac.js"></script>
+        <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/thaotac.js"></script>
 </body>
 
 </html>
