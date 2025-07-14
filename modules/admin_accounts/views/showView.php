@@ -176,27 +176,41 @@ global $config;
                     </div>
                 </div>
                 <div class="khoigiua">
+
                     <div class="grid-row">
                         <p class="truong">UserID</p>
                         <p class="truong">Username</p>
-                        <p class="truong">Role</p>
                         <p class="truong">Email</p>
+                        <p class="truong">Role</p>
                         <p class="truong">Action</p>
                     </div>
+
+
+                    <?php if (!empty($list_users)) { ?>
+                    <?php foreach ($list_users as $user) { ?>
                     <div class="grid-row">
-                        <p class="row">001A</p>
-                        <p class="row">Dat</p>
-                        <p class="row">Admin</p>
-                        <p class="row">Tinoi@gmail.conbo</p>
+                        <p class="row"><?php echo $user['id']; ?></p>
+                        <p class="row"><?php echo $user['username']; ?></p>
+                        <p class="row"><?php echo $user['email']; ?></p>
+                        <p class="row"><?php echo $user['role_name']; ?></p>
+
+
                         <form class="form__grid" action="">
                             <button class="btn btn__update" id="update">
                                 <a href="#!" class="link">Update</a>
                             </button>
+
                             <button class="btn btn__delete" id="delete">
                                 <a href="#!" class="link">Delete</a>
                             </button>
                         </form>
                     </div>
+
+                    <?php } ?>
+                    <?php } else { ?>
+                    <p class="row">No users found.</p>
+                    <?php } ?>
+
                 </div>
                 <div class="khoiduoi">
                     <p class="show">Showing data</p>

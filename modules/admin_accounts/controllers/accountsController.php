@@ -6,8 +6,17 @@ function construct()
 
 function showAction()
 {
+    // Kết quả là một mảng dữ liệu các user, được gán vào biến $data['list_users'].
+    //     Ví dụ $data['list_users'] sẽ có dạng:
+    // [
+    //     ['id' => 1, 'username' => 'admin', 'email' => 'admin@example.com', 'role_name' => 'ADMIN'],
+    //     ['id' => 2, 'username' => 'user', 'email' => 'user@example.com', 'role_name' => 'USER'],
+    //     ...
+    // ]
+    $data['list_users'] = get_list_users_with_role();
 
-    load_view('show');
+    //Truyền mảng $data vào view để sử dụng
+    load_view('show', $data);
 }
 
 
