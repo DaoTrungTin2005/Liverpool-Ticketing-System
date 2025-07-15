@@ -114,6 +114,12 @@ function sign_upAction()
     load_view('sign_up'); // Không truyền error
 }
 
+function logoutAction()
+{
+    session_destroy(); // Xóa toàn bộ session
+    redirect("?mod=auth&controller=auth&action=sign_in"); // Quay về trang đăng nhập
+}
+
 function _404Action()
 {
     load_view('_404');

@@ -16,4 +16,4 @@ $config['base_url'] = "http://localhost/LIVERPOOL_TICKETING_SYSTEM/";
 
 $config['default_module'] = 'auth';
 $config['default_controller'] = 'auth';
-$config['default_action'] = 'sign_up';
+$config['default_action'] = 'sign_in';

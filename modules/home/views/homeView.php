@@ -12,6 +12,11 @@
     <h3>
         <a href="">Quay lại trang chủ</a>
     </h3>
+
+
+    <h3>
+        <a href="?mod=auth&controller=auth&action=logout">Đăng xuất</a>
+    </h3>
 </body>
 
 </html>
