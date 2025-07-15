@@ -88,6 +88,7 @@ button {
   justify-content: center;
   gap: 10px;
   width: 100%;
+  margin-bottom: 30px;
 }
 .input {
   width: 100%;
@@ -98,10 +99,10 @@ button {
   cursor: pointer;
 }
 .username {
-  padding-top: 50px;
+  padding-top: 30px;
 }
 .confirm {
-  padding-bottom: 80px;
+  padding-bottom: 50px;
 }
 .khoibtn {
   width: 100%;

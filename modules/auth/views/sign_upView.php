@@ -25,25 +25,25 @@
                     <div class="form username">
                         <label class="label">Username</label>
                         <input type="text" class="input" />
-                        <p class="desc"></p>
+                        <p class="desc">xxxxxxxxxxxxxxxxxxxxxxxx</p>
                     </div>
 
                     <div class="form email">
                         <label class="label">Email</label>
                         <input type="email" class="input" />
-                        <p class="desc"></p>
+                        <p class="desc">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                     </div>
 
                     <div class="form password">
                         <label class="label">Password</label>
                         <input type="password" class="input" />
-                        <p class="desc"></p>
+                        <p class="desc">xxxxxxxxxxxxxxxxxxxxxxx</p>
                     </div>
 
                     <div class="form confirm">
                         <label class="label">Confirm Password</label>
                         <input type="password" class="input" />
-                        <p class="desc"></p>
+                        <p class="desc">xxxxxxxxxxxxxxxxxxxxx</p>
                     </div>
             </div>
 
