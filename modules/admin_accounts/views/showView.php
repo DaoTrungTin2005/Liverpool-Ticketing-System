@@ -90,9 +90,9 @@ global $config;
                     </div>
                 </div>
                 <script>
-                const navPC = document.querySelector(".item__list");
-                const navMB = document.querySelector(".item__listmb");
-                navMB.innerHTML = navPC.innerHTML;
+                    const navPC = document.querySelector(".item__list");
+                    const navMB = document.querySelector(".item__listmb");
+                    navMB.innerHTML = navPC.innerHTML;
                 </script>
             </div>
             <div class="khoiavt">
@@ -187,34 +187,34 @@ global $config;
                     </div>
 
                     <?php if (!empty($list_users)) { ?>
-                    <?php foreach ($list_users as $user) { ?>
-                    <div class="grid-row">
-                        <p class="row"><?php echo $user['id']; ?></p>
-                        <p class="row"><?php echo $user['username']; ?></p>
-                        <p class="row"><?php echo $user['email']; ?></p>
-                        <p class="row"><?php echo $user['role_name']; ?></p>
+                        <?php foreach ($list_users as $user) { ?>
+                            <div class="grid-row">
+                                <p class="row"><?php echo $user['id']; ?></p>
+                                <p class="row"><?php echo $user['username']; ?></p>
+                                <p class="row"><?php echo $user['email']; ?></p>
+                                <p class="row"><?php echo $user['role_name']; ?></p>
 
 
-                        <!-- Gán data-id, data-username, data-email, data-roleid vào từng nút Update trong vòng lặp foreach. -->
-                        <!--JavaScript bắt sự kiện click, lấy data này, rồi nhét thẳng vào input trong form ẩn (form update).  -->
-                        <!-- uối cùng, khi ấn "Save", submit form đó như thường (POST) về PHP, gọi controller updateAction. -->
+                                <!-- Gán data-id, data-username, data-email, data-roleid vào từng nút Update trong vòng lặp foreach. -->
+                                <!--JavaScript bắt sự kiện click, lấy data này, rồi nhét thẳng vào input trong form ẩn (form update).  -->
+                                <!-- uối cùng, khi ấn "Save", submit form đó như thường (POST) về PHP, gọi controller updateAction. -->
 
-                        <form class="form__grid" action="javascript:void(0);">
-                            <button class="btn btn__update" type="button" data-id="<?php echo $user['id']; ?>"
-                                data-username="<?php echo $user['username']; ?>"
-                                data-email="<?php echo $user['email']; ?>"
-                                data-roleid="<?php echo $user['role_id']; ?>">
-                                <span class="link">Update</span>
-                            </button>
+                                <form class="form__grid" action="javascript:void(0);">
+                                    <button class="btn btn__update" type="button" data-id="<?php echo $user['id']; ?>"
+                                        data-username="<?php echo $user['username']; ?>"
+                                        data-email="<?php echo $user['email']; ?>"
+                                        data-roleid="<?php echo $user['role_id']; ?>">
+                                        <span class="link">Update</span>
+                                    </button>
 
-                            <button class="btn btn__delete" type="button" data-id="<?php echo $user['id']; ?>">
-                                <span class="link">Delete</span>
-                            </button>
-                        </form>
-                    </div>
-                    <?php } ?>
+                                    <button class="btn btn__delete" type="button" data-id="<?php echo $user['id']; ?>">
+                                        <span class="link">Delete</span>
+                                    </button>
+                                </form>
+                            </div>
+                        <?php } ?>
                     <?php } else { ?>
-                    <p class="row">No users found.</p>
+                        <p class="row">No users found.</p>
                     <?php } ?>
 
                 </div>
@@ -260,7 +260,7 @@ global $config;
                     </div>
                     <div class="khoiselectup">
                         <button type="button" class="btn btn__cancel"
-                            onclick="window.location.href='?mod=admin_accounts&controller=accounts'">
+                            onclick="window.location.href='<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=show'">
                             <svg class="svg__sec" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -268,6 +268,7 @@ global $config;
                             </svg>
                             <span class="desc">Cancel</span>
                         </button>
+
                         <button type="submit" class="btn btn__save" name="btn-submit">
                             <svg class="svg__sec" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
