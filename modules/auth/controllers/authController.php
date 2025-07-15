@@ -62,7 +62,7 @@ function sign_upAction()
                 'role_id' => 2
             ];
             insert_account($data);
-            redirect("?mod=admin_accounts&controller=accounts&action=show");
+            redirect("?mod=auth&controller=auth&action=sign_in");
         }
     }
 
