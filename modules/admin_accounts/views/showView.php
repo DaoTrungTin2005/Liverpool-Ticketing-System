@@ -151,6 +151,7 @@ global $config;
                     </div>
                 </div>
             </div>
+
             <div class="khoinhap">
                 <div class="khoitren">
                     <p class="tren-desc">All Accounts</p>
@@ -185,7 +186,6 @@ global $config;
                         <p class="truong">Action</p>
                     </div>
 
-
                     <?php if (!empty($list_users)) { ?>
                     <?php foreach ($list_users as $user) { ?>
                     <div class="grid-row">
@@ -195,17 +195,23 @@ global $config;
                         <p class="row"><?php echo $user['role_name']; ?></p>
 
 
-                        <form class="form__grid" action="">
-                            <button class="btn btn__update" id="update">
-                                <a href="#!" class="link">Update</a>
+                        <!-- Gán data-id, data-username, data-email, data-roleid vào từng nút Update trong vòng lặp foreach. -->
+                        <!--JavaScript bắt sự kiện click, lấy data này, rồi nhét thẳng vào input trong form ẩn (form update).  -->
+                        <!-- uối cùng, khi ấn "Save", submit form đó như thường (POST) về PHP, gọi controller updateAction. -->
+
+                        <form class="form__grid" action="javascript:void(0);">
+                            <button class="btn btn__update" type="button" data-id="<?php echo $user['id']; ?>"
+                                data-username="<?php echo $user['username']; ?>"
+                                data-email="<?php echo $user['email']; ?>"
+                                data-roleid="<?php echo $user['role_id']; ?>">
+                                <span class="link">Update</span>
                             </button>
 
-                            <button class="btn btn__delete" id="delete">
-                                <a href="#!" class="link">Delete</a>
+                            <button class="btn btn__delete" type="button" data-id="<?php echo $user['id']; ?>">
+                                <span class="link">Delete</span>
                             </button>
                         </form>
                     </div>
-
                     <?php } ?>
                     <?php } else { ?>
                     <p class="row">No users found.</p>
@@ -220,68 +226,84 @@ global $config;
                     </button>
                 </div>
             </div>
-        </div>
-        <div class="khoiupdate khoitanghinh" id="khoiupdate">
-            <div class="khoiup">
-                <p class="desc descup">Update</p>
-            </div>
-            <div class="khoinhapup">
-                <form action="" class="userID_up form">
-                    <label for="" class="label">UserID: </label>
-                    <p class="desc"></p>
-                </form>
-                <form action="" class="userName_up form">
-                    <label for="" class="label">Username: </label>
-                    <input type="text" class="input" />
-                </form>
-                <form action="" class="Email_up form">
-                    <label for="" class="label">Email: </label>
-                    <input type="email" class="input" />
-                </form>
-                <form action="" class="Role_up form">
-                    <label for="" class="label">Role: </label>
-                    <div class="thechon">
-                        <label class="label"><input type="radio" name="role" class="input" />ADMIN</label>
-                        <label class="label"><input type="radio" name="role" class="input" />USER</label>
+
+            <form method="POST"
+                action="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=update">
+                <div class="khoiupdate khoitanghinh" id="khoiupdate">
+                    <div class="khoiup">
+                        <p class="desc descup">Update</p>
                     </div>
-                </form>
+                    <div class="khoinhapup">
+                        <div class="userID_up form" style="flex-direction: column; align-items: flex-start;">
+                            <label class="label">UserID: </label>
+                            <input type="text" name="id" id="input-userid" class="input" readonly />
+                        </div>
+                        <div class="userName_up form" style="flex-direction: column; align-items: flex-start;">
+                            <label class="label">Username: </label>
+                            <input type="text" name="username" class="input" id="input-username" required />
+                        </div>
+                        <div class="Email_up form" style="flex-direction: column; align-items: flex-start;">
+                            <label class="label">Email: </label>
+                            <input type="email" name="email" class="input" id="input-email" required />
+                        </div>
+                        <div class="Role_up form" style="flex-direction: column; align-items: flex-start;">
+                            <label class="label">Role: </label>
+                            <div class="thechon">
+                                <label class="label">
+                                    <input type="radio" name="role_id" value="1" class="input" /> ADMIN
+                                </label>
+                                <label class="label">
+                                    <input type="radio" name="role_id" value="2" class="input" /> USER
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="khoiselectup">
+                        <button type="button" class="btn btn__cancel"
+                            onclick="window.location.href='?mod=admin_accounts&controller=accounts'">
+                            <svg class="svg__sec" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                            <span class="desc">Cancel</span>
+                        </button>
+                        <button type="submit" class="btn btn__save" name="btn-submit">
+                            <svg class="svg__sec" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span class="desc">Save</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="khoidelete khoitanghinh" id="khoidelete">
+                <p class="desc desc__0">Warning</p> <!-- ✅ sửa chính tả từ "Waring" -->
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__war" fill="currentColor">
+                    <path
+                        d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
+                </svg>
+
+                <p class="desc desc__1">
+                    Are you sure you want to delete this data?
+                </p>
+
+                <div class="khoiselectdele">
+                    <button class="btn btn__cancel" type="button" id="No">
+                        <span class="desc">No</span>
+                    </button>
+                    <button class="btn btn__save" type="button" id="Yes">
+                        <span class="desc">Yes</span>
+                    </button>
+                </div>
             </div>
-            <div class="khoiselectup">
-                <button class="btn btn__cancel" id="cancel">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg__sec" fill="currentColor">
-                        <path
-                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                    </svg>
-                    <a class="desc">Cancel</a>
-                </button>
-                <button class="btn btn__save" id="save">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__sec" fill="currentColor">
-                        <path
-                            d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z" />
-                    </svg>
-                    <a class="desc">Save</a>
-                </button>
-            </div>
-        </div>
-        <div class="khoidelete khoitanghinh" id="khoidelete">
-            <p class="desc desc__0">Waring</p>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__war" fill="currentColor">
-                <path
-                    d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
-            </svg>
-            <p class="desc desc__1">
-                Are you sure you want to delete this data?
-            </p>
-            <div class="khoiselectdele">
-                <button class="btn btn__cancel" id="No">
-                    <a class="desc">No</a>
-                </button>
-                <button class="btn btn__save" id="Yes">
-                    <a class="desc">Yes</a>
-                </button>
-            </div>
-        </div>
-        <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/thaotac.js"></script>
+
+
+            <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/admin_accounts.js"></script>
 </body>
 
 </html>

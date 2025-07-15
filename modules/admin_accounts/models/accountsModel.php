@@ -31,3 +31,24 @@ function get_list_users_with_role()
     $result = db_fetch_array($sql);
     return $result;
 }
+
+//===============================================================
+function update_user($id, $username, $email, $role_id) {
+    $data = [
+        'username' => $username,
+        'email' => $email,
+        'role_id' => $role_id
+    ];
+
+    $where = "id = {$id}";
+
+    return db_update('accounts', $data, $where);
+}
+
+//========================================================
+
+function delete_account_by_id($id) {
+    $id = (int)$id;
+    return db_delete('accounts', "id = {$id}");
+}
+?>

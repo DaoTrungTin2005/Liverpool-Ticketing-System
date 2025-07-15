@@ -121,7 +121,7 @@
 
         </div>
     </div>
-    <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/thaotac.js"></script>
+    <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/admin_accounts.js"></script>
 </body>
 
 </html>
