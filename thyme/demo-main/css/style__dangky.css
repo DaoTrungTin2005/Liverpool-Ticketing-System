@@ -74,9 +74,13 @@ button {
   align-items: center;
   gap: 30px;
   width: 60%;
+  margin-top: 20px;
   margin-bottom: 30px;
   background-color: #f6f4f4;
   border: 0.1px solid whitesmoke;
+}
+.formchung {
+  width: 100%;
 }
 .form {
   display: flex;
@@ -94,7 +98,7 @@ button {
   cursor: pointer;
 }
 .username {
-  padding-top: 30px;
+  padding-top: 50px;
 }
 .confirm {
   padding-bottom: 80px;

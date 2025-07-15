@@ -27,6 +27,9 @@ button {
   height: 100vh;
   overflow: hidden;
 }
+.formchung {
+  width: 100%;
+}
 /* khoitrai */
 .khoitrai {
   width: 47%;
@@ -41,6 +44,7 @@ button {
 .stevenG8 {
   width: 500px;
   height: 720px;
+  rotate: 360deg;
   position: absolute;
   top: 50%;
   left: 23%;
