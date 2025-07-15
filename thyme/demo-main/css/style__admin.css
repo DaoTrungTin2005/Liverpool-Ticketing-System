@@ -253,8 +253,7 @@ label {
   border-radius: 4px;
 }
 .khoiduoi {
-  width: 70%;
-  height: 40px;
+  width: 100%;
   padding: 20px 20px;
   display: flex;
   justify-content: center;
@@ -277,7 +276,7 @@ label {
   justify-content: center;
   align-items: center;
   position: absolute;
-  left: 450px;
+  left: 320px;
   border: currentColor;
 }
 .but:hover {
