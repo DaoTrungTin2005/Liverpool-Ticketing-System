@@ -1,111 +1,121 @@
-<?php
-function construct()
-{
-    load_model('accounts');
-}
-
-function showAction()
-{
-    // Kết quả là một mảng dữ liệu các user, được gán vào biến $data['list_users'].
-    //     Ví dụ $data['list_users'] sẽ có dạng:
-    // [
-    //     ['id' => 1, 'username' => 'admin', 'email' => 'admin@example.com', 'role_name' => 'ADMIN'],
-    //     ['id' => 2, 'username' => 'user', 'email' => 'user@example.com', 'role_name' => 'USER'],
-    //     ...
-    // ]
-    $data['list_users'] = get_list_users_with_role();
-
-    //Truyền mảng $data vào view để sử dụng
-    load_view('show', $data);
-}
-
-
-
-function createAction()
-{
-    global $error;
-    $error = [];
-
-    if (isset($_POST['btn-submit'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-
-        // isset($_POST['role']): kiểm tra xem key 'role' có tồn tại trong mảng $_POST hay không (tức là người dùng có chọn role không).
-        // ? $_POST['role']: nếu có tồn tại, thì gán giá trị đó cho biến $role.
-        // : null: nếu không tồn tại, thì gán giá trị null cho $role. (tránh hển thị lỗi nếu role ko có giá trị)
-        $role = isset($_POST['role']) ? $_POST['role'] : null;
-
-        // Kiểm tra dữ liệu
-        if (empty($username) || !is_username($username)) {
-            $error['username'] = "Username không hợp lệ (6-32 ký tự, chữ/số/gạch dưới)";
+    <?php
+    function construct()
+    {
+        // Khi action là _404 → không gọi check_admin() nữa
+        // Tránh vòng lặp redirect vô hạn
+        if ($_GET['action'] != '_404') {
+            check_admin();
         }
 
-        if (empty($password) || !is_password($password)) {
-            $error['password'] = "Password phải bắt đầu bằng chữ hoa và dài tối thiểu 6 ký tự";
+        load_model('accounts');
+    }
+
+
+
+
+
+    function showAction()
+    {
+        // Kết quả là một mảng dữ liệu các user, được gán vào biến $data['list_users'].
+        //     Ví dụ $data['list_users'] sẽ có dạng:
+        // [
+        //     ['id' => 1, 'username' => 'admin', 'email' => 'admin@example.com', 'role_name' => 'ADMIN'],
+        //     ['id' => 2, 'username' => 'user', 'email' => 'user@example.com', 'role_name' => 'USER'],
+        //     ...
+        // ]
+        $data['list_users'] = get_list_users_with_role();
+
+        //Truyền mảng $data vào view để sử dụng
+        load_view('show', $data);
+    }
+
+
+
+    function createAction()
+    {
+        global $error;
+        $error = [];
+
+        if (isset($_POST['btn-submit'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+
+            // isset($_POST['role']): kiểm tra xem key 'role' có tồn tại trong mảng $_POST hay không (tức là người dùng có chọn role không).
+            // ? $_POST['role']: nếu có tồn tại, thì gán giá trị đó cho biến $role.
+            // : null: nếu không tồn tại, thì gán giá trị null cho $role. (tránh hển thị lỗi nếu role ko có giá trị)
+            $role = isset($_POST['role']) ? $_POST['role'] : null;
+
+            // Kiểm tra dữ liệu
+            if (empty($username) || !is_username($username)) {
+                $error['username'] = "Username không hợp lệ (6-32 ký tự, chữ/số/gạch dưới)";
+            }
+
+            if (empty($password) || !is_password($password)) {
+                $error['password'] = "Password phải bắt đầu bằng chữ hoa và dài tối thiểu 6 ký tự";
+            }
+
+            if (empty($email) || !is_email($email)) {
+                $error['email'] = "Email không hợp lệ";
+            }
+
+            if (!is_role_selected($role)) {
+                $error['role'] = "Bạn chưa chọn Role";
+            }
+
+            // Kiểm tra trùng tài khoản
+            if (username_exists($username)) {
+                $error['username'] = "Username đã tồn tại";
+            }
+
+            if (email_exists($email)) {
+                $error['email'] = "Email đã tồn tại";
+            }
+
+            // Nếu không có lỗi thì insert vào DB
+            if (empty($error)) {
+                $data = [
+                    'username' => $username,
+                    'password' => md5($password),
+                    'email' => $email,
+
+                    // Kiểm tra xem giá trị radio button có phải là "ADMIN" không
+                    //? 1 : 2	Nếu đúng → gán 1, nếu sai → gán 2
+                    'role_id' => ($role == 'ADMIN') ? 1 : 2,
+                ];
+                insert_account($data);
+                redirect("?mod=admin_accounts&controller=accounts&action=show");
+            }
         }
 
-        if (empty($email) || !is_email($email)) {
-            $error['email'] = "Email không hợp lệ";
-        }
+        load_view('create');
+    }
 
-        if (!is_role_selected($role)) {
-            $error['role'] = "Bạn chưa chọn Role";
-        }
+    function updateAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
+            $username = isset($_POST['username']) ? trim($_POST['username']) : '';
+            $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+            $role_id = isset($_POST['role_id']) ? (int)$_POST['role_id'] : 0;
 
-        // Kiểm tra trùng tài khoản
-        if (username_exists($username)) {
-            $error['username'] = "Username đã tồn tại";
-        }
+            if ($id > 0 && $username !== '' && $email !== '' && $role_id > 0) {
+                update_user($id, $username, $email, $role_id);
+            }
 
-        if (email_exists($email)) {
-            $error['email'] = "Email đã tồn tại";
-        }
-
-        // Nếu không có lỗi thì insert vào DB
-        if (empty($error)) {
-            $data = [
-                'username' => $username,
-                'password' => md5($password),
-                'email' => $email,
-
-                // Kiểm tra xem giá trị radio button có phải là "ADMIN" không
-                //? 1 : 2	Nếu đúng → gán 1, nếu sai → gán 2
-                'role_id' => ($role == 'ADMIN') ? 1 : 2,
-            ];
-            insert_account($data);
             redirect("?mod=admin_accounts&controller=accounts&action=show");
         }
     }
 
-    load_view('create');
-}
 
-function updateAction()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
-        $username = isset($_POST['username']) ? trim($_POST['username']) : '';
-        $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-        $role_id = isset($_POST['role_id']) ? (int)$_POST['role_id'] : 0;
+    function deleteAction()
+    {
+        if (isset($_GET['id'])) {
+            $id = (int)$_GET['id'];
 
-        if ($id > 0 && $username !== '' && $email !== '' && $role_id > 0) {
-            update_user($id, $username, $email, $role_id);
+            // Gọi model xóa
+            $result = delete_account_by_id($id);
+
+            redirect("?mod=admin_accounts&controller=accounts&action=show");
         }
-
-        redirect("?mod=admin_accounts&controller=accounts&action=show");
     }
-}
-
-
-function deleteAction()
-{
-    if (isset($_GET['id'])) {
-        $id = (int)$_GET['id'];
-
-        // Gọi model xóa
-        $result = delete_account_by_id($id);
-
-        redirect("?mod=admin_accounts&controller=accounts&action=show");
-    }
-}

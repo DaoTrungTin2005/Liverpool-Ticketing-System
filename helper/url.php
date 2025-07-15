@@ -7,4 +7,6 @@ function base_url($url = "") {
 function redirect($url) {
     header("Location: $url");
     exit;
-}
+} 
+
+?>

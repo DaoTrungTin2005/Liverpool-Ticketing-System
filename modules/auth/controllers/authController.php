@@ -106,3 +106,8 @@ function sign_upAction()
 
     load_view('sign_up'); // Không truyền error
 }
+
+function _404Action()
+{
+    load_view('_404');
+}
