@@ -77,38 +77,19 @@ function createAction()
     load_view('create');
 } 
 
-function updateAction()
-{
-    global $error;
-    $error = [];
-
-    if (isset($_POST['btn-submit'])) {
+function updateAction() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
         $username = isset($_POST['username']) ? trim($_POST['username']) : '';
         $email = isset($_POST['email']) ? trim($_POST['email']) : '';
         $role_id = isset($_POST['role_id']) ? (int)$_POST['role_id'] : 0;
 
-        // Validation như bên create
-        if (empty($username) || !is_username($username)) {
-            $error['username'] = "Username không hợp lệ (6-32 ký tự, chữ/số/gạch dưới)";
-        }
-
-        if (empty($email) || !is_email($email)) {
-            $error['email'] = "Email không hợp lệ";
-        }
-
-        if ($role_id !== 1 && $role_id !== 2) {
-            $error['role'] = "Role không hợp lệ";
-        }
-
-        if (empty($error)) {
+        if ($id > 0 && $username !== '' && $email !== '' && $role_id > 0) {
             update_user($id, $username, $email, $role_id);
-            redirect("?mod=admin_accounts&controller=accounts&action=show");
         }
-    }
 
-    // Nếu có lỗi thì load lại view cũ để hiển thị
-    load_view('show');
+        redirect("?mod=admin_accounts&controller=accounts&action=show");
+    }
 }
 
 
