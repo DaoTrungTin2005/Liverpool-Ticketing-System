@@ -1,3 +1,4 @@
+<?php global $config ;?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,8 @@
 <body>
     <h1>Không có quyền truy cập</h1>
     <h3>
-        <a href="">Quay lại trang chủ</a>
+        <a href="<?php echo $config['base_url']; ?>?mod=home&controller=home&action=home">Quay lại trang
+            chủ</a>
     </h3>
 </body>
 
