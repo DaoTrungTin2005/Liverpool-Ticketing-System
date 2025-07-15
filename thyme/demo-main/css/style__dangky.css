@@ -1,0 +1,136 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400px;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+}
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+.khoichung {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+/* khoitrai */
+.khoitrai {
+  width: 47%;
+  background-color: #c55151;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  filter: blur(37px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stevenG8 {
+  width: 500px;
+  height: 720px;
+  position: absolute;
+  top: 50%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+}
+/* khoiphai */
+.khoiphai {
+  width: 53%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  background-color: #eef0f2;
+}
+.signup {
+  position: fixed;
+  top: 21px;
+  padding: 0px 303px 20px;
+  color: #1d1d1d;
+  text-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 0.7; /* 70px */
+}
+.khoinhap {
+  padding: 10px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 60%;
+  margin-bottom: 30px;
+  background-color: #f6f4f4;
+  border: 0.1px solid whitesmoke;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.input {
+  width: 100%;
+  height: 40px;
+  border: 0.1px solid white;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.username {
+  padding-top: 30px;
+}
+.confirm {
+  padding-bottom: 80px;
+}
+.khoibtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.btn {
+  width: 170px;
+  height: 60px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0px 6px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.svg {
+  width: 50%;
+  height: 80%;
+}
+.link {
+  color: #fff;
+  font-size: 3rem;
+  line-height: 0.42; /* 42px */
+}
+.next {
+  background-color: rgba(22, 192, 152, 0.38);
+}
+.back {
+  background-color: #fbacae;
+}
+.btn.btn:hover {
+  scale: 1.2;
+}
