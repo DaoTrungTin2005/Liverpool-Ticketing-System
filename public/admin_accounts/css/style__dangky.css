@@ -58,8 +58,9 @@ button {
 }
 .signup {
   position: fixed;
-  top: 21px;
+  top: 10px;
   padding: 0px 303px 20px;
+  margin-bottom: 20px;
   color: #1d1d1d;
   text-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
   font-size: 5rem;
@@ -67,14 +68,14 @@ button {
   line-height: 0.7; /* 70px */
 }
 .khoinhap {
-  padding: 10px 50px 0px 50px;
+  padding: 0px 50px 0px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
   width: 60%;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 30px;
   background-color: #f6f4f4;
   border: 0.1px solid whitesmoke;
