@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+
 defined('APPPATH') OR exit('Không được quyền truy cập phần này');
 
 // Include file config/database
@@ -40,19 +43,3 @@ if (is_array($autoload)) {
 db_connect($db);
 
 require COREPATH . DIRECTORY_SEPARATOR . 'router.php';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,6 +6,44 @@ function construct()
 
 function sign_inAction()
 {
+    global $error;
+    $error = [];
+
+    if (isset($_POST['btn-submit'])) {
+        $username = trim($_POST['username']);
+        $password = trim($_POST['password']);
+
+        if (empty($username)) {
+            $error['username'] = "Vui lòng nhập Username";
+        }
+
+        if (empty($password)) {
+            $error['password'] = "Vui lòng nhập Password";
+        }
+
+        if (empty($error)) {
+            // Lấy thông tin tài khoản từ DB
+            $data = get_account_by_username($username); // model xử lý SELECT * FROM accounts WHERE username = '$username'
+
+            if (!empty($data)) {
+                if (md5($password) === $data['password']) {
+                    // Đăng nhập thành công
+                    $_SESSION['is_login'] = true;
+                    $_SESSION['user_login'] = $data['username'];
+
+                    //Sau này có thể dùng để phân quyền: admin mới được truy cập trang quản lý, còn user thì không.
+                    $_SESSION['user_role'] = $data['role_id'];
+
+                    redirect("?mod=admin_accounts&controller=accounts&action=show");
+                } else {
+                    $error['password'] = "Mật khẩu không chính xác";
+                }
+            } else {
+                $error['username'] = "Tài khoản không tồn tại";
+            }
+        }
+    }
+
     load_view('sign_in');
 }
 
@@ -22,7 +60,7 @@ function sign_upAction()
 
         if (empty($username)) {
             $error['username'] = "Vui lòng nhập Username";
-        } elseif (!is_username($username)){
+        } elseif (!is_username($username)) {
             $error['username'] = "Username có 6-32 ký tự, chữ/số/gạch dưới";
         }
 
@@ -34,7 +72,7 @@ function sign_upAction()
 
         if (empty($password)) {
             $error['password'] = "Vui lòng nhập mật khẩu";
-        }elseif  (!is_password($password)) {
+        } elseif (!is_password($password)) {
             $error['password'] = "Password bắt đầu chữ hoa, dài tối thiểu 6 ký tự";
         }
 
