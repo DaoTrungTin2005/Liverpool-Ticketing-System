@@ -30,7 +30,11 @@ function createAction()
         $username = $_POST['username'];
         $password = $_POST['password'];
         $email = $_POST['email'];
-        $role = $_POST['role'];
+
+        // isset($_POST['role']): kiểm tra xem key 'role' có tồn tại trong mảng $_POST hay không (tức là người dùng có chọn role không).
+        // ? $_POST['role']: nếu có tồn tại, thì gán giá trị đó cho biến $role.
+        // : null: nếu không tồn tại, thì gán giá trị null cho $role. (tránh hển thị lỗi nếu role ko có giá trị)
+        $role = isset($_POST['role']) ? $_POST['role'] : null;
 
         // Kiểm tra dữ liệu
         if (empty($username) || !is_username($username)) {
@@ -75,9 +79,10 @@ function createAction()
     }
 
     load_view('create');
-} 
+}
 
-function updateAction() {
+function updateAction()
+{
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
         $username = isset($_POST['username']) ? trim($_POST['username']) : '';
@@ -93,7 +98,8 @@ function updateAction() {
 }
 
 
-function deleteAction() {
+function deleteAction()
+{
     if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
 
@@ -103,5 +109,3 @@ function deleteAction() {
         redirect("?mod=admin_accounts&controller=accounts&action=show");
     }
 }
-
-?>
