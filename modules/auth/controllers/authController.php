@@ -34,7 +34,14 @@ function sign_inAction()
                     //Sau này có thể dùng để phân quyền: admin mới được truy cập trang quản lý, còn user thì không.
                     $_SESSION['user_role'] = $data['role_id'];
 
-                    redirect("?mod=admin_accounts&controller=accounts&action=show");
+                    // ✅ PHÂN QUYỀN CHUYỂN TRANG
+                    if ($data['role_id'] == 1) {
+                        // ADMIN → về trang quản trị
+                        redirect("?mod=admin_accounts&controller=accounts&action=show");
+                    } else {
+                        // USER → về trang home
+                        redirect("?mod=home&controller=home&action=home");
+                    }
                 } else {
                     $error['password'] = "Mật khẩu không chính xác";
                 }
