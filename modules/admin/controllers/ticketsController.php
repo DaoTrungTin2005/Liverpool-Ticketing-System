@@ -12,8 +12,11 @@ function construct()
 
 function show_ticketsAction()
 {
+    // Lấy danh sách vé từ database
+    $data['list_tickets'] = get_list_tickets(); // Gọi model
 
-    load_view('show_tickets');
+    // Load view và truyền dữ liệu vào
+    load_view('show_tickets', $data);
 }
 
 

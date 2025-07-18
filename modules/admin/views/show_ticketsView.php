@@ -191,12 +191,17 @@ global $config;
                         <p class="truong">Price(VND)</p>
                         <p class="truong">Action</p>
                     </div>
+
+                    <?php if (!empty($list_tickets)) : ?>
+                    <?php foreach ($list_tickets as $ticket) : ?>
                     <div class="grid-row">
-                        <p class="row">001A</p>
-                        <p class="row">LIV&MC</p>
-                        <p class="row">12/03/2103</p>
-                        <p class="row">VIP</p>
-                        <p class="row">1900000</p>
+                        <p class="row"><?php echo htmlspecialchars($ticket['id']); ?></p>
+                        <p class="row"><?php echo htmlspecialchars($ticket['match_name']); ?></p>
+                        <p class="row"><?php echo date("d/m/Y", strtotime($ticket['match_datetime'])); ?> |
+                            <?php echo date("H:i", strtotime($ticket['match_datetime'])); ?></p>
+                        <p class="row"><?php echo htmlspecialchars($ticket['ticket_type_name']); ?></p>
+                        <p class="row"><?php echo currency_format($ticket['price']); ?></p>
+
                         <form class="form__grid" action="">
                             <button class="btn btn__update" id="update">
                                 <a href="#!" class="link">Update</a>
@@ -205,7 +210,14 @@ global $config;
                                 <a href="#!" class="link">Delete</a>
                             </button>
                         </form>
+
                     </div>
+                    <?php endforeach; ?>
+                    <?php else : ?>
+                    <p class="row">No tickets found.</p>
+                    <?php endif; ?>
+
+
                 </div>
 
                 <div class="khoiduoi">
