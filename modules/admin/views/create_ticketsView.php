@@ -114,7 +114,8 @@ global $config;
         <div class="khoiphaitic">
             <div class="khoitrentic">
                 <p class="desc">Match</p>
-                <a href="" class="lienketback"><img
+                <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=show_tickets"
+                    class="lienketback"><img
                         src="<?php echo $config['base_url']; ?>public/resources/images/image 11.png"
                         class="svgtic"></img></a>
             </div>
@@ -124,23 +125,27 @@ global $config;
                     class="svgthoatiet">
                 <img src="<?php echo $config['base_url']; ?>public/resources/images/Line 17.png" alt="" class="soc">
             </div>
+
             <div class="khoiphoto">
-                <form action="" class="formticket formphoto">
-                    <input type="file" class="inputtic" id="file">
+                <form action="" method="POST" enctype="multipart/form-data" class="formticket formphoto">
+                    <input type="file" class="inputtic" id="file" name="image">
                     <img src="<?php echo $config['base_url']; ?>public/resources/images /new2.png" alt=""
                         class="inputtic__plus" id="hinhfile">
                     <p class="desc" id="descphoto">Upload Match Background Photo</p>
-                </form>
+
             </div>
+
             <div class="khoiformcreate">
-                <form action="" class="formcreate">
+
+                <div class="formcreate">
+
                     <div class="the thematch">
                         <label for="" class="labeltic">Match: </label>
-                        <input type="text" class="inputticket">
+                        <input type="text" class="inputticket" name="match">
                     </div>
                     <div class="the thedt">
                         <label for="" class="labeltic">Date: </label>
-                        <input type="datetime-local" class="inputticket">
+                        <input type="datetime-local" class="inputticket" name="date">
                     </div>
                     <div class="the thetype">
                         <label for="" class="labeltic">TicketType: </label>
@@ -152,17 +157,20 @@ global $config;
                     </div>
                     <div class="the theprice">
                         <label for="" class="labeltic">Price(VND): </label>
-                        <input type="text" class="inputticket">
+                        <input type="text" class="inputticket" name="price">
                     </div>
-                </form>
+                </div>
+
             </div>
+
             <div class="khoinuttic">
-                <a href="" class="lienket">
-                    <button class="btntic">Save</button>
-                </a>
+                <button type="submit" name="submit" class="btntic lienket">Save</button>
             </div>
+
+            </form>
+
         </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js//thaotaccreate.js"></script>
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotaccreate.js"></script>
 </body>
 
 </html>
