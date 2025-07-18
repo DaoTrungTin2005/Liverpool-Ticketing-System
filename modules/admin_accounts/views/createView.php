@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/reset.css" />
-    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/style__create.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/reset.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/style__create.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -32,18 +32,17 @@
             <div class="trai__desc">
                 <a href="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=show"
                     class="link">
-                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/arrow-left-solid.svg"
-                        alt="" />
+                    <img src="<?php echo $config['base_url']; ?>public/resources/images/arrow-left-solid.svg" alt="" />
                 </a>
                 <p class="desc">You will never walk alone</p>
             </div>
 
             <div class="trai__img">
-                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/bills.jpg" alt=""
+                <img src="<?php echo $config['base_url']; ?>public/resources/images/bills.jpg" alt=""
                     class="trai__img--item trai__img--1" />
-                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/klopp.jpg" alt=""
+                <img src="<?php echo $config['base_url']; ?>public/resources/images/klopp.jpg" alt=""
                     class="trai__img--item trai__img--2" />
-                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/g8.jpg" alt=""
+                <img src="<?php echo $config['base_url']; ?>public/resources/images/g8.jpg" alt=""
                     class="trai__img--item trai__img--3" />
             </div>
 
@@ -121,7 +120,7 @@
 
         </div>
     </div>
-    <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/admin_accounts.js"></script>
+    <script src="<?php echo $config['base_url']; ?>public/resources/js/admin_accounts.js"></script>
 </body>
 
 </html>

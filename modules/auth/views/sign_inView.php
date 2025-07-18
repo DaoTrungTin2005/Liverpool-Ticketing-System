@@ -5,8 +5,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/reset.css" />
-        <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/style__dangnhap.css" />
+        <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/reset.css" />
+        <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/style__dangnhap.css" />
         <title>SignIn</title>
     </head>
     <style>
@@ -20,7 +20,7 @@
     <body>
         <div class="khoichung">
             <div class="khoitrai"></div>
-            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/z6666575087159_54d06a0ac61ca2f06e7947c9d165dc4f.png"
+            <img src="<?php echo $config['base_url']; ?>public/resources/images/z6666575087159_54d06a0ac61ca2f06e7947c9d165dc4f.png"
                 alt="" class="stevenG8" />
             <div class="khoiphai">
                 <p class="desc signin">Sign In</p>

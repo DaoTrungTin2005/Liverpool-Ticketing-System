@@ -9,9 +9,9 @@ global $config;
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/reset.css" />
-    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/style__admin.css">
-    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/admin_accounts/css/repo.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/reset.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/style__admin.css">
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/repo.css" />
     <title>Admin</title>
 </head>
 
@@ -19,27 +19,27 @@ global $config;
     <div class="khoichung">
         <div class="khoitrai">
             <div class="khoiadmin">
-                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/setting 1.jpg"
-                    alt="icon cai dat" class="admin__img" />
+                <img src="<?php echo $config['base_url']; ?>public/resources/images/setting 1.jpg" alt="icon cai dat"
+                    class="admin__img" />
                 <p class="admin__noidung">Administrator</p>
             </div>
             <div class="khoiicon">
                 <div class="item__list">
                     <!-- icon-1 -->
                     <div class="item__list-item">
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/key-square.png" alt=""
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/key-square.png" alt=""
                             class="item__img" />
                         <a href="" class="item__desc">Infomation</a>
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
-                            alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
+                            class="item__svg" />
                     </div>
                     <!-- item2 -->
                     <div class="item__list-item">
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/3d-square 1.png" alt=""
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/3d-square 1.png" alt=""
                             class="item__img" />
                         <a href="" class="item__desc">Match</a>
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
-                            alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
+                            class="item__svg" />
                     </div>
                     <!-- item3 -->
                     <div class="item__list-item item3">
@@ -48,18 +48,18 @@ global $config;
                             <path
                                 d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                         </svg>
-                        <a href="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=show"
+                        <a href="<?php echo $config['base_url']; ?>?mod=resources&controller=accounts&action=show"
                             class="item__desc">Accounts</a>
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
-                            alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
+                            class="item__svg" />
                     </div>
                     <!--item4  -->
                     <div class="item__list-item">
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/wallet-money 2.png"
-                            alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/wallet-money 2.png" alt=""
+                            class="item__img" />
                         <a href="" class="item__desc">Notification</a>
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png"
-                            alt="" class="item__svg" />
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
+                            class="item__svg" />
                     </div>
                 </div>
             </div>
@@ -67,12 +67,12 @@ global $config;
                 <div class="item__listmb">
                     <!-- icon-1 -->
                     <div class="item__list-item">
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/key-square.png" alt=""
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/key-square.png" alt=""
                             class="item__img" />
                     </div>
                     <!-- item2 -->
                     <div class="item__list-item">
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/3d-square 1.png" alt=""
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/3d-square 1.png" alt=""
                             class="item__img" />
                     </div>
                     <!-- item3 -->
@@ -85,8 +85,8 @@ global $config;
                     </div>
                     <!--item4  -->
                     <div class="item__list-item">
-                        <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/wallet-money 2.png"
-                            alt="" class="item__img" />
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/wallet-money 2.png" alt=""
+                            class="item__img" />
                     </div>
                 </div>
                 <script>
@@ -96,7 +96,7 @@ global $config;
                 </script>
             </div>
             <div class="khoiavt">
-                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/tindao.png" alt=""
+                <img src="<?php echo $config['base_url']; ?>public/resources/images/tindao.png" alt=""
                     class="hinhtindao" />
                 <div class="item__content">
                     <p class="content-top">
@@ -104,7 +104,7 @@ global $config;
                     </p>
                     <p class="content-bot">Project Manager</p>
                 </div>
-                <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/chevron-right 2.png" alt=""
+                <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
                     class="item__svg" />
             </div>
         </div>
@@ -116,39 +116,39 @@ global $config;
             </div>
             <div class="khoitieude">
                 <div class="khoitieude-item">
-                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/liver.png" alt=""
+                    <img src="<?php echo $config['base_url']; ?>public/resources/images/liver.png" alt=""
                         class="tieude-img" />
                     <div class="khoicontent">
                         <p class="liver__content">Big Match</p>
                         <p class="liver__number">12,345</p>
                         <div class="liver__topic">
-                            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/muitenlen.png"
-                                alt="" class="liver__img" />
+                            <img src="<?php echo $config['base_url']; ?>public/resources/images/muitenlen.png" alt=""
+                                class="liver__img" />
                             <p class="liver__desc">Sold</p>
                         </div>
                     </div>
                 </div>
                 <div class="khoitieude-item">
-                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/c1.png" alt=""
+                    <img src="<?php echo $config['base_url']; ?>public/resources/images/c1.png" alt=""
                         class="tieude-img" />
                     <div class="khoicontent">
                         <p class="liver__content">Accounts</p>
                         <p class="liver__number">1</p>
                         <div class="liver__topic">
-                            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/c1khangia.png"
-                                alt="" class="liver__img" />
+                            <img src="<?php echo $config['base_url']; ?>public/resources/images/c1khangia.png" alt=""
+                                class="liver__img" />
                             <p class="liver__desc">This month</p>
                         </div>
                     </div>
                 </div>
                 <div class="khoitieude-item khoionline">
-                    <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/epl.png" alt=""
+                    <img src="<?php echo $config['base_url']; ?>public/resources/images/epl.png" alt=""
                         class="tieude-img" />
                     <div class="khoicontent">
                         <p class="liver__content">Online</p>
                         <p class="liver__number">1</p>
                         <div class="liver__topic">
-                            <img src="<?php echo $config['base_url']; ?>public/admin_accounts/images/tindao.png" alt=""
+                            <img src="<?php echo $config['base_url']; ?>public/resources/images/tindao.png" alt=""
                                 class="liver__img" />
                             <p class="liver__desc">Account</p>
                         </div>
@@ -308,7 +308,7 @@ global $config;
             </div>
 
 
-            <script src="<?php echo $config['base_url']; ?>public/admin_accounts/js/admin_accounts.js"></script>
+            <script src="<?php echo $config['base_url']; ?>public/resources/js/admin_accounts.js"></script>
 </body>
 
 </html>
