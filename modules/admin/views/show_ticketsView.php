@@ -109,6 +109,7 @@ global $config;
                     class="item__svg" />
             </div>
         </div>
+
         <div class="khoiphai">
             <div class="khoihello">
                 <p class="hello">Hello
@@ -210,8 +211,8 @@ global $config;
                 <div class="khoiduoi">
                     <p class="show">Showing data</p>
                     <button class="but btn">
-                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=create_accounts"
-                            class="link">Create User</a>
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=create_tickets"
+                            class="link">Create Tickets</a>
                     </button>
                 </div>
             </div>
