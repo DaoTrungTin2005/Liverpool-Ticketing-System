@@ -37,7 +37,7 @@ function sign_inAction()
                     // ✅ PHÂN QUYỀN CHUYỂN TRANG
                     if ($data['role_id'] == 1) {
                         // ADMIN → về trang quản trị
-                        redirect("?mod=admin_accounts&controller=accounts&action=show");
+                        redirect("?mod=admin&controller=accounts&action=show_accounts");
                     } else {
                         // USER → về trang home
                         redirect("?mod=home&controller=home&action=home");

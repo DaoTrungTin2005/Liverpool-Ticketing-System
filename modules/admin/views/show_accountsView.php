@@ -225,13 +225,14 @@ global $config;
                 <div class="khoiduoi">
                     <p class="show">Showing data</p>
                     <button class="but btn">
-                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=create"
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=create_accounts"
                             class="link">Create User</a>
                     </button>
                 </div>
             </div>
 
-            <form method="POST" action="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=update">
+            <form method="POST"
+                action="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=update_accounts">
                 <div class="khoiupdate khoitanghinh" id="khoiupdate">
                     <div class="khoiup">
                         <p class="desc descup">Update</p>
@@ -263,7 +264,7 @@ global $config;
                     </div>
                     <div class="khoiselectup">
                         <button type="button" class="btn btn__cancel"
-                            onclick="window.location.href='<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=show'">
+                            onclick="window.location.href='<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=show_accounts'">
                             <svg class="svg__sec" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

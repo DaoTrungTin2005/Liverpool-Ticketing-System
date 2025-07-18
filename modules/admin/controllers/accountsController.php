@@ -14,7 +14,7 @@
 
 
 
-    function showAction()
+    function show_accountsAction()
     {
         // Kết quả là một mảng dữ liệu các user, được gán vào biến $data['list_users'].
         //     Ví dụ $data['list_users'] sẽ có dạng:
@@ -26,12 +26,12 @@
         $data['list_users'] = get_list_users_with_role();
 
         //Truyền mảng $data vào view để sử dụng
-        load_view('show', $data);
+        load_view('show_accounts', $data);
     }
 
 
 
-    function createAction()
+    function create_accountsAction()
     {
         global $error;
         $error = [];
@@ -84,14 +84,14 @@
                     'role_id' => ($role == 'ADMIN') ? 1 : 2,
                 ];
                 insert_account($data);
-                redirect("?mod=admin&controller=accounts&action=show");
+                redirect("?mod=admin&controller=accounts&action=show_accounts");
             }
         }
 
-        load_view('create');
+        load_view('create_accounts');
     }
 
-    function updateAction()
+    function update_accountsAction()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
@@ -103,12 +103,12 @@
                 update_user($id, $username, $email, $role_id);
             }
 
-            redirect("?mod=admin&controller=accounts&action=show");
+            redirect("?mod=admin&controller=accounts&action=show_accounts");
         }
     }
 
 
-    function deleteAction()
+    function delete_accountsAction()
     {
         if (isset($_GET['id'])) {
             $id = (int)$_GET['id'];
@@ -116,6 +116,6 @@
             // Gọi model xóa
             $result = delete_account_by_id($id);
 
-            redirect("?mod=admin&controller=accounts&action=show");
+            redirect("?mod=admin&controller=accounts&action=show_accounts");
         }
     }

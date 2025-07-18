@@ -79,7 +79,7 @@ noButton.addEventListener("click", function () {
 // ➡️ File PHP ở action=delete sẽ lấy $_GET['id'] và gọi delete_user(id) để xóa.
 yesButton.addEventListener("click", function () {
     if (currentDeleteId) {
-        const deleteUrl = `?mod=admin_accounts&controller=accounts&action=delete&id=${currentDeleteId}`;
+        const deleteUrl = `?mod=admin&controller=accounts&action=delete_accounts&id=${currentDeleteId}`;
         window.location.href = deleteUrl;
     }
 });
