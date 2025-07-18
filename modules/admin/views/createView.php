@@ -30,8 +30,7 @@
         <!-- Bên trái -->
         <div class="khoitrai">
             <div class="trai__desc">
-                <a href="<?php echo $config['base_url']; ?>?mod=admin_accounts&controller=accounts&action=show"
-                    class="link">
+                <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=show" class="link">
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/arrow-left-solid.svg" alt="" />
                 </a>
                 <p class="desc">You will never walk alone</p>

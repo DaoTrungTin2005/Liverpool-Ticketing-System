@@ -84,7 +84,7 @@
                     'role_id' => ($role == 'ADMIN') ? 1 : 2,
                 ];
                 insert_account($data);
-                redirect("?mod=admin_accounts&controller=accounts&action=show");
+                redirect("?mod=admin&controller=accounts&action=show");
             }
         }
 
@@ -103,7 +103,7 @@
                 update_user($id, $username, $email, $role_id);
             }
 
-            redirect("?mod=admin_accounts&controller=accounts&action=show");
+            redirect("?mod=admin&controller=accounts&action=show");
         }
     }
 
@@ -116,6 +116,6 @@
             // Gọi model xóa
             $result = delete_account_by_id($id);
 
-            redirect("?mod=admin_accounts&controller=accounts&action=show");
+            redirect("?mod=admin&controller=accounts&action=show");
         }
     }
