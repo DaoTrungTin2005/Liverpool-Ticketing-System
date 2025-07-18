@@ -37,7 +37,8 @@ global $config;
                     <div class="item__list-item">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/3d-square 1.png" alt=""
                             class="item__img" />
-                        <a href="" class="item__desc">Match</a>
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=show_tickets"
+                            class="item__desc">Tickets</a>
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
                             class="item__svg" />
                     </div>
@@ -48,7 +49,7 @@ global $config;
                             <path
                                 d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z" />
                         </svg>
-                        <a href="<?php echo $config['base_url']; ?>?mod=resources&controller=accounts&action=show"
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=show_accounts"
                             class="item__desc">Accounts</a>
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
                             class="item__svg" />

@@ -234,7 +234,7 @@ label {
 .khoigiua {
   padding: 0px 44px 26px 38px;
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1fr;
+  grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1fr 1fr;
   grid-template-rows: repeat(1, 1fr);
   gap: 10px;
 }
@@ -428,4 +428,169 @@ label {
 .khoiselectdele .btn {
   width: 138.817px;
   height: 53.092px;
+}
+/* create ticket */
+.khoiphaitic {
+  width: 70.25%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 21px;
+  padding-left: 30px;
+  background-color: #eef0f2;
+}
+.khoitrentic {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: start;
+  align-items: start;
+}
+.khoitrentic .desc {
+  width: 346px;
+  height: 40px;
+  color: #9197b3;
+  font-size: 25px;
+}
+.svgtic {
+  width: 43px;
+  height: 43px;
+  cursor: pointer;
+}
+.soc {
+  width: 40%;
+}
+.khoihoatiet {
+  padding-top: 5px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.svgthoatiet {
+  width: 20%;
+  height: 20px;
+}
+.khoiphoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.inputtic {
+  display: none;
+}
+.formticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.inputtic__plus {
+  padding: 16px 442px;
+  cursor: pointer;
+}
+.khoiformcreate {
+  width: 100%;
+  border-top: 1px solid black;
+  background-color: #fff;
+  border-radius: 8px 8px 0px 0px;
+}
+.formcreate {
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-bottom: 30px;
+}
+.the {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.labeltic {
+  color: #000;
+  font-size: 2rem;
+}
+.khoinuttic {
+  display: flex;
+  justify-content: end;
+  padding-right: 140px;
+  padding-bottom: 80px;
+  background-color: #fff;
+}
+.btntic {
+  border-radius: 12px;
+  background: #1dd16a;
+  width: 128px;
+  height: 52px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 500;
+}
+.thematch .inputticket {
+  width: 40%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #9a9595a0;
+}
+.thedt .inputticket {
+  width: 40%;
+  height: 30px;
+  margin-left: 15px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #9a9595a0;
+}
+.thetype .inputticket {
+  width: 35%;
+  height: 30px;
+  margin-left: 15px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #9a9595a0;
+}
+.theprice .inputticket {
+  width: 35%;
+  height: 30px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  background-color: #9a9595a0;
+}
+.khoiupdate .khoiphoto {
+  width: 100%;
+}
+.khoiupdate2 .khoiup {
+  height: 50px;
+  padding: 0;
+}
+.khoiupdate2 .khoiphoto {
+  box-shadow: none;
+  height: 50px;
+}
+.khoiupdate2 .inputtic__plus {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+.khoiupdate2 .descup {
+  font-size: 40px;
+}
+.inputticket {
+  cursor: pointer;
+}
+.btntic {
+  cursor: pointer;
+}
+.khoiphoto .desc {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
