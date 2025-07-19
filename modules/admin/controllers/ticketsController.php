@@ -65,6 +65,36 @@ function create_ticketsAction()
 
 function update_ticketsAction()
 {
+    $id = $_GET['id'] ?? 0;
+    $ticket = get_ticket_by_id($id);
 
-    load_view('update_tickets');
+    if (!$ticket) {
+        echo "Ticket not found.";
+        return;
+    }
+
+    if (isset($_POST['submit'])) {
+        $match_name = $_POST['match'] ?? '';
+        $match_datetime = $_POST['date'] ?? '';
+        $ticket_type_id = $_POST['vitri'] ?? 0;
+        $price = $_POST['price'] ?? 0;
+
+        // Giữ ảnh cũ nếu không upload ảnh mới
+        $image_name = $ticket['image'];
+
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
+            $upload_dir = 'public/resources/uploads/';
+            $image_name = basename($_FILES['image']['name']);
+            $target_path = $upload_dir . $image_name;
+            move_uploaded_file($_FILES['image']['tmp_name'], $target_path);
+        }
+
+        // Gọi hàm update_ticket theo dạng tham số riêng lẻ
+        update_ticket($id, $image_name, $match_name, $match_datetime, $ticket_type_id, $price);
+
+        redirect("?mod=admin&controller=tickets&action=show_tickets");
+        exit;
+    }
+
+    load_view('update_tickets', ['ticket' => $ticket]);
 }

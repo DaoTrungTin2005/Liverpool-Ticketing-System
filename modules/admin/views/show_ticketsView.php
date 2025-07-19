@@ -160,7 +160,7 @@ global $config;
 
             <div class="khoinhap">
                 <div class="khoitren">
-                    <p class="tren-desc">All Accounts</p>
+                    <p class="tren-desc">All Tickets</p>
                     <div class="tren-topic">
                         <form action="" class="form">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -204,7 +204,7 @@ global $config;
 
                         <form class="form__grid" action="">
                             <button class="btn btn__update" id="update">
-                                <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=update_tickets"
+                                <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=update_tickets&id=<?php echo $ticket['id']; ?>"
                                     class="link">Update</a>
                             </button>
                             <button class="btn btn__delete" id="delete">

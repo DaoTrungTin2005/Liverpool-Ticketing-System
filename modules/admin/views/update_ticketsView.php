@@ -116,59 +116,74 @@ global $config;
                 <div class="khoiup">
                     <p class="desc descup">Update</p>
                 </div>
+
                 <div class="khoiphoto">
-                    <form action="" class="formticket formphoto">
-                        <input type="file" class="inputtic" id="file">
-                        <img src="<?php echo $config['base_url']; ?>public/resources/images/new2.png" alt=""
-                            class="inputtic__plus" id="hinhfile">
+                    <form action="" method="POST" enctype="multipart/form-data" class="formticket formphoto">
+                        <input type="file" name="image" class="inputtic" id="file">
+                        <img src="<?php echo $config['base_url']; ?>public/resources/uploads/<?php echo htmlspecialchars($ticket['image']); ?>"
+                            alt="" class="inputtic__plus" id="hinhfile">
                         <p class="desc" id="descphoto">Upload Match Background Photo</p>
-                    </form>
                 </div>
+
                 <div class="khoiformcreate">
-                    <form action="" class="formcreate">
+                    <div class="formcreate">
+
                         <div class="the thematch">
                             <label for="" class="labeltic">Match: </label>
-                            <input type="text" class="inputticket">
+                            <input type="text" name="match" class="inputticket"
+                                value="<?php echo htmlspecialchars($ticket['match_name']); ?>">
                         </div>
+
                         <div class="the thedt">
                             <label for="" class="labeltic">Date: </label>
-                            <input type="datetime-local" class="inputticket">
+                            <input type="datetime-local" name="date" class="inputticket"
+                                value="<?php echo date('Y-m-d\TH:i', strtotime($ticket['match_datetime'])); ?>">
                         </div>
+
                         <div class="the thetype">
                             <label for="" class="labeltic">TicketType: </label>
                             <select name="vitri" id="TypeTicket" class="inputticket">
-                                <option value="1" class="Ticket">Normal</option>
-                                <option value="2" class="Ticket">Average</option>
-                                <option value="3" class="Ticket">Vip</option>
+                                <option value="1" <?php if ($ticket['ticket_type_id'] == 1) echo 'selected'; ?>>Normal
+                                </option>
+                                <option value="2" <?php if ($ticket['ticket_type_id'] == 2) echo 'selected'; ?>>Average
+                                </option>
+                                <option value="3" <?php if ($ticket['ticket_type_id'] == 3) echo 'selected'; ?>>VIP
+                                </option>
                             </select>
                         </div>
                         <div class="the theprice">
                             <label for="" class="labeltic">Price(VND): </label>
-                            <input type="text" class="inputticket">
+                            <input type="text" name="price" class="inputticket"
+                                value="<?php echo htmlspecialchars($ticket['price']); ?>">
                         </div>
-                    </form>
+                        <input type="hidden" name="ticket_id" value="<?php echo $ticket['id']; ?>">
+                    </div>
                 </div>
+
                 <div class="khoiselectup">
-                    <button class="btn btn__cancel" id="cancel">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg__sec"
-                            fill="currentColor">
-                            <path
-                                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                        </svg>
-                        <a class="desc"
-                            href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=show_tickets">Back</a>
-                    </button>
-                    <button class="btn btn__save" id="save">
+                    <button type="submit" name="submit" class="btn btn__save" id="save">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__sec"
                             fill="currentColor">
                             <path
                                 d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z" />
                         </svg>
-                        <a class="desc">Save</a>
+                        <span class="desc">Save</span>
                     </button>
+                    <a class="btn btn__cancel" id="cancel"
+                        href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=show_tickets">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg__sec"
+                            fill="currentColor">
+                            <path
+                                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                        </svg>
+                        <span class="desc">Back</span>
+                    </a>
                 </div>
+                </form>
             </div>
-            <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotaccreate2.js"></script>
+        </div>
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotaccreate2.js"></script>
+
 </body>
 
 </html>
