@@ -1,11 +1,11 @@
 <?php
 function construct()
 {
-        // Khi action là _404 → không gọi check_admin() nữa
-        // Tránh vòng lặp redirect vô hạn
-        if ($_GET['action'] != '_404') {
-            check_admin();
-        }
+    // Khi action là _404 → không gọi check_admin() nữa
+    // Tránh vòng lặp redirect vô hạn
+    if ($_GET['action'] != '_404') {
+        check_admin();
+    }
 
     load_model('tickets');
 }
@@ -61,7 +61,7 @@ function create_ticketsAction()
 
     // Load view nếu chưa submit
     load_view('create_tickets');
-} 
+}
 
 function update_ticketsAction()
 {
@@ -86,6 +86,16 @@ function update_ticketsAction()
             $upload_dir = 'public/resources/uploads/';
             $image_name = basename($_FILES['image']['name']);
             $target_path = $upload_dir . $image_name;
+
+            // Kiểm tra có bản ghi nào khác vẫn dùng ảnh cũ không
+            $old_image_path = $upload_dir . $ticket['image'];
+            $image_used_by_others = db_fetch_row("SELECT * FROM tickets WHERE image = '{$ticket['image']}' AND id != {$id}");
+
+            if (empty($image_used_by_others) && file_exists($old_image_path)) {
+                unlink($old_image_path); // Chỉ xóa nếu không còn ai dùng
+            }
+
+
             move_uploaded_file($_FILES['image']['tmp_name'], $target_path);
         }
 
