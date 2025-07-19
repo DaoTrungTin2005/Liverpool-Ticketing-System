@@ -569,16 +569,20 @@ label {
 }
 .khoiupdate2 .khoiup {
   height: 50px;
-  padding: 0;
+  margin-bottom: 100px;
 }
 .khoiupdate2 .khoiphoto {
   box-shadow: none;
-  height: 50px;
+  height: 100px;
+}
+.khoiupdate2 #descphoto {
+  margin-bottom: 70px;
 }
 .khoiupdate2 .inputtic__plus {
-  width: 30px;
-  height: 30px;
-  padding: 0;
+  width: 90px;
+  height: 90px;
+  padding: 0px;
+  margin-bottom: 30px;
 }
 .khoiupdate2 .descup {
   font-size: 40px;
@@ -593,4 +597,25 @@ label {
   color: blue;
   text-decoration: underline;
   cursor: pointer;
+}
+.khoiupdate2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 790px;
+  background-color: #fff;
+  box-shadow: 0px 6px 0px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.khoiupdate2 .khoiformcreate {
+  border-top: 1px solid black;
+  border-radius: 0px;
+}
+.khoiupdate2 .khoiselectup {
+  justify-content: space-evenly;
 }

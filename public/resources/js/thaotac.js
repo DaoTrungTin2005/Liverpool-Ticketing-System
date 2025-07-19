@@ -1,9 +1,5 @@
 const temp = document.getElementById("update");
 const temp2 = document.getElementById("khoiupdate");
-temp.addEventListener("click", function (e) {
-  e.preventDefault();
-  temp2.classList.remove("khoitanghinh");
-});
 const temp3 = document.getElementById("cancel");
 temp3.addEventListener("click", function (e) {
   e.preventDefault();

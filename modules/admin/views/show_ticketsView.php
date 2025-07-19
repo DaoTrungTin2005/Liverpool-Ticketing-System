@@ -204,7 +204,8 @@ global $config;
 
                         <form class="form__grid" action="">
                             <button class="btn btn__update" id="update">
-                                <a href="#!" class="link">Update</a>
+                                <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=update_tickets"
+                                    class="link">Update</a>
                             </button>
                             <button class="btn btn__delete" id="delete">
                                 <a href="#!" class="link">Delete</a>
@@ -233,7 +234,7 @@ global $config;
 
 
 
-        <div class="khoiupdate khoitanghinh khoiupdate2" id="khoiupdate">
+        <div class="khoiupdate khoitanghinh" id="khoiupdate">
             <div class="khoiup">
                 <p class="desc descup">Update</p>
             </div>

@@ -61,4 +61,10 @@ function create_ticketsAction()
 
     // Load view nếu chưa submit
     load_view('create_tickets');
+} 
+
+function update_ticketsAction()
+{
+
+    load_view('update_tickets');
 }
