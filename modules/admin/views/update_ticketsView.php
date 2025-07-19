@@ -114,7 +114,7 @@ global $config;
         <div class="khoichung">
             <div class="khoiupdate khoiupdate2" id="khoiupdate">
                 <div class="khoiup">
-                    <p class="desc descup">Update</p>
+                    <p class="desc descup">UPDATE</p>
                 </div>
 
                 <div class="khoiphoto">
