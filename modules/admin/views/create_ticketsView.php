@@ -170,7 +170,7 @@ global $config;
             </form>
 
         </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotaccreate.js"></script>
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/create_tickets.js"></script>
 </body>
 
 </html>

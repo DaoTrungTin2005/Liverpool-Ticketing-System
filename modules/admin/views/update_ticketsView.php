@@ -182,7 +182,7 @@ global $config;
                 </form>
             </div>
         </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotaccreate2.js"></script>
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/update_tickets.js"></script>
 
 </body>
 

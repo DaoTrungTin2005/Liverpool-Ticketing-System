@@ -30,3 +30,8 @@ function update_ticket($id, $image, $match_name, $match_datetime, $ticket_type_i
 
     return db_update('tickets', $data, $where);
 }
+
+function delete_ticket_by_id($id) {
+    $id = (int)$id;
+    return db_delete('tickets', "id = {$id}");
+}

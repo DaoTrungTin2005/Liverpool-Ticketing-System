@@ -182,6 +182,8 @@ global $config;
                         </form>
                     </div>
                 </div>
+
+
                 <div class="khoigiua">
                     <div class="grid-row">
                         <p class="truong">TicketID</p>
@@ -202,15 +204,15 @@ global $config;
                         <p class="row"><?php echo htmlspecialchars($ticket['ticket_type_name']); ?></p>
                         <p class="row"><?php echo currency_format($ticket['price']); ?></p>
 
-                        <form class="form__grid" action="">
+                        <div class="form__grid" action="">
                             <button class="btn btn__update" id="update">
                                 <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=update_tickets&id=<?php echo $ticket['id']; ?>"
                                     class="link">Update</a>
                             </button>
-                            <button class="btn btn__delete" id="delete">
-                                <a href="#!" class="link">Delete</a>
+                            <button class="btn btn__delete" data-id="<?php echo $ticket['id']; ?>">
+                                <div class="link">Delete</div>
                             </button>
-                        </form>
+                        </div>
 
                     </div>
                     <?php endforeach; ?>
@@ -233,59 +235,6 @@ global $config;
 
 
 
-
-        <div class="khoiupdate khoitanghinh" id="khoiupdate">
-            <div class="khoiup">
-                <p class="desc descup">Update</p>
-            </div>
-            <div class="khoiphoto">
-                <form action="" class="formticket formphoto">
-                    <input type="file" class="inputtic" id="file">
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/new2.png" alt=""
-                        class="inputtic__plus" id="hinhfile">
-                </form>
-            </div>
-            <div class="khoiformcreate">
-                <form action="" class="formcreate">
-                    <div class="the thematch">
-                        <label for="" class="labeltic">Match: </label>
-                        <input type="text" class="inputticket">
-                    </div>
-                    <div class="the thedt">
-                        <label for="" class="labeltic">Date: </label>
-                        <input type="datetime-local" class="inputticket">
-                    </div>
-                    <div class="the thetype">
-                        <label for="" class="labeltic">TicketType: </label>
-                        <select name="vitri" id="TypeTicket" class="inputticket">
-                            <option value="1" class="Ticket">Normal</option>
-                            <option value="2" class="Ticket">Average</option>
-                            <option value="3" class="Ticket">Vip</option>
-                        </select>
-                    </div>
-                    <div class="the theprice">
-                        <label for="" class="labeltic">Price(VND): </label>
-                        <input type="text" class="inputticket">
-                    </div>
-                </form>
-            </div>
-            <div class="khoiselectup">
-                <button class="btn btn__cancel" id="cancel">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg__sec" fill="currentColor">
-                        <path
-                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                    </svg>
-                    <a class="desc">Cancel</a>
-                </button>
-                <button class="btn btn__save" id="save">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__sec" fill="currentColor">
-                        <path
-                            d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z" />
-                    </svg>
-                    <a class="desc">Save</a>
-                </button>
-            </div>
-        </div>
         <div class="khoidelete khoitanghinh" id="khoidelete">
             <p class="desc desc__0">Waring</p>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__war" fill="currentColor">
@@ -304,8 +253,7 @@ global $config;
                 </button>
             </div>
         </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotac.js"></script>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js//thaotaccreate.js"></script>
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/delete_tickets.js"></script>
 </body>
 
 </html>

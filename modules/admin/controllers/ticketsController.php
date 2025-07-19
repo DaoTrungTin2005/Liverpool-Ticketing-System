@@ -108,3 +108,16 @@ function update_ticketsAction()
 
     load_view('update_tickets', ['ticket' => $ticket]);
 }
+
+function delete_ticketsAction()
+{
+    if (isset($_GET['id'])) {
+        $id = (int)$_GET['id'];
+
+        // Gọi model xóa vé
+        $result = delete_ticket_by_id($id);
+
+        // Redirect lại trang danh sách vé
+        redirect("?mod=admin&controller=tickets&action=show_tickets");
+    }
+}
