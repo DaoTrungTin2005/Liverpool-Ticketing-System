@@ -8,7 +8,8 @@ function add_ticket($data)
 function get_list_tickets() {
     $sql = "SELECT t.*, tt.name AS ticket_type_name 
         FROM tickets t 
-        JOIN ticket_types tt ON t.ticket_type_id = tt.id ";
+        JOIN ticket_types tt ON t.ticket_type_id = tt.id 
+        ORDER BY t.id ASC";
     return db_fetch_array($sql);
 }
 
