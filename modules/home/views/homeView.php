@@ -72,9 +72,11 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="special">
                 <div class="khoihinh">
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/Liverpool.png" alt=""
+                    <img src="<?php echo $config['base_url']; ?>public/resources/images/sân.jpg" alt=""
                         class="img img__sp" id="img1" />
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/anfield-generic-091124-_6.png"
                         alt="" class="img an img__sp" />
@@ -104,182 +106,69 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="body">
-                <div class="khoihang">
-                    <div class="khoitran">
-                        <div class="khoihinhnhap">
-                            <img src="<?php echo $config['base_url']; ?>public/resources/images/1000044842.jpg" alt=""
-                                class="img" />
+
+                <?php
+                $count = 0;
+                foreach ($list_tickets   as $ticket):
+                    if ($count % 2 == 0) echo '<div class="khoihang">'; // Mỗi 2 vé thì mở hàng mới
+                ?>
+
+
+
+
+                <div class="khoitran">
+                    <div class="khoihinhnhap">
+                        <img src="<?php echo $config['base_url']; ?>public/resources/uploads/<?php echo $ticket['image']; ?>"
+                            alt="" class="img" />
+                    </div>
+                    <div class="khoithongtin">
+                        <div class="khoitentran">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
+                                fill="none" class="svg__ten">
+                                <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
+                                    stroke="currentColor" />
+                            </svg>
+                            <p class="desc"><?php echo strtoupper($ticket['match_name']); ?></p>
                         </div>
-                        <div class="khoithongtin">
-                            <div class="khoitentran">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                    fill="currentColor" class="svg__ten">
-                                    <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                        stroke="currentColor" />
-                                </svg>
-                                <p class="desc">LIVERPOOL VS REAL MADRID</p>
-                            </div>
-                            <div class="khoichon khoian">
-                                <a href="" class="link">
-                                    <button class="btn">TICKET BOOKING</button>
-                                </a>
-                                <a href="" class="link">
-                                    <button class="btn">ADD TO CART</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="khoithoigian">
-                            <p class="desc">July 25, 2025</p>
-                            <p class="desc">8 : 00</p>
+                        <div class="khoichon khoian">
+                            <a href="" class="link">
+                                <button class="btn">TICKET BOOKING</button>
+                            </a>
+                            <a href="" class="link">
+                                <button class="btn">ADD TO CART</button>
+                            </a>
                         </div>
                     </div>
-                    <div class="khoitran">
-                        <div class="khoihinhnhap">
-                            <img src="<?php echo $config['base_url']; ?>public/resources/images/1000044841.jpg" alt=""
-                                class="img" />
-                        </div>
-                        <div class="khoithongtin">
-                            <div class="khoitentran">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                    fill="none" class="svg__ten">
-                                    <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                        stroke="currentColor" />
-                                </svg>
-                                <p class="desc">LIVERPOOL VS MANCHESTER CITY</p>
-                            </div>
-                            <div class="khoichon khoian">
-                                <a href="" class="link">
-                                    <button class="btn">TICKET BOOKING</button>
-                                </a>
-                                <a href="" class="link">
-                                    <button class="btn">ADD TO CART</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="khoithoigian">
-                            <p class="desc">July 25, 2025</p>
-                            <p class="desc">8 : 00</p>
-                        </div>
+                    <div class="khoithoigian">
+                        <p class="desc"><?php echo date("F d, Y", strtotime($ticket['match_datetime'])); ?></p>
+                        <p class="desc"><?php echo date("H : i", strtotime($ticket['match_datetime'])); ?></p>
                     </div>
                 </div>
-                <div class="khoihang">
-                    <div class="khoitran">
-                        <div class="khoihinhnhap">
-                            <img src="<?php echo $config['base_url']; ?>public/resources/images/lfcvsmc.webp" alt=""
-                                class="img" />
-                        </div>
-                        <div class="khoithongtin">
-                            <div class="khoitentran">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                    fill="none" class="svg__ten">
-                                    <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                        stroke="currentColor" />
-                                </svg>
-                                <p class="desc">LIVERPOOL VS MANCHESTER CITY</p>
-                            </div>
-                            <div class="khoichon khoian">
-                                <a href="" class="link">
-                                    <button class="btn">TICKET BOOKING</button>
-                                </a>
-                                <a href="" class="link">
-                                    <button class="btn">ADD TO CART</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="khoithoigian">
-                            <p class="desc">July 25, 2025</p>
-                            <p class="desc">8 : 00</p>
-                        </div>
-                    </div>
-                    <div class="khoitran">
-                        <div class="khoihinhnhap">
-                            <img src="<?php echo $config['base_url']; ?>public/resources/images/lfcvsmc.webp" alt=""
-                                class="img" />
-                        </div>
-                        <div class="khoithongtin">
-                            <div class="khoitentran">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                    fill="none" class="svg__ten">
-                                    <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                        stroke="currentColor" />
-                                </svg>
-                                <p class="desc">LIVERPOOL VS MANCHESTER CITY</p>
-                            </div>
-                            <div class="khoichon khoian">
-                                <a href="" class="link">
-                                    <button class="btn">TICKET BOOKING</button>
-                                </a>
-                                <a href="" class="link">
-                                    <button class="btn">ADD TO CART</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="khoithoigian">
-                            <p class="desc">July 25, 2025</p>
-                            <p class="desc">8 : 00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="khoihang">
-                    <div class="khoitran">
-                        <div class="khoihinhnhap">
-                            <img src="<?php echo $config['base_url']; ?>public/resources/images/lfcvsmc.webp" alt=""
-                                class="img" />
-                        </div>
-                        <div class="khoithongtin">
-                            <div class="khoitentran">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                    fill="none" class="svg__ten">
-                                    <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                        stroke="currentColor" />
-                                </svg>
-                                <p class="desc">LIVERPOOL VS MANCHESTER CITY</p>
-                            </div>
-                            <div class="khoichon khoian">
-                                <a href="" class="link">
-                                    <button class="btn">TICKET BOOKING</button>
-                                </a>
-                                <a href="" class="link">
-                                    <button class="btn">ADD TO CART</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="khoithoigian">
-                            <p class="desc">July 25, 2025</p>
-                            <p class="desc">8 : 00</p>
-                        </div>
-                    </div>
-                    <div class="khoitran">
-                        <div class="khoihinhnhap">
-                            <img src="<?php echo $config['base_url']; ?>public/resources/images/lfcvsmc.webp" alt=""
-                                class="img" />
-                        </div>
-                        <div class="khoithongtin">
-                            <div class="khoitentran">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                    fill="none" class="svg__ten">
-                                    <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                        stroke="currentColor" />
-                                </svg>
-                                <p class="desc">LIVERPOOL VS MANCHESTER CITY</p>
-                            </div>
-                            <div class="khoichon khoian">
-                                <a href="" class="link">
-                                    <button class="btn">TICKET BOOKING</button>
-                                </a>
-                                <a href="" class="link">
-                                    <button class="btn">ADD TO CART</button>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="khoithoigian">
-                            <p class="desc">July 25, 2025</p>
-                            <p class="desc">8 : 00</p>
-                        </div>
-                    </div>
-                </div>
+
+
+                <?php
+                $count++;
+                if ($count % 2 == 0) echo '</div>'; // Kết thúc mỗi hàng sau 2 vé
+                endforeach;
+
+                // Nếu số vé lẻ, đóng thẻ hàng cuối cùng
+                if ($count % 2 != 0) echo '</div>';
+                ?>
+
+
+
             </div>
+
+
+
+
+
+
+
+
             <div class="news">
                 <p class="desc">NEWS</p>
                 <div class="khoitintuc">
