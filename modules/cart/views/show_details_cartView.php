@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home</title>
         <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/reset.css" />
-        <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/style__home.css" />
+        <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/style__shoppingcart.css" />
         <link rel="apple-touch-icon" sizes="57x57" href="./LFC.ico/apple-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="60x60" href="./LFC.ico/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="./LFC.ico/apple-icon-72x72.png" />
@@ -42,8 +42,8 @@
                         alt="logo Liverpool" class="img" />
                 </div>
                 <div class="khoinav">
-                    <a href="<?php echo $config['base_url']; ?>?mod=home&controller=home&action=home"
-                        class="desc">Home</a>
+                    <a href="<?php echo $config['base_url']; ?>?mod=home&controller=home&action=home" class="
+                        desc">Home</a>
                     <a href="#!" class="desc">About Us</a>
                     <a href="#!" class="desc">News</a>
                 </div>
@@ -115,139 +115,126 @@
             </div>
 
 
-            <div class="special">
-                <div class="khoihinh">
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/anfield-generic-091124-_6.png"
-                        alt="" class="img img__sp" id="img1" />
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/anfield-general-view-gv-26062024.webp"
-                        alt="" class="img an img__sp" />
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/jota.png" alt=""
-                        class="img an img__sp" id="img2" />
-                </div>
-                <div class="khoinut">
-                    <div class="nut"></div>
-                    <div class="nut"></div>
-                    <div class="nut"></div>
-                </div>
-                <div class="infomatch">
-                    <div class="khoimatch">
-                        <img src="<?php echo $config['base_url']; ?>public/resources/images/jota2.png" alt=""
-                            class="img" />
-                    </div>
-                    <div class="khoiinfo">
-                        <pre class="desc">
-                “As Liverpool fans we know how to deal with tragedy and show our
-                appreciation to someone who has given us so much,” said Culshaw. 
-                “I picked this image to paint because it shows Diogo sending love 
-                out to the fans and by immortalising him in our city, it shows that
-                we are sending the love right back.
-                “Diogo has given us so many memories, it’s only right that he will 
-                remain our number 20 forever.”
-              </pre>
-                    </div>
-                </div>
-            </div>
+
+
+
 
 
             <div class="body">
-
-                <?php
-                $count = 0;
-                foreach ($list_tickets   as $ticket):
-                    if ($count % 2 == 0) echo '<div class="khoihang">'; // Mỗi 2 vé thì mở hàng mới
-                ?>
-
-
-
-
-                <div class="khoitran">
-                    <div class="khoihinhnhap">
-                        <img src="<?php echo $config['base_url']; ?>public/resources/uploads/<?php echo $ticket['image']; ?>"
-                            alt="" class="img" />
+                <div class="top">
+                    <div class="tieude">
+                        <p class="truong">Match</p>
+                        <p class="truong">Ticket type</p>
+                        <p class="truong">Ticket price</p>
+                        <p class="truong">Quantity</p>
+                        <p class="truong">Total</p>
+                        <p class="truong">Action</p>
                     </div>
-                    <div class="khoithongtin">
-                        <div class="khoitentran">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69" viewBox="0 0 606 69"
-                                fill="none" class="svg__ten">
-                                <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z" fill="currentColor"
-                                    stroke="currentColor" />
+                    <div class="tieude">
+                        <div class="row tran">
+                            <div class="khoitran">
+                                <div class="khoihinhnhap">
+                                    <img src="<?php echo $config['base_url']; ?>public/resources/images/1000044842.jpg"
+                                        alt="" class="img" />
+                                </div>
+                                <div class="khoithongtin">
+                                    <div class="khoitentran">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69"
+                                            viewBox="0 0 606 69" fill="currentColor" class="svg__ten">
+                                            <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z"
+                                                fill="currentColor" stroke="currentColor" />
+                                        </svg>
+                                        <p class="desc">LIVERPOOL VS REAL MADRID</p>
+                                    </div>
+                                </div>
+                                <div class="khoithoigian">
+                                    <p class="desc">July 25, 2025</p>
+                                    <p class="desc">8 : 00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row type">
+                            <form action="" class="form">
+                                <select name="vitri" id="TypeTicket" class="inputticket">
+                                    <option value="1" class="Ticket">Normal</option>
+                                    <option value="2" class="Ticket">Average</option>
+                                    <option value="3" class="Ticket">Vip</option>
+                                </select>
+                            </form>
+                        </div>
+                        <p class="row gia">10,000</p>
+                        <div class="row soluong">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"
+                                id="svgminus">
+                                <path
+                                    d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
                             </svg>
-                            <p class="desc"><?php echo strtoupper($ticket['match_name']); ?></p>
+                            <p class="desc" id="soluong">10</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
+                                id="svgplus">
+                                <path
+                                    d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
+                            </svg>
                         </div>
-                        <div class="khoichon khoian">
-                            <a href="" class="link">
-                                <button class="btn">TICKET BOOKING</button>
-                            </a>
-                            <a href="" class="link">
-                                <button class="btn">ADD TO CART</button>
-                            </a>
+                        <p class="row tonggia">100,000</p>
+                        <div class="row thaotac">
+                            <button class="btn btn__delete" id="delete">
+                                <a href="#!" class="link">Delete</a>
+                            </button>
+                            <div class="ticknone" id="tick">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" id="svg"
+                                    class="khoitanghinh">
+                                    <path
+                                        d="M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z" />
+                                </svg>
+                            </div>
+                            <form action="" class="form">
+                                <input type="checkbox" class="input" id="check" style="display: none" />
+                            </form>
                         </div>
-                    </div>
-                    <div class="khoithoigian">
-                        <p class="desc"><?php echo date("F d, Y", strtotime($ticket['match_datetime'])); ?></p>
-                        <p class="desc"><?php echo date("H : i", strtotime($ticket['match_datetime'])); ?></p>
                     </div>
                 </div>
-
-
-                <?php
-                $count++;
-                if ($count % 2 == 0) echo '</div>'; // Kết thúc mỗi hàng sau 2 vé
-                endforeach;
-
-                // Nếu số vé lẻ, đóng thẻ hàng cuối cùng
-                if ($count % 2 != 0) echo '</div>';
-                ?>
-
-
-
+                <div class="bot">
+                    <div class="bottop">
+                        <p class="desc">Order total</p>
+                    </div>
+                    <div class="botbot">
+                        <div class="ticknone" id="tickbot">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" id="svgbot"
+                                class="khoitanghinh">
+                                <path
+                                    d="M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z" />
+                            </svg>
+                        </div>
+                        <p class="desc">All</p>
+                        <form action="" class="form">
+                            <input type="checkbox" class="input" id="checkbot" style="display: none" />
+                        </form>
+                        <p class="desc tongfinal">$0</p>
+                        <a class="link" href=""><button class="btn desc">Buy ticket</button></a>
+                    </div>
+                </div>
             </div>
 
 
 
 
-
-
-
-
-            <div class="news">
-                <p class="desc">NEWS</p>
-                <div class="khoitintuc">
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/liv1 (1).png" class="img img1"
-                        id="anh1"></img>
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/liv1 (2).png" class="img img2"
-                        id="anh2"></img>
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/Screenshot 2025-07-22 182104.png"
-                        class="img img3" id="anh3"></img>
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/Screenshot 2025-07-22 181124.png"
-                        class="img img4" id="anh4"></img>
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/liv1 (5).png" class="img img5"
-                        id="anh5"></img>
-                </div>
-                <div class="khoipoint">
-                    <div class="point"></div>
-                    <div class="point"></div>
-                    <div class="point"></div>
-                </div>
-            </div>
             <div class="footer">
                 <div class="khoiliv">
                     <p class="desc tieude">L.F.C</p>
-                    <p class="desc">It was devastating for the football club and certainly even more so for his wife and
-                        family.
-                        We’re out here in Asia but we continue to stay in touch with them in terms of how we will
-                        remember
-                        them during the matches this week.
-                        As well as what we’ll look at in terms of longer, permanent tributes to them as well. A very,
-                        very
-                        difficult last few weeks.
-                        I want to say thank you to everybody across the world of sport, not just football but the world
-                        of
-                        sport, for their outreach
-                        and their support – not just at the club but certainly again most importantly, the family.
-                        As I have said previously, Diogo was a fantastic footballer but just a really terrific guy and
-                        he is
-                        deeply missed.</p>
+                    <p class="desc">
+                        It was devastating for the football club and certainly even more so
+                        for his wife and family. We’re out here in Asia but we continue to
+                        stay in touch with them in terms of how we will remember them during
+                        the matches this week. As well as what we’ll look at in terms of
+                        longer, permanent tributes to them as well. A very, very difficult
+                        last few weeks. I want to say thank you to everybody across the
+                        world of sport, not just football but the world of sport, for their
+                        outreach and their support – not just at the club but certainly
+                        again most importantly, the family. As I have said previously, Diogo
+                        was a fantastic footballer but just a really terrific guy and he is
+                        deeply missed.
+                    </p>
                 </div>
                 <div class="phai">
                     <div class="quicklink">
@@ -274,7 +261,7 @@
                 </div>
             </div>
         </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotachome.js"></script>
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotacshoppingcart.js"></script>
     </body>
 
     </html>

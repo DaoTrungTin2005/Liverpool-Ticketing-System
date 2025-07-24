@@ -1,0 +1,498 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  overflow-x: hidden;
+}
+/* code chung */
+a {
+  text-decoration: none;
+}
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+.an {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e21e1e;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff0000;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cc0000;
+}
+p {
+  color: #000;
+  font-family: "Istok Web";
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+/*  */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  overflow: hidden;
+}
+.background {
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  z-index: -1;
+}
+.khoilogo {
+  width: 71px;
+  height: 75px;
+}
+.khoilogo .img {
+  width: 71px;
+  height: 75px;
+  scale: 0.75;
+  object-fit: contain;
+}
+.khoinav {
+  margin: 50px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 71px;
+}
+.khoinav .desc {
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.khoinav .desc:hover {
+  color: #ffae00;
+  cursor: pointer;
+}
+.thanhsearch {
+  margin: 52px 32px 52px 52px;
+  display: flex;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 10px;
+  width: 30%;
+  height: 24px;
+  cursor: pointer;
+}
+.thanhsearch .form {
+  width: 100%;
+  height: 100%;
+}
+.thanhsearch .input {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #fff;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+}
+.cart {
+  padding: 30px 35px;
+  position: relative;
+}
+.cart .svg {
+  color: #fff;
+  width: 59px;
+  height: 49px;
+  scale: 0.6;
+  cursor: pointer;
+}
+.khoiuser {
+  display: flex;
+  flex-direction: column;
+  margin-left: 35px;
+  margin-right: 20px;
+  gap: 4px;
+}
+.gach {
+  width: 250px;
+  height: 1px;
+  border: 1px solid black;
+}
+.user {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.user .desc {
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.signup .desc {
+  margin-left: 10p;
+}
+.user .desc:hover {
+  color: #ffae00;
+}
+.cart .svg:hover {
+  color: #ffae00;
+  scale: 0.7;
+}
+.user .img {
+  width: 30px;
+  height: 30px;
+}
+.login .desc {
+  margin-right: 20px;
+}
+.hienso {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.hienso p {
+  color: #fff;
+  font-size: 1rem;
+}
+/*  */
+.body {
+  display: flex;
+  flex-direction: column;
+}
+.top {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr 1.2fr;
+  grid-template-rows: repeat(1, 1fr);
+  gap: 10px;
+}
+.tieude {
+  display: contents;
+  text-align: center;
+}
+.tieude::after {
+  content: "";
+  grid-column: 1/-1;
+  border-bottom: 1px solid #000;
+}
+.row {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gia {
+  font-size: 2.7rem;
+  color: #cc0000;
+}
+.soluong .desc {
+  font-size: 2.5rem;
+}
+.tonggia {
+  font-size: 2.7rem;
+  color: #cc0000;
+}
+.btn__delete {
+  background-color: #ffc5c5;
+  border: #df0404;
+}
+.btn__delete a {
+  font-weight: bold;
+  color: #df0404;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 80px;
+  border-radius: 4px;
+  border: 2px solid #cc0000;
+}
+.thaotac {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.ticknone {
+  width: 30px;
+  height: 30px;
+  background-color: #dcdceb;
+  cursor: pointer;
+}
+.inputticket {
+  cursor: pointer;
+}
+/*  */
+.khoitran {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+}
+.khoihinhnhap {
+  position: absolute;
+  width: 160px;
+  height: 90px;
+  border-radius: 5px;
+}
+.khoihinhnhap .img {
+  width: 100%;
+  height: 100%;
+}
+.khoithongtin {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.khoitentran {
+  display: flex;
+  position: relative;
+}
+.khoitentran .desc {
+  position: absolute;
+  top: 38px;
+  left: -190px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.5rem;
+  font-weight: 700;
+  width: 500px;
+}
+.svg__ten {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  text-align: center;
+  color: #000000;
+  font-size: 2.5rem;
+  font-weight: 700;
+  width: 100px;
+  fill: currentColor;
+  stroke: currentColor;
+}
+.khoithoigian {
+  position: absolute;
+  z-index: 1000;
+  bottom: -13px;
+  left: 15px;
+  width: 100px;
+  height: 17px;
+  border-radius: 0px 0px 70px 0px;
+  background: #fff;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.khoithoigian .desc {
+  color: #000;
+  font-size: 0.5rem;
+  font-style: italic;
+  font-weight: 700;
+}
+.khoithoigian .desc:last-child {
+  color: #000;
+  font-size: 0.8rem;
+  font-style: normal;
+}
+.soluong {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.soluong svg {
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+.inputticket {
+  color: #000;
+  font-family: "Istok Web";
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.khoitanghinh {
+  display: none;
+}
+.soluong svg:hover {
+  color: #cc0000;
+}
+.bot {
+  border-radius: 50px 0 0 0;
+  background: #eef0f2;
+  width: 20%;
+  margin-top: 100px;
+  margin-left: 80%;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.bottop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.botbot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.bot .desc {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.bot .ticknone {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+}
+.tongfinal {
+  color: #cc0000;
+}
+.bot .btn {
+  color: #fff;
+  font-weight: normal;
+  width: 130px;
+  height: 57px;
+  border-radius: 10px;
+  background: #f43a3d;
+  margin-right: 20px;
+}
+/*  */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 90px;
+  padding: 100px;
+  background-color: #000000;
+}
+.khoiliv {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 20%;
+}
+.khoiliv .desc {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.khoiliv .tieude {
+  color: #f43a3d;
+  font-size: 5rem;
+  font-weight: 700;
+}
+.phai {
+  display: flex;
+  gap: 100px;
+  width: 80%;
+  padding: 100px 200px;
+}
+.quicklink {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 20%;
+}
+.quicklink .tieude {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.quicklink .desc {
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.sponsor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%;
+}
+.sponsor .tieude {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.sponsor .desc {
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.contractinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%;
+}
+.contractinfo .tieude {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.contractinfo .desc {
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+.phai .desc:hover {
+  color: #f9b625;
+}
+/*  */
