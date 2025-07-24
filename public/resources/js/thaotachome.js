@@ -7,7 +7,7 @@ setInterval(() => {
   current = (current + 1) % slides.length;
 
   slides[current].classList.remove("an");
-}, 4000); // 4 giây đổi ảnh
+}, 2000);
 const khoithongtin = document.querySelector(".khoithongtin");
 const khoian = document.querySelector(".khoian");
 

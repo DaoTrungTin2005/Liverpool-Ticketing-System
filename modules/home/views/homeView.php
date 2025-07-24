@@ -103,9 +103,9 @@
 
             <div class="special">
                 <div class="khoihinh">
-                    <img src="<?php echo $config['base_url']; ?>public/resources/images/sân.jpg" alt=""
-                        class="img img__sp" id="img1" />
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/anfield-generic-091124-_6.png"
+                        alt="" class="img img__sp" id="img1" />
+                    <img src="<?php echo $config['base_url']; ?>public/resources/images/anfield-general-view-gv-26062024.webp"
                         alt="" class="img an img__sp" />
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/jota.png" alt=""
                         class="img an img__sp" id="img2" />
