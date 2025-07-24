@@ -65,7 +65,17 @@
                         </svg>
 
                         <div class="hienso">
-                            <p class="number">1</p>
+
+                            <?php
+                            $total_items = 0;
+                            if (isset($_SESSION['cart'])) {
+                                foreach ($_SESSION['cart'] as $item) {
+                                    $total_items += $item['qty'];
+                                }
+                            }
+                            ?>
+
+                            <p class="number"><?php echo $total_items; ?></p>
                         </div>
                     </a>
                 </div>
@@ -174,14 +184,20 @@
                             </svg>
                             <p class="desc"><?php echo strtoupper($ticket['match_name']); ?></p>
                         </div>
+
                         <div class="khoichon khoian">
                             <a href="" class="link">
                                 <button class="btn">TICKET BOOKING</button>
                             </a>
-                            <a href="" class="link">
+                            <a href="<?php echo $config['base_url']; ?>?mod=cart&controller=cart&action=add_to_cart&id=<?php echo $ticket['id']; ?>"
+                                class="link">
                                 <button class="btn">ADD TO CART</button>
                             </a>
+
+
                         </div>
+
+
                     </div>
                     <div class="khoithoigian">
                         <p class="desc"><?php echo date("F d, Y", strtotime($ticket['match_datetime'])); ?></p>
