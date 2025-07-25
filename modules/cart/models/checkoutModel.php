@@ -1,5 +1,11 @@
 <?php 
-function insert_order($fullname, $phone, $email, $total_price)
+
+
+
+
+$account_id = isset($_SESSION['account']['id']) ? $_SESSION['account']['id'] : null;
+
+function insert_order($fullname, $phone, $email, $total_price, $account_id)
 {
     $order_code = 'ORD' . time();
     $data = [
@@ -9,7 +15,8 @@ function insert_order($fullname, $phone, $email, $total_price)
         'email' => $email,
         'total_amount' => $total_price,
         'created_at' => date('Y-m-d H:i:s'),
-        'payment_status' => 'pending'
+        'payment_status' => 'pending',
+        'account_id' => $account_id
     ];
     $order_id = db_insert('orders', $data);
     return [

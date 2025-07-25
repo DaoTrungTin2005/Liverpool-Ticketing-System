@@ -33,7 +33,15 @@ function sign_inAction()
 
                     //Sau này có thể dùng để phân quyền: admin mới được truy cập trang quản lý, còn user thì không.
                     $_SESSION['user_role'] = $data['role_id'];
+                    
+                    // Này để lưu account_id khi đat hàng 
+                    $_SESSION['account'] = [
+                    'id' => $data['id'],
+                    'username' => $data['username']
+                    ];
+                    
 
+    
                     // ✅ PHÂN QUYỀN CHUYỂN TRANG
                     if ($data['role_id'] == 1) {
                         // ADMIN → về trang quản trị
