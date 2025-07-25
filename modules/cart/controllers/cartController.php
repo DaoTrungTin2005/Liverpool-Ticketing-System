@@ -45,5 +45,23 @@ function add_to_cartAction() {
          redirect($_SERVER['HTTP_REFERER']);
 }
 
+// cập nhật giỏ hàng trong $_SESSION['cart'].
+// Khi người dùng click vào nút SVG + hoặc −, JavaScript sẽ gửi request AJAX (thường bằng fetch hoặc XMLHttpRequest) tới hàm PHP này (update_qtyAction).
+// PHP sẽ cập nhật lại $_SESSION['cart'] theo yêu cầu.
+function update_qtyAction() {
+    $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
+    
+    // 'plus' hoặc 'minus'.
+    $type = $_POST['type'] ?? '';
+
+    if (isset($_SESSION['cart'][$id])) {
+        if ($type == 'plus') {
+            $_SESSION['cart'][$id]['qty'] += 1;
+        } elseif ($type == 'minus' && $_SESSION['cart'][$id]['qty'] > 1) {
+            $_SESSION['cart'][$id]['qty'] -= 1;
+        }
+    }
+}
+
 
 ?>

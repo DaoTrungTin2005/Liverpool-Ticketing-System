@@ -134,6 +134,9 @@
                     </div>
 
 
+
+
+
                     <?php if (!empty($_SESSION['cart'])): ?>
                     <?php foreach ($_SESSION['cart'] as $item): ?>
 
@@ -187,15 +190,17 @@
                         <p class="row gia"><?php echo currency_format($item['price']); ?></p>
 
 
-                        <div class="row soluong">
+                        <div class="row soluong" data-id="<?php echo $item['id']; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"
-                                id="svgminus">
+                                class="svgminus">
                                 <path
                                     d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
                             </svg>
-                            <p class="desc" id="soluong"><?php echo $item['qty']; ?></p>
+                            <p class="desc" id="soluong" data-id="<?php echo $item['id']; ?>">
+                                <?php echo $item['qty']; ?>
+                            </p>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
-                                id="svgplus">
+                                class="svgplus">
                                 <path
                                     d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
                             </svg>
@@ -308,7 +313,8 @@
                 </div>
             </div>
         </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotacshoppingcart.js"></script>
+        <!-- <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotacshoppingcart.js"></script> -->
+        <script src="<?php echo $config['base_url']; ?>public/resources/js/shopping_cart.js"></script>
     </body>
 
     </html>
