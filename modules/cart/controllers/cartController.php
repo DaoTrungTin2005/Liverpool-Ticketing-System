@@ -1,19 +1,21 @@
-<?php 
+<?php
 function construct()
 {
     load_model('cart');
 }
 
-function show_details_cartAction(){
+function show_details_cartAction()
+{
     load_view('show_details_cart');
 }
 
 
-function add_to_cartAction() {
+function add_to_cartAction()
+{
     $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
     if ($id > 0) {
-        $ticket = get_ticket_by_id($id); 
+        $ticket = get_ticket_by_id($id);
 
         if (!empty($ticket)) {
             // 🔎 Lấy các giá vé khác theo match_name + datetime
@@ -53,7 +55,8 @@ function add_to_cartAction() {
 // cập nhật giỏ hàng trong $_SESSION['cart'].
 // Khi người dùng click vào nút SVG + hoặc −, JavaScript sẽ gửi request AJAX (thường bằng fetch hoặc XMLHttpRequest) tới hàm PHP này (update_qtyAction).
 // PHP sẽ cập nhật lại $_SESSION['cart'] theo yêu cầu.
-function update_qtyAction() {
+function update_qtyAction()
+{
     $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
     $type = $_POST['type'] ?? '';
     $ticket_type_id = isset($_POST['ticket_type_id']) ? (int)$_POST['ticket_type_id'] : 2;
@@ -86,21 +89,16 @@ function update_qtyAction() {
 
 
 
-function get_prices_by_match() {
-    $match_name = $_POST['match_name'] ?? '';
-    $match_datetime = $_POST['match_datetime'] ?? '';
-
-    // Gọi model để lấy dữ liệu từ DB
+function get_prices_by_match($match_name, $match_datetime)
+{
     $result = get_prices_by_match_and_datetime($match_name, $match_datetime);
 
-    // Khởi tạo mảng giá theo loại vé
     $prices = [
         'normal_price' => null,
         'average_price' => null,
         'vip_price' => null,
     ];
 
-    // Gán giá theo từng loại vé
     foreach ($result as $row) {
         switch ((int)$row['ticket_type_id']) {
             case 1:
@@ -118,14 +116,12 @@ function get_prices_by_match() {
     return $prices;
 }
 
-function get_ticket_pricesAction() {
+
+function get_ticket_pricesAction()
+{
     $prices = get_prices_by_match(); // Gọi lại hàm bạn đã viết
 
     header('Content-Type: application/json');
     echo json_encode($prices);
     exit; // Đảm bảo không có gì in ra thêm
 }
-
-
-
-?>
