@@ -35,8 +35,8 @@
         <div class="container">
 
             <div class="header">
-                <img src="<?php echo $config['base_url']; ?>public/resources/images/Rectangle93.png"
-                    alt="Liverpool Background" class="background" />
+                <!-- <img src="<?php echo $config['base_url']; ?>public/resources/images/Rectangle93.png"
+                    alt="Liverpool Background" class="background" /> -->
                 <div class="khoilogo">
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/liverpoolfc_crest 1.png"
                         alt="logo Liverpool" class="img" />
