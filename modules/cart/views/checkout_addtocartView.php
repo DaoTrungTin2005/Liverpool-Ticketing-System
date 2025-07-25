@@ -32,54 +32,64 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="tieude">
-            <a href="<?php echo $config['base_url']; ?>?mod=cart&controller=cart&action=show_details_cart">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="svg">
-                    <path
-                        d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z" />
-                </svg>
-            </a>
-            <p class="desc">MAKE A PAYMENT</p>
-        </div>
-        <div class="gach"></div>
-        <div class="phude">
-            <p class="desc">Proceed to checkout</p>
-        </div>
-        <div class="khoinhap">
-            <form action="" class="form fullname">
-                <label for="" class="label">Full Name: </label>
-                <input type="text" class="input" placeholder="Enter Full Name" />
-            </form>
-            <form action="" class="form phonenumber">
-                <label for="" class="label">Phone Number: </label>
-                <input type="text" class="input" placeholder="Enter Phone Number" />
-            </form>
-            <form action="" class="form email">
-                <label for="" class="label">Enter your email: </label>
-                <input type="text" class="input" placeholder="Enter Your Email" />
-            </form>
-        </div>
-        <div class="khoidieukien">
-            <div class="ticknone" id="tickbot">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" id="svgbot" class="khoitanghinh">
-                    <path
-                        d="M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z" />
-                </svg>
+    <form action="<?php echo $config['base_url']; ?>?mod=cart&controller=checkout&action=checkout_addtocart"
+        method="POST" class="form-thanh-toan">
+        <div class="container">
+            <div class="tieude">
+                <a href="<?php echo $config['base_url']; ?>?mod=cart&controller=cart&action=show_details_cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="svg">
+                        <path
+                            d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z" />
+                    </svg>
+                </a>
+                <p class="desc">MAKE A PAYMENT</p>
             </div>
-            <p class="desc">I have read and agree to the terms and conditions</p>
-            <form action="" class="form">
-                <input type="checkbox" class="input" id="checkbot" style="display: none" />
+            <div class="gach"></div>
+            <div class="phude">
+                <p class="desc">Proceed to checkout</p>
+            </div>
+
+            <div class="khoinhap">
+                <div action="" class="form fullname">
+                    <label for="" class="label">Full Name: </label>
+                    <input type="text" name="fullname" class="input" placeholder="Enter Full Name" />
+                </div>
+
+                <div action="" name="phone" class="form phonenumber">
+                    <label for="" class="label">Phone Number: </label>
+                    <input type="text" name="phone" class="input" placeholder="Enter Phone Number" />
+                </div>
+
+                <div action="" name="email" class="form email">
+                    <label for="" class="label">Enter your email: </label>
+                    <input type="text" name="email" class="input" placeholder="Enter Your Email" />
+                </div>
+            </div>
+
+            <div class="khoitongia ">
+
+                <?php
+                $total_price = 0; // Khởi tạo tổng
+                foreach ($_SESSION['cart'] as $item):
+                    $subtotal = $item['price'] * $item['qty'];
+                    $total_price += $subtotal;
+                endforeach;
+                ?>
+                <!-- Giá trị ẩn để submit đi -->
+                <input type="hidden" name="total_price" id="total_price_hidden" value="<?php echo $total_price; ?>">
+
+                <p class="desc">Total :</p>
+                <div class="item">
+                    <p class="desc tonggia gia"><?php echo currency_format($total_price); ?></p>
+                </div>
+
+            </div>
+
+            <div class="khoinut">
+                <a class="link" href=""><button class="btn desc" type="submit">Make a payment</button></a>
+            </div>
         </div>
-        <div class="khoitongia">
-            <p class="desc">Total :</p>
-            <p class="desc gia">$100,000</p>
-        </div>
-        <div class="khoinut">
-            <a class="link" href=""><button class="btn desc">Make a payment</button>
-            </a>
-        </div>
-    </div>
+    </form>
     <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotacpayment.js"></script>
 </body>
 
