@@ -23,6 +23,8 @@ require LIBPATH . DIRECTORY_SEPARATOR . 'database.php';
 
 require COREPATH . DIRECTORY_SEPARATOR . 'base.php';
 
+require CONFIGPATH . DIRECTORY_SEPARATOR . 'vnpay.php';
+
 
 
 
