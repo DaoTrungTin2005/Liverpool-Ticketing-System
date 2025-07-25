@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectedOption = this.options[this.selectedIndex];
             const price = selectedOption.getAttribute('data-price');
 
+            const ticketTypeId = this.value; // ✅ Lấy đúng loại vé đã chọn
+            const itemId = this.getAttribute("data-id"); // ✅ Lấy ID của item
+
             // Tìm đến .row.type rồi tìm các phần liên quan
             const parent = this.closest('.row.type');
             const container = parent.parentNode; // cha bao toàn bộ 1 item sản phẩm
@@ -75,6 +78,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 giaElement.textContent = 'NaN';
                 tongGiaElement.textContent = 'NaN';
             }
+
+                        fetch("?mod=cart&controller=cart&action=update_qty", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `id=${itemId}&type=&ticket_type_id=${ticketTypeId}`,
+});
         });
     });
 
