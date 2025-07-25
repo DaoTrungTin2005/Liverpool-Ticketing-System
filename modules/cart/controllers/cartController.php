@@ -115,3 +115,18 @@ function get_prices_by_match($match_name, $match_datetime)
 
     return $prices;
 }
+
+function deleteAction()
+{
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        if (isset($_SESSION['cart'][$id])) {
+            unset($_SESSION['cart'][$id]);
+        }
+    }
+
+    // Redirect lại trang giỏ hàng sau khi xóa
+    redirect("?mod=cart&controller=cart&action=show_details_cart");
+
+    exit();
+}
