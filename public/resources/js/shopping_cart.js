@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const tongGia = newGia * qty;
                 tongGiaElement.textContent = formatCurrency(tongGia);
+
+                updateTotalFinal();
             } else {
                 giaElement.textContent = 'NaN';
                 tongGiaElement.textContent = 'NaN';
