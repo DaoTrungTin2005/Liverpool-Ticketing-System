@@ -276,7 +276,9 @@
                             <input type="checkbox" class="input" id="checkbot" style="display: none" />
                         </form>
                         <p class="desc tongfinal">0 đ</p>
-                        <a class="link" href=""><button class="btn desc">Buy ticket</button></a>
+                        <a class="link"
+                            href="<?php echo $config['base_url']; ?>?mod=cart&controller=checkout&action=checkout_addtocart"><button
+                                class="btn desc">Buy ticket</button></a>
                     </div>
                 </div>
             </div>
