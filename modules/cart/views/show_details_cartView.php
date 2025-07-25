@@ -277,7 +277,7 @@
                         </form>
                         <p class="desc tongfinal">0 đ</p>
                         <a class="link"
-                            href="<?php echo $config['base_url']; ?>?mod=cart&controller=checkout&action=checkout_addtocart"><button
+                            href="<?php echo $config['base_url']; ?>?mod=checkout&controller=checkout&action=checkout_addtocart"><button
                                 class="btn desc">Buy ticket</button></a>
                     </div>
                 </div>

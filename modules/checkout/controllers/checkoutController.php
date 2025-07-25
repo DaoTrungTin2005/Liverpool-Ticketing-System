@@ -34,7 +34,7 @@ function construct() {
                 unset($_SESSION['cart']);
 
                 $_SESSION['success'] = "Đặt hàng thành công! Mã đơn: " . $order['order_code'];
-                redirect("?mod=cart&controller=checkout&action=success");
+                redirect("?mod=checkout&controller=checkout&action=success");
                 exit;
             } else {
                 $_SESSION['error'] = "Giỏ hàng đang trống!";

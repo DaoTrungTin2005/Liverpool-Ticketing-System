@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <form action="<?php echo $config['base_url']; ?>?mod=cart&controller=checkout&action=checkout_addtocart"
+    <form action="<?php echo $config['base_url']; ?>?mod=checkout&controller=checkout&action=checkout_addtocart"
         method="POST" class="form-thanh-toan">
         <div class="container">
             <div class="tieude">
