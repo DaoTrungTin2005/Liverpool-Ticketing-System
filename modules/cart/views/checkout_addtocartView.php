@@ -34,13 +34,13 @@
 <body>
     <div class="container">
         <div class="tieude">
-            <a href="">
+            <a href="<?php echo $config['base_url']; ?>?mod=cart&controller=cart&action=show_details_cart">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="svg">
                     <path
                         d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z" />
                 </svg>
             </a>
-            <p class="desc">Make a payment</p>
+            <p class="desc">MAKE A PAYMENT</p>
         </div>
         <div class="gach"></div>
         <div class="phude">
