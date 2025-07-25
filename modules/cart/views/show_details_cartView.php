@@ -64,9 +64,9 @@
                                 d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96zM252 160c0 11 9 20 20 20l44 0 0 44c0 11 9 20 20 20s20-9 20-20l0-44 44 0c11 0 20-9 20-20s-9-20-20-20l-44 0 0-44c0-11-9-20-20-20s-20 9-20 20l0 44-44 0c-11 0-20 9-20 20z" />
                         </svg>
 
-                        <div class="hienso">
+                        <!-- <div class="hienso">
                             <p class="number">1</p>
-                        </div>
+                        </div> -->
                     </a>
                 </div>
 
@@ -122,6 +122,8 @@
 
             <div class="body">
                 <div class="top">
+
+
                     <div class="tieude">
                         <p class="truong">Match</p>
                         <p class="truong">Ticket type</p>
@@ -130,13 +132,19 @@
                         <p class="truong">Total</p>
                         <p class="truong">Action</p>
                     </div>
+
+
+                    <?php if (!empty($_SESSION['cart'])): ?>
+                    <?php foreach ($_SESSION['cart'] as $item): ?>
+
                     <div class="tieude">
                         <div class="row tran">
                             <div class="khoitran">
                                 <div class="khoihinhnhap">
-                                    <img src="<?php echo $config['base_url']; ?>public/resources/images/1000044842.jpg"
+                                    <img src="<?php echo $config['base_url']; ?>public/resources/uploads/<?php echo $item['image']; ?>"
                                         alt="" class="img" />
                                 </div>
+
                                 <div class="khoithongtin">
                                     <div class="khoitentran">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="606" height="69"
@@ -144,43 +152,65 @@
                                             <path d="M528.311 1.03906L604.68 68.501H0.5V1.03906H528.311Z"
                                                 fill="currentColor" stroke="currentColor" />
                                         </svg>
-                                        <p class="desc">LIVERPOOL VS REAL MADRID</p>
+                                        <p class="desc"><?php echo $item['match_name']; ?></p>
                                     </div>
                                 </div>
+
                                 <div class="khoithoigian">
-                                    <p class="desc">July 25, 2025</p>
-                                    <p class="desc">8 : 00</p>
+                                    <p class="desc"><?php echo date('F d, Y', strtotime($item['match_datetime'])); ?>
+                                    </p>
+                                    <p class="desc"><?php echo date('H : i', strtotime($item['match_datetime'])); ?>
+                                    </p>
                                 </div>
+
                             </div>
                         </div>
+
+
                         <div class="row type">
                             <form action="" class="form">
                                 <select name="vitri" id="TypeTicket" class="inputticket">
-                                    <option value="1" class="Ticket">Normal</option>
-                                    <option value="2" class="Ticket">Average</option>
-                                    <option value="3" class="Ticket">Vip</option>
+                                    <option value="1" class="Ticket"
+                                        <?php if ($item['ticket_type_name'] == 'Normal') echo 'selected'; ?>>Normal
+                                    </option>
+                                    <option value="2" class="Ticket"
+                                        <?php if ($item['ticket_type_name'] == 'Average') echo 'selected'; ?>>Average
+                                    </option>
+                                    <option value="3" class="Ticket"
+                                        <?php if ($item['ticket_type_name'] == 'Vip') echo 'selected'; ?>>Vip
+                                    </option>
                                 </select>
                             </form>
                         </div>
-                        <p class="row gia">10,000</p>
+
+
+                        <p class="row gia"><?php echo currency_format($item['price']); ?></p>
+
+
                         <div class="row soluong">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"
                                 id="svgminus">
                                 <path
                                     d="M0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32z" />
                             </svg>
-                            <p class="desc" id="soluong">10</p>
+                            <p class="desc" id="soluong"><?php echo $item['qty']; ?></p>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor"
                                 id="svgplus">
                                 <path
                                     d="M352 128C352 110.3 337.7 96 320 96C302.3 96 288 110.3 288 128L288 288L128 288C110.3 288 96 302.3 96 320C96 337.7 110.3 352 128 352L288 352L288 512C288 529.7 302.3 544 320 544C337.7 544 352 529.7 352 512L352 352L512 352C529.7 352 544 337.7 544 320C544 302.3 529.7 288 512 288L352 288L352 128z" />
                             </svg>
                         </div>
-                        <p class="row tonggia">100,000</p>
+
+
+                        <p class="row tonggia"><?php echo currency_format($item['price'] * $item['qty']); ?></p>
+
+
                         <div class="row thaotac">
                             <button class="btn btn__delete" id="delete">
-                                <a href="#!" class="link">Delete</a>
+                                <a href="<?php echo $config['base_url']; ?>?mod=cart&controller=cart&action=delete&id=<?php echo $item['id']; ?>"
+                                    class="link">Delete</a>
                             </button>
+
                             <div class="ticknone" id="tick">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" id="svg"
                                     class="khoitanghinh">
@@ -188,12 +218,29 @@
                                         d="M530.8 134.1C545.1 144.5 548.3 164.5 537.9 178.8L281.9 530.8C276.4 538.4 267.9 543.1 258.5 543.9C249.1 544.7 240 541.2 233.4 534.6L105.4 406.6C92.9 394.1 92.9 373.8 105.4 361.3C117.9 348.8 138.2 348.8 150.7 361.3L252.2 462.8L486.2 141.1C496.6 126.8 516.6 123.6 530.9 134z" />
                                 </svg>
                             </div>
+
                             <form action="" class="form">
                                 <input type="checkbox" class="input" id="check" style="display: none" />
                             </form>
                         </div>
+
+
                     </div>
+
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <p class="desc">Giỏ hàng trống</p>
+                    <?php endif; ?>
+
+
                 </div>
+
+
+
+
+
+
+
                 <div class="bot">
                     <div class="bottop">
                         <p class="desc">Order total</p>
@@ -228,7 +275,7 @@
                         stay in touch with them in terms of how we will remember them during
                         the matches this week. As well as what we’ll look at in terms of
                         longer, permanent tributes to them as well. A very, very difficult
-                        last few weeks. I want to say thank you to everybody across the
+                        last few weeks. I to say thank you to everybody across the
                         world of sport, not just football but the world of sport, for their
                         outreach and their support – not just at the club but certainly
                         again most importantly, the family. As I have said previously, Diogo
