@@ -275,7 +275,7 @@
                         <form action="" class="form">
                             <input type="checkbox" class="input" id="checkbot" style="display: none" />
                         </form>
-                        <p class="desc tongfinal">$0</p>
+                        <p class="desc tongfinal">0 đ</p>
                         <a class="link" href=""><button class="btn desc">Buy ticket</button></a>
                     </div>
                 </div>

@@ -94,5 +94,41 @@ function formatCurrency(amount) {
 }
 });
 
+//==================================================================
+function updateTotalFinal() {
+    let total = 0;
+    const tongGiaElements = document.querySelectorAll('.tonggia');
+    console.log("Đã tìm thấy", tongGiaElements.length, "phần tử .tonggia");
+
+    tongGiaElements.forEach(function (item) {
+        const originalText = item.textContent;
+        const cleanedText = originalText.replace(/[^\d]/g, ''); // Xoá dấu "." và "đ"
+        const number = parseInt(cleanedText, 10);
+
+        console.log(`'${originalText}' ➜ '${cleanedText}' ➜`, number);
+
+        if (!isNaN(number)) {
+            total += number;
+        }
+    });
+
+    const finalTotalElement = document.querySelector('.tongfinal');
+    if (finalTotalElement) {
+        finalTotalElement.textContent = formatCurrency(total);
+    } else {
+        console.warn("Không tìm thấy phần tử .tongfinal");
+    }
+}
+
+function formatCurrency(amount) {
+    return amount.toLocaleString('vi-VN') + ' đ';
+}
+
+// Gọi hàm khi DOM đã sẵn sàng
+document.addEventListener('DOMContentLoaded', function () {
+    updateTotalFinal();
+});
+
+
 
 
