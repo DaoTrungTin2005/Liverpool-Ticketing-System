@@ -182,17 +182,17 @@
 
                                     <option value="1" class="Ticket"
                                         data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 1); ?>"
-                                        <?php if ($item['ticket_type_name'] == 'Normal') echo 'selected'; ?>>Normal
+                                        <?php if ($item['ticket_type_id'] == 1) echo 'selected'; ?>>Normal
                                     </option>
 
                                     <option value="2" class="Ticket"
                                         data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 2); ?>"
-                                        <?php if ($item['ticket_type_name'] == 'Average') echo 'selected'; ?>>Average
+                                        <?php if ($item['ticket_type_id'] == 2) echo 'selected'; ?>>Average
                                     </option>
 
                                     <option value="3" class="Ticket"
                                         data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 3); ?>"
-                                        <?php if ($item['ticket_type_name'] == 'Vip') echo 'selected'; ?>>Vip
+                                        <?php if ($item['ticket_type_id'] == 3) echo 'selected'; ?>>Vip
                                     </option>
 
                                 </select>

@@ -4,43 +4,44 @@
 // Lặp qua từng dòng, xử lý riêng biệt từng sản phẩm.
 
 document.querySelectorAll(".row.soluong").forEach(function (itemRow) {
+    const itemId = itemRow.getAttribute("data-id");
+    const plus = itemRow.querySelector(".svgplus");
+    const minus = itemRow.querySelector(".svgminus");
 
-    // Lấy ra id của sản phẩm đó từ data-id
-  const itemId = itemRow.getAttribute("data-id");
+    // ✅ Tìm đúng <select> có cùng data-id
+    const select = document.querySelector(`.inputticket[data-id="${itemId}"]`);
 
-//   Gán nút cộng và nút trừ vào 2 biến để gắn sự kiện click
-  const plus = itemRow.querySelector(".svgplus");
-  const minus = itemRow.querySelector(".svgminus");
+    const getTicketTypeId = () => {
+        return select ? select.value : 2; // fallback là 2 nếu lỗi
+    };
 
-//   ✅ Khi nhấn nút + (svgplus):
-//   → Gửi request lên server để tăng số lượng sản phẩm có id = itemId.
-// Dạng dữ liệu gửi: id=3&type=plus
-// Sau khi server xử lý xong, gọi location.reload() để tải lại trang, số lượng mới sẽ được hiển thị.
-  plus.addEventListener("click", function (e) {
-    e.preventDefault();
-    fetch("?mod=cart&controller=cart&action=update_qty", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `id=${itemId}&type=plus`,
-    }).then(() => {
-      location.reload();
+    plus.addEventListener("click", function (e) {
+        e.preventDefault();
+        const ticketTypeId = getTicketTypeId();
+        fetch("?mod=cart&controller=cart&action=update_qty", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `id=${itemId}&type=plus&ticket_type_id=${ticketTypeId}`,
+        }).then(() => {
+            location.reload();
+        });
     });
-  });
 
-  minus.addEventListener("click", function (e) {
-    e.preventDefault();
-    fetch("?mod=cart&controller=cart&action=update_qty", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `id=${itemId}&type=minus`,
-    }).then(() => {
-      location.reload();
+    minus.addEventListener("click", function (e) {
+        e.preventDefault();
+        const ticketTypeId = getTicketTypeId();
+        fetch("?mod=cart&controller=cart&action=update_qty", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `id=${itemId}&type=minus&ticket_type_id=${ticketTypeId}`,
+        }).then(() => {
+            location.reload();
+        });
     });
-  });
 });
 
 //========================================================

@@ -39,7 +39,8 @@ function add_to_cartAction() {
                     'normal_price' => $all_prices['normal_price'],
                     'average_price' => $all_prices['average_price'],
                     'vip_price' => $all_prices['vip_price'],
-                    'qty' => 1
+                    'qty' => 1,
+                    'ticket_type_id' => $ticket['ticket_type_id'], // 👈 thêm dòng này
                 ];
             }
         }
@@ -54,9 +55,8 @@ function add_to_cartAction() {
 // PHP sẽ cập nhật lại $_SESSION['cart'] theo yêu cầu.
 function update_qtyAction() {
     $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
-    
-    // 'plus' hoặc 'minus'.
     $type = $_POST['type'] ?? '';
+    $ticket_type_id = isset($_POST['ticket_type_id']) ? (int)$_POST['ticket_type_id'] : 2;
 
     if (isset($_SESSION['cart'][$id])) {
         if ($type == 'plus') {
@@ -64,8 +64,25 @@ function update_qtyAction() {
         } elseif ($type == 'minus' && $_SESSION['cart'][$id]['qty'] > 1) {
             $_SESSION['cart'][$id]['qty'] -= 1;
         }
+
+        // ✅ Cập nhật lại loại vé nếu có
+        $_SESSION['cart'][$id]['ticket_type_id'] = $ticket_type_id;
+
+        // ✅ Cập nhật lại giá và tên loại vé
+        $match_name = $_SESSION['cart'][$id]['match_name'];
+        $match_datetime = $_SESSION['cart'][$id]['match_datetime'];
+        $prices = get_prices_by_match_and_datetime($match_name, $match_datetime);
+
+        foreach ($prices as $row) {
+            if ((int)$row['ticket_type_id'] === $ticket_type_id) {
+                $_SESSION['cart'][$id]['price'] = $row['price'];
+                $_SESSION['cart'][$id]['ticket_type_name'] = $row['name'];
+                break;
+            }
+        }
     }
 }
+
 
 
 
