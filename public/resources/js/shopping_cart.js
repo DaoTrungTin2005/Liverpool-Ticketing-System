@@ -46,32 +46,44 @@ document.querySelectorAll(".row.soluong").forEach(function (itemRow) {
 //========================================================
 // XỬ LÍ LOẠI 
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const ticketSelects = document.querySelectorAll('.inputticket');
+document.addEventListener('DOMContentLoaded', function () {
+    const ticketSelects = document.querySelectorAll('.inputticket');
 
-        ticketSelects.forEach(select => {
-            select.addEventListener('change', function () {
-                const selectedOption = this.options[this.selectedIndex];
-                const price = selectedOption.getAttribute('data-price');
-                
-                // Tìm đến <p class="gia"> gần nhất
-                const parent = this.closest('.row.type');
-                const giaElement = parent.parentNode.querySelector('.gia');
-                
-                if (price) {
-                    giaElement.textContent = formatCurrency(price);
-                } else {
-                    giaElement.textContent = 'NaN';
-                }
-            });
+    ticketSelects.forEach(select => {
+        select.addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+
+            // Tìm đến .row.type rồi tìm các phần liên quan
+            const parent = this.closest('.row.type');
+            const container = parent.parentNode; // cha bao toàn bộ 1 item sản phẩm
+
+            const giaElement = container.querySelector('.gia');
+            const qtyElement = container.querySelector('#soluong');
+            const tongGiaElement = container.querySelector('.tonggia');
+
+            const qty = parseInt(qtyElement.textContent);
+
+            if (price && !isNaN(qty)) {
+                const newGia = parseFloat(price);
+                giaElement.textContent = formatCurrency(newGia);
+
+                const tongGia = newGia * qty;
+                tongGiaElement.textContent = formatCurrency(tongGia);
+            } else {
+                giaElement.textContent = 'NaN';
+                tongGiaElement.textContent = 'NaN';
+            }
         });
-
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(amount);
-        }
     });
+
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(amount);
+    }
+});
+
 
 
