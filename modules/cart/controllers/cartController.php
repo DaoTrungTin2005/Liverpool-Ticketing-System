@@ -115,13 +115,3 @@ function get_prices_by_match($match_name, $match_datetime)
 
     return $prices;
 }
-
-
-function get_ticket_pricesAction()
-{
-    $prices = get_prices_by_match(); // Gọi lại hàm bạn đã viết
-
-    header('Content-Type: application/json');
-    echo json_encode($prices);
-    exit; // Đảm bảo không có gì in ra thêm
-}

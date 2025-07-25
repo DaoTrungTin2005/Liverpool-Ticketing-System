@@ -89,12 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND'
-        }).format(amount);
-    }
+function formatCurrency(amount) {
+    return amount.toLocaleString('en-US') + ' đ';
+}
 });
 
 
