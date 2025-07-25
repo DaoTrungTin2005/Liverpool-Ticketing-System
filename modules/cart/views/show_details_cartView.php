@@ -172,22 +172,35 @@
 
                         <div class="row type">
                             <form action="" class="form">
-                                <select name="vitri" id="TypeTicket" class="inputticket">
+                                <select name="ticket_type_id" id="TypeTicket" class="inputticket"
+                                    data-id="<?php echo $item['id']; ?>"
+                                    data-match-name="<?php echo $item['match_name']; ?>"
+                                    data-match-datetime="<?php echo $item['match_datetime']; ?>"
+                                    data-price-normal="<?php echo $item['price_normal']; ?>"
+                                    data-price-average="<?php echo $item['price_average']; ?>"
+                                    data-price-vip="<?php echo $item['price_vip']; ?>">>
+
                                     <option value="1" class="Ticket"
+                                        data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 1); ?>"
                                         <?php if ($item['ticket_type_name'] == 'Normal') echo 'selected'; ?>>Normal
                                     </option>
+
                                     <option value="2" class="Ticket"
+                                        data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 2); ?>"
                                         <?php if ($item['ticket_type_name'] == 'Average') echo 'selected'; ?>>Average
                                     </option>
+
                                     <option value="3" class="Ticket"
+                                        data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 3); ?>"
                                         <?php if ($item['ticket_type_name'] == 'Vip') echo 'selected'; ?>>Vip
                                     </option>
+
                                 </select>
                             </form>
                         </div>
 
 
-                        <p class="row gia"><?php echo currency_format($item['price']); ?></p>
+                        <p class="row gia price"><?php echo currency_format($item['price']); ?></p>
 
 
                         <div class="row soluong" data-id="<?php echo $item['id']; ?>">

@@ -1,3 +1,5 @@
+//  XỬ LÍ SỐ LƯƠNG TĂNG GIẢM 
+
 // Tìm tất cả các dòng sản phẩm (.row.soluong) trong giỏ hàng.
 // Lặp qua từng dòng, xử lý riêng biệt từng sản phẩm.
 
@@ -40,3 +42,36 @@ document.querySelectorAll(".row.soluong").forEach(function (itemRow) {
     });
   });
 });
+
+//========================================================
+// XỬ LÍ LOẠI 
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const ticketSelects = document.querySelectorAll('.inputticket');
+
+        ticketSelects.forEach(select => {
+            select.addEventListener('change', function () {
+                const selectedOption = this.options[this.selectedIndex];
+                const price = selectedOption.getAttribute('data-price');
+                
+                // Tìm đến <p class="gia"> gần nhất
+                const parent = this.closest('.row.type');
+                const giaElement = parent.parentNode.querySelector('.gia');
+                
+                if (price) {
+                    giaElement.textContent = formatCurrency(price);
+                } else {
+                    giaElement.textContent = 'NaN';
+                }
+            });
+        });
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(amount);
+        }
+    });
+
+
