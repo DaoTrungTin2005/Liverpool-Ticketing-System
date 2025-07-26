@@ -48,7 +48,7 @@ function add_to_cartAction()
         }
     }
 
-    redirect($_SERVER['HTTP_REFERER']);
+    redirect("?mod=home&controller=home&action=home");
 }
 
 
