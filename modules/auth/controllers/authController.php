@@ -124,7 +124,10 @@ function sign_upAction()
 
 function logoutAction()
 {
-    session_destroy(); // Xóa toàn bộ session
+    unset($_SESSION['is_login']);
+    unset($_SESSION['user_id']);
+    unset($_SESSION['username']);
+    
     redirect("?mod=auth&controller=auth&action=sign_in"); // Quay về trang đăng nhập
 }
 
