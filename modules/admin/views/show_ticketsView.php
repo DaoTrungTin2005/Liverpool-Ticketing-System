@@ -29,7 +29,8 @@ global $config;
                     <div class="item__list-item">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/key-square.png" alt=""
                             class="item__img" />
-                        <a href="" class="item__desc">Infomation</a>
+                        <a href="<?php echo $config['base_url']; ?>?mod=home&controller=home&action=home"
+                            class="item__desc">Home</a>
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
                             class="item__svg" />
                     </div>

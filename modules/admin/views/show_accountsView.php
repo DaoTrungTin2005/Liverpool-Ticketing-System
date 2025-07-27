@@ -171,15 +171,21 @@ global $config;
                                 <path d="M21 21L16.65 16.65" stroke="#7E7E7E" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" />
                             </svg>
-                            <input type="text" class="form-input" placeholder="Search" />
-                        </form>
-                        <form action="" class="form__sapxep">
-                            <label for="">Short by :</label>
-                            <select name="thutu" id="thutu">
-                                <option value="1" class="Newest">StM</option>
-                                <option value="2" class="Newest">MtS</option>
-                            </select>
-                        </form>
+
+
+                            <input type="hidden" name="mod" value="admin">
+                            <input type="hidden" name="controller" value="accounts">
+                            <input type="hidden" name="action" value="show_accounts">
+
+                            <input type="text" name="keyword" class="form-input" placeholder="Search... " />
+
+                            <form action="" class="form__sapxep">
+                                <label for="">Short by :</label>
+                                <select name="thutu" id="thutu">
+                                    <option value="1" class="Newest">StM</option>
+                                    <option value="2" class="Newest">MtS</option>
+                                </select>
+                            </form>
                     </div>
                 </div>
                 <div class="khoigiua">

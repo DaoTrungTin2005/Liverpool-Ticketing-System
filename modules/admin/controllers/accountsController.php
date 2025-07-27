@@ -14,20 +14,17 @@
 
 
 
-    function show_accountsAction()
-    {
-        // Kết quả là một mảng dữ liệu các user, được gán vào biến $data['list_users'].
-        //     Ví dụ $data['list_users'] sẽ có dạng:
-        // [
-        //     ['id' => 1, 'username' => 'admin', 'email' => 'admin@example.com', 'role_name' => 'ADMIN'],
-        //     ['id' => 2, 'username' => 'user', 'email' => 'user@example.com', 'role_name' => 'USER'],
-        //     ...
-        // ]
+function show_accountsAction()
+{
+    if (isset($_GET['keyword']) && $_GET['keyword'] != '') {
+        $keyword = $_GET['keyword'];
+        $data['list_users'] = search_users_with_role($keyword);
+    } else {
         $data['list_users'] = get_list_users_with_role();
-
-        //Truyền mảng $data vào view để sử dụng
-        load_view('show_accounts', $data);
     }
+
+    load_view('show_accounts', $data);
+}
 
 
 
