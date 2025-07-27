@@ -57,7 +57,7 @@
                         <!-- <input type="hidden" name="mod" value="home">
                         <input type="hidden" name="controller" value="home">
                         <input type="hidden" name="action" value="home"> -->
-                        <input type="text" name="keyword" placeholder="Search match..." class="input"
+                        <input type="text" name="keyword" placeholder="Search match or datetime..." class="input"
                             value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>" />
                     </form>
 

@@ -17,7 +17,7 @@ function search_tickets_by_name($keyword) {
             INNER JOIN (
                 SELECT match_name, match_datetime, MIN(ticket_type_id) AS min_type
                 FROM tickets
-                WHERE match_name LIKE '%$keyword%'
+                 WHERE match_name LIKE '%$keyword%' OR match_datetime LIKE '%$keyword%'
                 GROUP BY match_name, match_datetime
             ) t2 ON t1.match_name = t2.match_name 
                   AND t1.match_datetime = t2.match_datetime 
