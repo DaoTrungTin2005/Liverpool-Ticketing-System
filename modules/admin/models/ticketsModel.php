@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 function add_ticket($data)
 {
@@ -35,4 +35,16 @@ function update_ticket($id, $image, $match_name, $match_datetime, $ticket_type_i
 function delete_ticket_by_id($id) {
     $id = (int)$id;
     return db_delete('tickets', "id = {$id}");
+}
+
+function search_tickets($keyword) {
+    $keyword = ($keyword); // an toàn
+    $sql = "SELECT t.*, tt.name AS ticket_type_name 
+            FROM tickets t 
+            JOIN ticket_types tt ON t.ticket_type_id = tt.id 
+            WHERE t.match_name LIKE '%{$keyword}%' 
+               OR t.match_datetime LIKE '%{$keyword}%'
+               OR t.price LIKE '%{$keyword}%'
+            ORDER BY t.id ASC";
+    return db_fetch_array($sql);
 }
