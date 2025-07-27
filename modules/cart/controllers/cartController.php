@@ -6,8 +6,17 @@ function construct()
 
 function show_details_cartAction()
 {
+    // Sắp xếp lại cart để tránh tình trạng nhảy hàng
+    if (isset($_SESSION['cart'])) {
+        uasort($_SESSION['cart'], function ($a, $b) {
+            // Sắp xếp theo match_datetime tăng dần (hoặc match_name)
+            return strtotime($a['match_datetime']) <=> strtotime($b['match_datetime']);
+        });
+    }
+
     load_view('show_details_cart');
 }
+
 
 
 function add_to_cartAction()
@@ -57,34 +66,64 @@ function add_to_cartAction()
 // PHP sẽ cập nhật lại $_SESSION['cart'] theo yêu cầu.
 function update_qtyAction()
 {
+    header('Content-Type: application/json');
+
     $id = isset($_POST['id']) ? (int)$_POST['id'] : 0;
     $type = $_POST['type'] ?? '';
     $ticket_type_id = isset($_POST['ticket_type_id']) ? (int)$_POST['ticket_type_id'] : 2;
 
     if (isset($_SESSION['cart'][$id])) {
-        if ($type == 'plus') {
+        if ($type === 'plus') {
             $_SESSION['cart'][$id]['qty'] += 1;
-        } elseif ($type == 'minus' && $_SESSION['cart'][$id]['qty'] > 1) {
+        } elseif ($type === 'minus' && $_SESSION['cart'][$id]['qty'] > 1) {
             $_SESSION['cart'][$id]['qty'] -= 1;
         }
 
-        // ✅ Cập nhật lại loại vé nếu có
+        // Cập nhật lại loại vé
         $_SESSION['cart'][$id]['ticket_type_id'] = $ticket_type_id;
 
-        // ✅ Cập nhật lại giá và tên loại vé
         $match_name = $_SESSION['cart'][$id]['match_name'];
         $match_datetime = $_SESSION['cart'][$id]['match_datetime'];
+        
+        // Lấy lại giá và tên vé theo loại
         $prices = get_prices_by_match_and_datetime($match_name, $match_datetime);
-
         foreach ($prices as $row) {
             if ((int)$row['ticket_type_id'] === $ticket_type_id) {
                 $_SESSION['cart'][$id]['price'] = $row['price'];
-                $_SESSION['cart'][$id]['ticket_type_name'] = $row['name'];
+                $_SESSION['cart'][$id]['ticket_type_name'] = $row['ticket_type_name'];
                 break;
             }
         }
+
+        // ❗ Cập nhật lại ticket_id nếu loại vé đổi ➜ đổi key trong session
+        $new_ticket_id = get_ticket_id_by_match_and_type($match_name, $match_datetime, $ticket_type_id);
+
+        if ($new_ticket_id && $new_ticket_id != $id) {
+            // Gộp nếu trùng
+            if (isset($_SESSION['cart'][$new_ticket_id])) {
+                $_SESSION['cart'][$new_ticket_id]['qty'] += $_SESSION['cart'][$id]['qty'];
+                unset($_SESSION['cart'][$id]);
+            } else {
+                $_SESSION['cart'][$new_ticket_id] = $_SESSION['cart'][$id];
+                $_SESSION['cart'][$new_ticket_id]['id'] = $new_ticket_id;
+                unset($_SESSION['cart'][$id]);
+            }
+
+            $id = $new_ticket_id; // cập nhật lại để trả về cho FE
+        }
+
+        echo json_encode([
+            'success' => true,
+            'new_id' => $id,
+            'qty' => $_SESSION['cart'][$id]['qty'],
+            'price' => $_SESSION['cart'][$id]['price'],
+            'ticket_type_name' => $_SESSION['cart'][$id]['ticket_type_name'],
+        ]);
+    } else {
+        echo json_encode(['success' => false]);
     }
 }
+
 
 
 
