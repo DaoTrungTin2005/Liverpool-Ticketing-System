@@ -21,6 +21,15 @@ function show_details_cartAction()
 
 function add_to_cartAction()
 {
+    
+        // Kiểm tra nếu chưa đăng nhập
+    if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
+        // Chuyển hướng đến trang đăng nhập
+        redirect("?mod=auth&controller=auth&action=sign_in");
+        return; // Dừng luôn
+    }
+
+    
     $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
     if ($id > 0) {
