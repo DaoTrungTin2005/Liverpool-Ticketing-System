@@ -22,3 +22,12 @@ khoithongtin.addEventListener("mouseleave", () => {
   khoian.style.opacity = "0";
   khoian.style.pointerEvents = "none";
 });
+const logo = document.querySelector(".khoilogomob");
+const header = document.querySelector(".header");
+
+logo.addEventListener("click", () => {
+  header.classList.toggle("hienra");
+});
+const navPC = document.querySelector(".khoiuser");
+const navMB = document.querySelector(".khoiusermb");
+navMB.innerHTML = navPC.innerHTML;
