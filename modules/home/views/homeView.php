@@ -52,9 +52,15 @@
                 <div class="thanhsearch">
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/search 1.svg" alt="Kinh lup"
                         class="img" />
-                    <form action="" class="form">
-                        <input type="text" placeholder="Search" class="input" />
+
+                    <form action="" method="GET" class="form">
+                        <!-- <input type="hidden" name="mod" value="home">
+                        <input type="hidden" name="controller" value="home">
+                        <input type="hidden" name="action" value="home"> -->
+                        <input type="text" name="keyword" placeholder="Search match..." class="input"
+                            value="<?php echo isset($_GET['keyword']) ? htmlspecialchars($_GET['keyword']) : ''; ?>" />
                     </form>
+
                 </div>
 
 
