@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: "Istok Web", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  overflow-x: hidden;
+  background: #000;
+}
+/* code chung */
+a {
+  text-decoration: none;
+}
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+.news {
+  font-size: 5rem;
+  color: #fff;
+}
+.news-box {
+  width: 100%;
+  max-width: 600px;
+  background: #200000;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+}
+.news-image {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background-color: #000;
+}
+.news-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.news-content {
+  padding: 16px;
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.desc {
+  display: none;
+  padding-top: 10px;
+}
+.news-box:hover .desc {
+  display: block;
+}
+.news-box:hover {
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6);
+}
+.box1 {
+  margin-top: 700px;
+  margin-left: -700px;
+}
+.box2 {
+  margin-left: 700px;
+  margin-top: 200px;
+}
+.box3 {
+  margin-top: 200px;
+  margin-left: -700px;
+}
+.box4 {
+  margin-left: 700px;
+  margin-top: 200px;
+  margin-bottom: 500px;
+}
+.btn {
+  width: 200px;
+  height: 100px;
+  background-color: #fff;
+  color: #000;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 30px;
+  border: 2px solid #fff;
+}
+.btn:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+}

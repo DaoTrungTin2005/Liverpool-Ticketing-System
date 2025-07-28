@@ -46,8 +46,11 @@
                 <div class="khoinav">
                     <a href="<?php echo $config['base_url']; ?>?mod=home&controller=home&action=home"
                         class="desc">Home</a>
-                    <a href="#!" class="desc">About Us</a>
-                    <a href="#!" class="desc">News</a>
+                    <a href="<?php echo $config['base_url']; ?>?mod=home&controller=contact&action=contact"
+                        class="desc">Contact
+                        Us</a>
+                    <a href="<?php echo $config['base_url']; ?>?mod=home&controller=news&action=news"
+                        class="desc">News</a>
                 </div>
                 <div class="thanhsearch">
                     <img src="<?php echo $config['base_url']; ?>public/resources/images/search 1.svg" alt="Kinh lup"
