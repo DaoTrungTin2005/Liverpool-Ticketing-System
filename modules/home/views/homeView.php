@@ -100,9 +100,19 @@
                     <div class="login user">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/Login.png" alt="login"
                             class="img" />
+
+                        <?php if ($_SESSION['user_role'] == 1): ?>
+
                         <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=show_accounts"
-                            class=" desc"><?php echo htmlspecialchars($_SESSION['user_login']); ?></a>
+                            class="desc">
+                            <?php echo htmlspecialchars($_SESSION['user_login']); ?>
+                        </a>
+
+                        <?php else: ?>
+                        <span class="desc"><?php echo htmlspecialchars($_SESSION['user_login']); ?></span>
+                        <?php endif; ?>
                     </div>
+
                     <div class="gach"></div>
                     <div class="signup user">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/signup.png" alt="signup"
