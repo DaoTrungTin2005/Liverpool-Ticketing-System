@@ -77,4 +77,51 @@ function checkout_buyingnowAction() {
 }
 
 
+function checkout_buynow_redirectAction() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $fullname = $_POST['fullname'] ?? '';
+        $phone = $_POST['phone'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $ticket_id = $_POST['ticket_id'] ?? null;
+        $ticket_type_id = $_POST['ticket_type_id'] ?? null;
+        $total_price = $_POST['total_price'] ?? 0;
+        $account_id = $_SESSION['account']['id'] ?? null;
+
+        // Lấy thêm thông tin vé
+        $ticket = get_ticket_by_id($ticket_id);
+        $ticket_type = get_ticket_type_by_id($ticket_type_id);
+
+        if (!$ticket || !$ticket_type) {
+            echo "Dữ liệu vé không hợp lệ.";
+            return;
+        }
+
+        // Lưu thông tin vào SESSION như giỏ hàng
+        $_SESSION['checkout_info'] = [
+            'fullname' => $fullname,
+            'phone' => $phone,
+            'email' => $email,
+            'total_price' => $total_price,
+            'account_id' => $account_id,
+            'cart' => [
+                [
+                    'id' => $ticket_id,
+                    'match_name' => $ticket['match_name'],
+                    'match_datetime' => $ticket['match_datetime'],
+                    'ticket_type_name' => $ticket_type['ticket_type_name'],
+                    'price' => $ticket_type['price'],
+                    'qty' => 1
+                ]
+            ]
+        ];
+
+        // Gửi đến VNPAY
+        redirect("modules/checkout/vnpay_create_payment.php");
+        exit;
+    }
+
+    echo "Phương thức không hợp lệ.";
+}
+
+
     ?>

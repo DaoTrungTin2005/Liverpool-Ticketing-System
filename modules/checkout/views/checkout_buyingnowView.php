@@ -33,7 +33,7 @@
 
 
 <body>
-    <form action="<?php echo $config['base_url']; ?>?mod=checkout&controller=checkout&action=checkout_addtocart"
+    <form action="<?php echo $config['base_url']; ?>?mod=checkout&controller=checkout&action=checkout_buynow_redirect"
         method="POST" class="form-thanh-toan">
         <div class="container">
             <div class="tieude">

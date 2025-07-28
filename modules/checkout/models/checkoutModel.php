@@ -55,5 +55,11 @@ function get_prices_by_match_and_datetime($match_name, $match_datetime)
     return db_fetch_array($sql);
 }
 
+function get_ticket_type_by_id($ticket_type_id) {
+    $ticket_type_id = (int) $ticket_type_id;
+    $sql = "SELECT * FROM ticket_types WHERE id = {$ticket_type_id}";
+    return db_fetch_row($sql);
+}
+
 
 ?>
