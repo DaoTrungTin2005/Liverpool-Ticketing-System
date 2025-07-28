@@ -100,7 +100,8 @@
                     <div class="login user">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/Login.png" alt="login"
                             class="img" />
-                        <span class="desc"><?php echo htmlspecialchars($_SESSION['user_login']); ?></span>
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=accounts&action=show_accounts"
+                            class=" desc"><?php echo htmlspecialchars($_SESSION['user_login']); ?></a>
                     </div>
                     <div class="gach"></div>
                     <div class="signup user">
@@ -111,13 +112,14 @@
                     </div>
 
                     <?php else: ?>
+
                     <!-- CHƯA ĐĂNG NHẬP -->
 
                     <div class="login user">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/Login.png" alt="login"
                             class="img" />
                         <a href="<?php echo $config['base_url']; ?>?mod=auth&controller=auth&action=sign_in"
-                            class="desc">Sign in</a>
+                            class="desc">Sign In</a>
                     </div>
                     <div class="gach"></div>
                     <div class="signup user">

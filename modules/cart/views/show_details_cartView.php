@@ -99,7 +99,7 @@
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/Login.png" alt="login"
                             class="img" />
                         <a href="<?php echo $config['base_url']; ?>?mod=auth&controller=auth&action=sign_in"
-                            class="desc">Sign in</a>
+                            class="desc">Sign In</a>
                     </div>
                     <div class="gach"></div>
                     <div class="signup user">
@@ -247,7 +247,8 @@
 
                     <?php endforeach; ?>
                     <?php else: ?>
-                    <p class="desc">Giỏ hàng trống</p>
+
+                    <div style="margin: 57% 230% 0; font-weight:bold; color: red;"> NONE</div>
                     <?php endif; ?>
 
 
