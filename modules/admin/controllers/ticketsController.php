@@ -37,15 +37,15 @@ function create_ticketsAction()
         $image_name = '';
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
 
-            // đường dẫn tới thư mục trên server muốn lưu ảnh vào.
+           
             $upload_dir = 'public/resources/uploads/';
             $image_name = basename($_FILES['image']['name']);
 
-            // Ghép đường dẫn thư mục + tên file thành đường dẫn hoàn chỉnh
-            // $target_path = 'public/resources/uploads/mu-vs-liverpool.jpg'
+       
+
             $target_path = $upload_dir . $image_name;
 
-            // Di chuyển file ảnh tạm thời (nơi PHP lưu khi upload) sang thư mục chính của bạn.
+            // di chuyển file ảnh tạm thời sang thư mục chính
             move_uploaded_file($_FILES['image']['tmp_name'], $target_path);
         }
 
@@ -59,12 +59,11 @@ function create_ticketsAction()
 
         add_ticket($data);
 
-        // Redirect hoặc thông báo thành công
-        header("Location: ?mod=admin&controller=tickets&action=show_tickets");
+        redirect("?mod=admin&controller=tickets&action=show_tickets");
         exit;
     }
 
-    // Load view nếu chưa submit
+
     load_view('create_tickets');
 }
 
@@ -84,7 +83,7 @@ function update_ticketsAction()
         $ticket_type_id = $_POST['vitri'] ?? 0;
         $price = $_POST['price'] ?? 0;
 
-        // Giữ ảnh cũ nếu không upload ảnh mới
+        // Giữ ảnh cũ 
         $image_name = $ticket['image'];
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -92,10 +91,11 @@ function update_ticketsAction()
             $image_name = basename($_FILES['image']['name']);
             $target_path = $upload_dir . $image_name;
 
-            // Kiểm tra có bản ghi nào khác vẫn dùng ảnh cũ không
+            // Kiểm tra có bản ghi nào khác vẫn dùng ảnh cũ ko
             $old_image_path = $upload_dir . $ticket['image'];
             $image_used_by_others = db_fetch_row("SELECT * FROM tickets WHERE image = '{$ticket['image']}' AND id != {$id}");
 
+            // Nếu ảnh cũ k còn được dùng bởi vé khác (id != $id) thì xóa file ảnh cũ .
             if (empty($image_used_by_others) && file_exists($old_image_path)) {
                 unlink($old_image_path); // Chỉ xóa nếu không còn ai dùng
             }
@@ -104,13 +104,14 @@ function update_ticketsAction()
             move_uploaded_file($_FILES['image']['tmp_name'], $target_path);
         }
 
-        // Gọi hàm update_ticket theo dạng tham số riêng lẻ
+        
         update_ticket($id, $image_name, $match_name, $match_datetime, $ticket_type_id, $price);
 
         redirect("?mod=admin&controller=tickets&action=show_tickets");
         exit;
     }
 
+    // truyền bien dô
     load_view('update_tickets', ['ticket' => $ticket]);
 }
 
@@ -119,10 +120,10 @@ function delete_ticketsAction()
     if (isset($_GET['id'])) {
         $id = (int)$_GET['id'];
 
-        // Gọi model xóa vé
-        $result = delete_ticket_by_id($id);
+        
+        delete_ticket_by_id($id);
 
-        // Redirect lại trang danh sách vé
+        
         redirect("?mod=admin&controller=tickets&action=show_tickets");
     }
 }

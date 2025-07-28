@@ -12,7 +12,7 @@ function homeAction()
         $keyword = $_GET['keyword'];
         $data['list_tickets'] = search_tickets_by_name($keyword);
     } else {
-        // Dùng lại model đã có
+
         $data['list_tickets'] = get_list_tickets();
     }
 

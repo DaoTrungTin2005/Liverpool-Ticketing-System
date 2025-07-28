@@ -22,11 +22,11 @@ function show_details_cartAction()
 function add_to_cartAction()
 {
     
-        // Kiểm tra nếu chưa đăng nhập
+        // kiểm tra nếu chưa đăng nhập
     if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
         // Chuyển hướng đến trang đăng nhập
         redirect("?mod=auth&controller=auth&action=sign_in");
-        return; // Dừng luôn
+        return; 
     }
 
     
@@ -36,7 +36,7 @@ function add_to_cartAction()
         $ticket = get_ticket_by_id($id);
 
         if (!empty($ticket)) {
-            // 🔎 Lấy các giá vé khác theo match_name + datetime
+            //  lấy các giá vé khác theo match_name + datetime
             $match_name = $ticket['match_name'];
             $match_datetime = $ticket['match_datetime'];
 
@@ -60,7 +60,7 @@ function add_to_cartAction()
                     'average_price' => $all_prices['average_price'],
                     'vip_price' => $all_prices['vip_price'],
                     'qty' => 1,
-                    'ticket_type_id' => $ticket['ticket_type_id'], // 👈 thêm dòng này
+                    'ticket_type_id' => $ticket['ticket_type_id'],
                 ];
             }
         }

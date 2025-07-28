@@ -45,6 +45,6 @@ function search_tickets($keyword) {
             WHERE t.match_name LIKE '%{$keyword}%' 
                OR t.match_datetime LIKE '%{$keyword}%'
                OR t.price LIKE '%{$keyword}%'
-            ORDER BY t.id ASC";
+            -- ORDER BY t.id ASC";
     return db_fetch_array($sql);
 }

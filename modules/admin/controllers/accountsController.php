@@ -1,7 +1,7 @@
     <?php
     function construct()
     {
-        // Khi action là _404 → không gọi check_admin() nữa
+
         // Tránh vòng lặp redirect vô hạn
         if ($_GET['action'] != '_404') {
             check_admin();
@@ -9,7 +9,6 @@
 
         load_model('accounts');
     }
-
 
 
 
@@ -60,7 +59,7 @@ function show_accountsAction()
                 $error['role'] = "Bạn chưa chọn Role";
             }
 
-            // Kiểm tra trùng tài khoản
+           
             if (username_exists($username)) {
                 $error['username'] = "Username đã tồn tại";
             }
@@ -110,8 +109,8 @@ function show_accountsAction()
         if (isset($_GET['id'])) {
             $id = (int)$_GET['id'];
 
-            // Gọi model xóa
-            $result = delete_account_by_id($id);
+            
+            delete_account_by_id($id);
 
             redirect("?mod=admin&controller=accounts&action=show_accounts");
         }

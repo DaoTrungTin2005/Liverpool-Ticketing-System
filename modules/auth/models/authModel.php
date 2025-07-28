@@ -19,7 +19,7 @@ function insert_account($data)
 
 function get_account_by_username($username)
 {
-    $username = escape_string($username);
+  
     $sql = "SELECT * FROM accounts WHERE username = '$username'";
     return db_fetch_row($sql);
 }

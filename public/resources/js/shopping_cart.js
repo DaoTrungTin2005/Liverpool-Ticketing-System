@@ -44,6 +44,20 @@ document.querySelectorAll(".row.soluong").forEach(function (itemRow) {
     });
 });
 
+
+// Mỗi lần click + hoặc -:
+
+// Lấy id của vé
+
+// Lấy loại vé (ticket_type_id) hiện tại
+
+// Gửi POST request về PHP backend xử lý
+
+// Sau khi cập nhật session xong thì reload lại để giao diện cập nhật
+
+
+
+
 //========================================================
 // XỬ LÍ LOẠI 
 

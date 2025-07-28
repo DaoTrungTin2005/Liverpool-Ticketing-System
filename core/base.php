@@ -1,5 +1,9 @@
 <?php
 
+// File này là trung tâm điều hướng, quyết định file controller và hàm action sẽ được gọi.
+// Mục đích: Lấy thông tin module, controller, và action từ URL (qua $_GET) hoặc dùng giá trị mặc định từ $config.
+
+
 defined('APPPATH') OR exit('Không được quyền truy cập phần này');
 
 
@@ -86,12 +90,15 @@ function get_action() {
 // → Nó sẽ tìm:
 // helper/url.php
 
+// Mục đích: Nạp các file từ các thư mục như libraries hoặc helpers dựa trên loại và tên.
 function load($type, $name) {
     if ($type == 'lib')
         $path = LIBPATH . DIRECTORY_SEPARATOR . "{$name}.php";
     if ($type == 'helper')
         $path = HELPERPATH . DIRECTORY_SEPARATOR . "{$name}.php";
     if (file_exists($path)) {
+        
+        //gọi ra
         require "$path";
     } else {
         echo "{$type}:{$name} không tồn tại";
@@ -180,79 +187,6 @@ function load_model($name) {
     }
 }
 
-function get_header($name = '') {
-    global $data;
-    if (empty($name)) {
-        $name = 'header';
-    } else {
-        $name = "header-{$name}";
-    }
-    $path = LAYOUTPATH . DIRECTORY_SEPARATOR . $name . '.php';
-    if (file_exists($path)) {
-        if (is_array($data)) {
-            foreach ($data as $key => $a) {
-                $$key = $a;
-            }
-        }
-        require $path;
-    } else {
-        echo "Không tìm thấy {$path}";
-    }
-}
 
-function get_footer($name = '') {
-    global $data;
-    if (empty($name)) {
-        $name = 'footer';
-    } else {
-        $name = "footer-{$name}";
-    }
-    $path = LAYOUTPATH . DIRECTORY_SEPARATOR . $name . '.php';
-    if (file_exists($path)) {
-        if (is_array($data)) {
-            foreach ($data as $key => $a) {
-                $$key = $a;
-            }
-        }
-        require $path;
-    } else {
-        echo "Không tìm thấy {$path}";
-    }
-}
-
-function get_sidebar($name = '') {
-    global $data;
-    if (empty($name)) {
-        $name = 'sidebar';
-    } else {
-        $name = "sidebar-{$name}";
-    }
-    $path = LAYOUTPATH . DIRECTORY_SEPARATOR . $name . '.php';
-    if (file_exists($path)) {
-        if (is_array($data)) {
-            foreach ($data as $key => $a) {
-                $$key = $a;
-            }
-        }
-        require $path;
-    } else {
-        echo "Không tìm thấy {$path}";
-    }
-}
-
-function get_template_part($name) {
-    global $data;
-    if (empty($name))
-        return FALSE;
-    $path = LAYOUTPATH . DIRECTORY_SEPARATOR . "template-{$name}.php";
-    if (file_exists($path)) {
-        foreach ($data as $key => $a) {
-            $$key = $a;
-        }
-        require $path;
-    } else {
-        echo "Không tìm thấy {$path}";
-    }
-}
 
 ?>

@@ -22,32 +22,32 @@ function sign_inAction()
         }
 
         if (empty($error)) {
-            // Lấy thông tin tài khoản từ DB
+
             $data = get_account_by_username($username); // model xử lý SELECT * FROM accounts WHERE username = '$username'
 
             if (!empty($data)) {
                 if (md5($password) === $data['password']) {
-                    // Đăng nhập thành công
+
                     $_SESSION['is_login'] = true;
                     $_SESSION['user_login'] = $data['username'];
 
-                    //Sau này có thể dùng để phân quyền: admin mới được truy cập trang quản lý, còn user thì không.
-                    $_SESSION['user_role'] = $data['role_id'];
-                    
-                    // Này để lưu account_id khi đat hàng 
-                    $_SESSION['account'] = [
-                    'id' => $data['id'],
-                    'username' => $data['username']
-                    ];
-                    
 
-    
-                    // ✅ PHÂN QUYỀN CHUYỂN TRANG
+                    $_SESSION['user_role'] = $data['role_id'];
+
+                    //  lưu account_id khi đat hàng 
+                    $_SESSION['account'] = [
+                        'id' => $data['id'],
+                        'username' => $data['username']
+                    ];
+
+
+
+                    // phân quyen
                     if ($data['role_id'] == 1) {
-                        // ADMIN → về trang quản trị
+
                         redirect("?mod=admin&controller=accounts&action=show_accounts");
                     } else {
-                        // USER → về trang home
+
                         redirect("?mod=home&controller=home&action=home");
                     }
                 } else {
@@ -91,7 +91,7 @@ function sign_upAction()
             $error['password'] = "Password bắt đầu chữ hoa, dài tối thiểu 6 ký tự";
         }
 
-        // Kiểm tra trùng tài khoản
+
         if (username_exists($username)) {
             $error['username'] = "Username đã tồn tại";
         }
@@ -106,7 +106,7 @@ function sign_upAction()
             $error['confirm_password'] = "Mật khẩu xác nhận không khớp";
         }
 
-        // Nếu không có lỗi thì insert
+
         if (empty($error)) {
             $data = [
                 'username' => $username,
@@ -125,7 +125,7 @@ function sign_upAction()
 function logoutAction()
 {
     session_destroy();
-    
+
     redirect("?mod=auth&controller=auth&action=sign_in"); // Quay về trang đăng nhập
 }
 

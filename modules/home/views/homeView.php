@@ -238,10 +238,10 @@
 
                 <?php
                 $count++;
-                if ($count % 2 == 0) echo '</div>'; // Kết thúc mỗi hàng sau 2 vé
+                if ($count % 2 == 0) echo '</div>'; // kết thúc mỗi hàng sau 2 vé
                 endforeach;
 
-                // Nếu số vé lẻ, đóng thẻ hàng cuối cùng
+                // nếu số vé lẻ, đóng thẻ hàng cuối cùng
                 if ($count % 2 != 0) echo '</div>';
                 ?>
 

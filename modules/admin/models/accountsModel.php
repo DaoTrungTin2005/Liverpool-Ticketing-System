@@ -21,12 +21,11 @@ function insert_account($data)
 
 //===============================================================
 
-// Mục đích: lấy danh sách tất cả người dùng kèm tên role của họ (role_name) thông qua JOIN bảng accounts và roles.
 function get_list_users_with_role()
 {
     $sql = "SELECT a.*, r.name AS role_name 
             FROM accounts AS a
-            LEFT JOIN roles AS r ON a.role_id = r.id";
+            INNER JOIN roles AS r ON a.role_id = r.id";
 
     $result = db_fetch_array($sql);
     return $result;
@@ -53,7 +52,7 @@ function delete_account_by_id($id) {
 }
 
 function search_users_with_role($keyword) {
-    $keyword = ($keyword); // bạn có thể dùng db_escape nếu có
+    $keyword = ($keyword); 
     $sql = "SELECT accounts.*, roles.name AS role_name 
             FROM accounts 
             JOIN roles ON accounts.role_id = roles.id 

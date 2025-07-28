@@ -208,8 +208,6 @@ global $config;
 
 
                         <!-- Gán data-id, data-username, data-email, data-roleid vào từng nút Update trong vòng lặp foreach. -->
-                        <!--JavaScript bắt sự kiện click, lấy data này, rồi nhét thẳng vào input trong form ẩn (form update).  -->
-                        <!-- uối cùng, khi ấn "Save", submit form đó như thường (POST) về PHP, gọi controller updateAction. -->
 
                         <form class="form__grid" action="javascript:void(0);">
                             <button class="btn btn__update" type="button" data-id="<?php echo $user['id']; ?>"
@@ -293,8 +291,9 @@ global $config;
                 </div>
             </form>
 
+
             <div class="khoidelete khoitanghinh" id="khoidelete">
-                <p class="desc desc__0">Warning</p> <!-- ✅ sửa chính tả từ "Waring" -->
+                <p class="desc desc__0">Warning</p>
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__war" fill="currentColor">
                     <path
