@@ -27,7 +27,7 @@ label {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 10px;
   width: 100vw;
   height: 100vh;
   justify-content: center;
@@ -151,4 +151,18 @@ label {
 }
 .btn:hover {
   scale: 1.1111;
+}
+.khoithongtin {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+.khoithongtin .desc {
+  font-weight: bold;
+}
+.khoithongtin .form {
+  width: 150px;
 }
