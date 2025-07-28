@@ -205,7 +205,7 @@
                         </div>
 
                         <div class="khoichon khoian">
-                            <a href="<?php echo $config['base_url']; ?>?mod=checkout&controller=checkout&action=checkout_buyingnow"
+                            <a href="<?php echo $config['base_url']; ?>?mod=checkout&controller=checkout&action=checkout_buyingnow&id=<?php echo $ticket['id']; ?>"
                                 class="link">
                                 <button class="btn">TICKET BOOKING</button>
                             </a>

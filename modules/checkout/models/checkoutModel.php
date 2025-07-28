@@ -35,4 +35,25 @@ function insert_order_item($order_id, $ticket_id,$qty, $price)
     ];
     return db_insert('order_items', $data);
 }
+
+function get_ticket_by_id($id)
+{
+    $id = (int)$id;
+    $sql = "SELECT t.*, tt.name AS ticket_type_name
+            FROM tickets t
+            JOIN ticket_types tt ON t.ticket_type_id = tt.id
+            WHERE t.id = {$id}";
+    return db_fetch_row($sql);
+}
+
+function get_prices_by_match_and_datetime($match_name, $match_datetime)
+{
+    $sql = "SELECT t.ticket_type_id, tt.name AS ticket_type_name, t.price
+            FROM tickets t
+            JOIN ticket_types tt ON t.ticket_type_id = tt.id
+            WHERE t.match_name = '{$match_name}' AND t.match_datetime = '{$match_datetime}'";
+    return db_fetch_array($sql);
+}
+
+
 ?>

@@ -67,43 +67,42 @@
                 </div>
             </div>
 
-
             <div class="khoithongtin">
-                <p class="desc">Liverpool vs Manchester City</p>
-                <form action="" class="form">
-                    <select name="vitri" id="TypeTicket" class="inputticket">
-                        <option value="1" class="Ticket">Normal</option>
-                        <option value="2" class="Ticket">Average</option>
-                        <option value="3" class="Ticket">Vip</option>
+                <p class="desc"><?php echo $ticket['match_name']; ?> -
+
+
+                <div class="form">
+                    <select name="ticket_type_id" id="TypeTicket" class="inputticket">
+                        <?php foreach ($ticket_types as $type): ?>
+                        <option value="<?php echo $type['ticket_type_id']; ?>">
+                            <?php echo $type['ticket_type_name']; ?> - <?php echo currency_format($type['price']); ?>
+                        </option>
+                        <?php endforeach; ?>
                     </select>
-                </form>
+                </div>
             </div>
 
+            <?php
+                // Mặc định chọn loại đầu tiên để tính tổng
+                $default_price = $ticket_types[0]['price'];
+            ?>
 
-            <div class="khoitongia ">
-
-                <?php
-                $total_price = 0; // Khởi tạo tổng
-                foreach ($_SESSION['cart'] as $item):
-                    $subtotal = $item['price'] * $item['qty'];
-                    $total_price += $subtotal;
-                endforeach;
-                ?>
-                <!-- Giá trị ẩn để submit đi -->
-                <input type="hidden" name="total_price" id="total_price_hidden" value="<?php echo $total_price; ?>">
+            <div class="khoitongia">
+                <input type="hidden" name="total_price" value="<?php echo $default_price; ?>">
+                <input type="hidden" name="ticket_id" value="<?php echo $ticket['id']; ?>">
 
                 <p class="desc">Total :</p>
                 <div class="item">
-                    <p class="desc tonggia gia"><?php echo currency_format($total_price); ?></p>
+                    <p class="desc tonggia gia"><?php echo currency_format($default_price); ?></p>
                 </div>
-
             </div>
 
             <div class="khoinut">
-                <a class="link" href=""><button class="btn desc" type="submit">Make a payment</button></a>
+                <button class="btn desc" type="submit">Make a payment</button>
             </div>
         </div>
     </form>
+
     <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotacpayment.js"></script>
 </body>
 
