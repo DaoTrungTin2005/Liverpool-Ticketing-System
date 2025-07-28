@@ -77,18 +77,25 @@ function checkout_buynow_redirectAction() {
         $fullname = $_POST['fullname'] ?? '';
         $phone = $_POST['phone'] ?? '';
         $email = $_POST['email'] ?? '';
-        $ticket_id = $_POST['ticket_id'] ?? null;
-        $ticket_type_id = $_POST['ticket_type_id'] ?? null;
-        $total_price = $_POST['total_price'] ?? 0;
         $account_id = $_SESSION['account']['id'] ?? null;
 
-        // Lấy thêm thông tin vé
-        $ticket = get_ticket_by_id($ticket_id);
-        $ticket_type = get_ticket_type_by_id($ticket_type_id);
+        // Lấy từ SESSION đã được update ở update_buynow_session
+        $cart_item = $_SESSION['checkout_info']['cart'][0] ?? null;
 
-        if (!$ticket || !$ticket_type) {
-            $_SESSION['error'] = "Dữ liệu vé không hợp lệ.";
-            redirect("?mod=checkout&controller=checkout&action=checkout_buyingnow&id=$ticket_id");
+        if (!$cart_item) {
+            $_SESSION['error'] = "Không có dữ liệu giỏ hàng.";
+            redirect("?mod=home&controller=home&action=home");
+            return;
+        }
+
+        $ticket_id = $cart_item['id'];
+        $total_price = $cart_item['price'];
+
+        $ticket = get_ticket_by_id($ticket_id);
+
+        if (!$ticket) {
+            $_SESSION['error'] = "Vé không tồn tại.";
+            redirect("?mod=home&controller=home&action=home");
             return;
         }
 
@@ -99,16 +106,7 @@ function checkout_buynow_redirectAction() {
             'email' => $email,
             'total_price' => $total_price,
             'account_id' => $account_id,
-            'cart' => [
-                [
-                    'id' => $ticket_id, // Sẽ được cập nhật trong update_buynow_sessionAction
-                    'match_name' => $ticket['match_name'],
-                    'match_datetime' => $ticket['match_datetime'],
-                    'ticket_type_name' => $ticket_type['name'],
-                    'price' => $total_price,
-                    'qty' => 1
-                ]
-            ]
+            'cart' => [$cart_item]
         ];
 
         // Gửi đến VNPAY
@@ -119,6 +117,7 @@ function checkout_buynow_redirectAction() {
     $_SESSION['error'] = "Phương thức không hợp lệ.";
     redirect("?mod=home&controller=home&action=home");
 }
+
 
 function update_buynow_sessionAction() {
     header('Content-Type: application/json');
@@ -139,9 +138,25 @@ function update_buynow_sessionAction() {
                 error_log("New ticket_id: $new_ticket_id for match: {$ticket['match_name']}, type: $ticket_type_id");
                 // Cập nhật session checkout_info
                 if (isset($_SESSION['checkout_info']['cart']) && !empty($_SESSION['checkout_info']['cart'])) {
-                    $_SESSION['checkout_info']['cart'][0]['id'] = $new_ticket_id;
-                    $_SESSION['checkout_info']['cart'][0]['price'] = $price;
-                    $_SESSION['checkout_info']['cart'][0]['ticket_type_name'] = $ticket_type['name'];
+                    $cart_item = $_SESSION['checkout_info']['cart'][0];
+                    if ($new_ticket_id != $ticket_id) {
+                        // Tạo lại mảng cart với key mới
+                        unset($_SESSION['checkout_info']['cart'][0]);
+                        $_SESSION['checkout_info']['cart'] = [
+                            [
+                                'id' => $new_ticket_id,
+                                'match_name' => $cart_item['match_name'],
+                                'match_datetime' => $cart_item['match_datetime'],
+                                'ticket_type_name' => $ticket_type['name'],
+                                'price' => $price,
+                                'qty' => $cart_item['qty']
+                            ]
+                        ];
+                    } else {
+                        $_SESSION['checkout_info']['cart'][0]['id'] = $new_ticket_id;
+                        $_SESSION['checkout_info']['cart'][0]['price'] = $price;
+                        $_SESSION['checkout_info']['cart'][0]['ticket_type_name'] = $ticket_type['name'];
+                    }
                     $_SESSION['checkout_info']['total_price'] = $price;
                 } else {
                     $_SESSION['checkout_info'] = [

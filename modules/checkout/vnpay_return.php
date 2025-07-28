@@ -83,17 +83,21 @@ if ($myHash === $vnp_SecureHash) {
                 $qty = $item['qty'] ?? 1;
                 insert_order_item($order_id, $item['id'], $qty, $price);
             }
-        } elseif (!empty($_SESSION['checkout_info']['cart'])) {
-            // Trường hợp Buy Now - Debug
-            echo "<pre>Debug Session Cart: ";
-            var_dump($_SESSION['checkout_info']['cart']);
-            echo "</pre>";
-            foreach ($_SESSION['checkout_info']['cart'] as $item) {
-                $price = (int)$item['price'];
-                $qty = $item['qty'] ?? 1;
-                insert_order_item($order_id, $item['id'], $qty, $price);
-            }
-        }
+        }  elseif (!empty($_SESSION['checkout_info']['cart'])) {
+    $cart_item = $_SESSION['checkout_info']['cart'][0];
+    
+    // Debug xem đúng chưa
+    echo "<pre style='color:blue'>DEBUG Ticket ID: ";
+    var_dump($cart_item['id']);
+    echo "</pre>";
+
+    $price = (int)$cart_item['price'];
+    $qty = 1; // bạn nói không cần số lượng
+    $ticket_id = $cart_item['id'];
+
+    insert_order_item($order_id, $ticket_id, $qty, $price);
+}
+
 
         // 3. Cập nhật trạng thái đơn hàng là 'paid'
         db_update('orders', ['payment_status' => 'paid'], "id = $order_id");

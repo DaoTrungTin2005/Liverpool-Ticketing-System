@@ -69,7 +69,7 @@
 
             <div class="khoithongtin">
                 <p class="desc"><?php echo htmlspecialchars($ticket['match_name']); ?> -
-                    <?php echo date('d/m/Y H:i', strtotime($ticket['match_datetime'])); ?></p>
+                </p>
                 <div class="form">
                     <select name="ticket_type_id" id="TypeTicket" class="inputticket"
                         data-id="<?php echo $ticket['id']; ?>">

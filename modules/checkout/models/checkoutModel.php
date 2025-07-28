@@ -61,13 +61,13 @@ function get_ticket_type_by_id($ticket_type_id) {
 function get_ticket_id_by_match_datetime_and_type($match_name, $match_datetime, $ticket_type_id) {
     $ticket_type_id = (int)$ticket_type_id;
 
-    $match_name =  trim($match_name);
+    $match_name = trim($match_name);
     $match_datetime = trim($match_datetime);
     $sql = "SELECT id FROM tickets 
             WHERE match_name = '$match_name' 
             AND match_datetime = '$match_datetime' 
             AND ticket_type_id = $ticket_type_id 
-            ORDER BY id DESC LIMIT 1"; // Ưu tiên ID cao nhất
+            LIMIT 1";
     $result = db_fetch_row($sql);
     if ($result) {
         return (int)$result['id'];
