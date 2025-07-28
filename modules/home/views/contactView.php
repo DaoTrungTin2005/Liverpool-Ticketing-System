@@ -46,22 +46,34 @@
                     <p class="desc">CONTACT</p>
                 </div>
                 <div class="khoinhap">
-                    <form action="" class="form">
-                        <label for="" class="label">Name: </label>
-                        <input type="text" class="input sub" />
-                        <label for="" class="label">Phone: </label>
-                        <input type="tel" class="input name" />
-                        <label for="" class="label">E-mail: </label>
-                        <input type="email" class="input email" />
-                        <label for="" class="label">Message</label>
-                        <textarea id="message" name="message" rows="6" cols="90"></textarea>
-                    </form>
+
+                    <form action="" method="POST" class="form">
+                        <label class="label">Name: </label>
+                        <input type="text" class="input sub" name="name" required />
+
+                        <label class="label">Phone: </label>
+                        <input type="tel" class="input name" name="phone" required />
+
+
+
+                        <label class="label">Email: </label>
+                        <input type="email" class="input email" name="email"
+                            value="<?php echo htmlspecialchars($email); ?>" readonly />
+
+
+                        <label class="label">Message</label>
+                        <textarea id="message" name="message" rows="6" cols="90" required></textarea>
+
+
+
+
                 </div>
                 <div class="btn">
                     <a href="" class="link">
                         <button class="but">Send</button>
                     </a>
                 </div>
+                </form>
             </div>
         </div>
     </body>
