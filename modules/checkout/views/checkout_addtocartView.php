@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/reset.css" />
-    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/checkout_addtocart.css" />
+    <link rel="stylesheet" href="<?php echo $config['base_url']; ?>public/resources/css/style_checkout.css" />
     <link rel="apple-touch-icon" sizes="57x57" href="./LFC.ico/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="./LFC.ico/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="./LFC.ico/apple-icon-72x72.png" />
