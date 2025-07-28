@@ -213,76 +213,61 @@ global $config;
                 </div>
 
 
+
                 <div class="khoigiua">
                     <div class="grid-row">
-                        <p class="truong">TicketID</p>
-                        <p class="truong">Match</p>
-                        <p class="truong">Date</p>
-                        <p class="truong">TypeTicket</p>
-                        <p class="truong">Price(VND)</p>
-                        <p class="truong">Action</p>
+                        <p class="truong">Name</p>
+                        <p class="truong">Phone</p>
+                        <p class="truong">Email</p>
+                        <p class="truong">Message</p>
                     </div>
 
-                    <?php if (!empty($list_tickets)) : ?>
-                    <?php foreach ($list_tickets as $ticket) : ?>
-                    <div class="grid-row">
-                        <p class="row"><?php echo htmlspecialchars($ticket['id']); ?></p>
-                        <p class="row"><?php echo htmlspecialchars($ticket['match_name']); ?></p>
-                        <p class="row"><?php echo date("d/m/Y", strtotime($ticket['match_datetime'])); ?> |
-                            <?php echo date("H:i", strtotime($ticket['match_datetime'])); ?></p>
-                        <p class="row"><?php echo htmlspecialchars($ticket['ticket_type_name']); ?></p>
-                        <p class="row"><?php echo currency_format($ticket['price']); ?></p>
 
+                    <?php foreach ($contacts as $contact) : ?>
+                    <div class="grid-row">
+                        <p class="row"><?php echo htmlspecialchars($contact['name']); ?></p>
+                        <p class="row"><?php echo htmlspecialchars($contact['phone']); ?></p>
+                        <p class="row"><?php echo htmlspecialchars($contact['email']); ?> </p>
                         <div class="form__grid" action="">
-                            <button class="btn btn__update" id="update">
-                                <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=update_tickets&id=<?php echo $ticket['id']; ?>"
-                                    class="link">Update</a>
-                            </button>
-                            <button class="btn btn__delete" data-id="<?php echo $ticket['id']; ?>">
-                                <div class="link">Delete</div>
+                            <button class="btn btn__update"
+                                data-message="<?php echo htmlspecialchars($contact['message']); ?>">
+                                <span class="link">View</span>
+
                             </button>
                         </div>
-
                     </div>
+
                     <?php endforeach; ?>
-                    <?php else : ?>
-                    <p class="row">No tickets found.</p>
-                    <?php endif; ?>
 
 
                 </div>
+                <div class=" khoiduoi">
+                </div>
+            </div>
+        </div>
 
-                <div class="khoiduoi">
-                    <p class="show">Showing data</p>
-                    <button class="but btn">
-                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=tickets&action=create_tickets"
-                            class="link">Create Tickets</a>
+
+        <div class="khoiupdate khoitanghinh" id="khoiupdate">
+            <div class="khoiup">
+                <p class="desc descup">Message</p>
+
+                <p class="desc message-content" id="messageContent">No message selected.</p>
+                <div class="khoiselectup">
+
+                    <button class="btn btn__save" id="save">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__sec"
+                            fill="currentColor">
+                            <path
+                                d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z" />
+                        </svg>
+                        <a class="desc">Ok
+                        </a>
                     </button>
                 </div>
             </div>
-        </div>
 
 
-
-        <div class="khoidelete khoitanghinh" id="khoidelete">
-            <p class="desc desc__0">Waring</p>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg__war" fill="currentColor">
-                <path
-                    d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z" />
-            </svg>
-            <p class="desc desc__1">
-                Are you sure you want to delete this data?
-            </p>
-            <div class="khoiselectdele">
-                <button class="btn btn__cancel" id="No">
-                    <a class="desc">No</a>
-                </button>
-                <button class="btn btn__save" id="Yes">
-                    <a class="desc">Yes</a>
-                </button>
-            </div>
-        </div>
-        <script src="<?php echo $config['base_url']; ?>public/resources/js/delete_tickets.js"></script>
+            <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotaccontact.js"></script>
 </body>
 
 </html>

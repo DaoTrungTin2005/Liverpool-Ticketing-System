@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 require_once '../../config/vnpay.php';
 
-// Kiểm tra dữ liệu đầu vào
+// // Kiểm tra dữ liệu đầu vào
 if (!isset($_SESSION['checkout_info']['total_price']) || !is_numeric($_SESSION['checkout_info']['total_price'])) {
     die("Lỗi: Số tiền thanh toán không hợp lệ.");
 }

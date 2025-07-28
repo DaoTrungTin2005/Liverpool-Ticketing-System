@@ -59,10 +59,25 @@ global $config;
                     <div class="item__list-item">
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/wallet-money 2.png" alt=""
                             class="item__img" />
-                        <a href="" class="item__desc">Notification</a>
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=orders&action=show_orders"
+                            class="item__desc">Orders</a>
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
                             class="item__svg" />
                     </div>
+
+                    <!--item5  -->
+                    <div class="item__list-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="item__img"
+                            fill="currentColor">
+                            <path
+                                d="M96 96C60.7 96 32 124.7 32 160L32 480C32 515.3 60.7 544 96 544L544 544C579.3 544 608 515.3 608 480L608 160C608 124.7 579.3 96 544 96L96 96zM176 352L240 352C284.2 352 320 387.8 320 432C320 440.8 312.8 448 304 448L112 448C103.2 448 96 440.8 96 432C96 387.8 131.8 352 176 352zM152 256C152 225.1 177.1 200 208 200C238.9 200 264 225.1 264 256C264 286.9 238.9 312 208 312C177.1 312 152 286.9 152 256zM392 208L504 208C517.3 208 528 218.7 528 232C528 245.3 517.3 256 504 256L392 256C378.7 256 368 245.3 368 232C368 218.7 378.7 208 392 208zM392 304L504 304C517.3 304 528 314.7 528 328C528 341.3 517.3 352 504 352L392 352C378.7 352 368 341.3 368 328C368 314.7 378.7 304 392 304z" />
+                        </svg>
+                        <a href="<?php echo $config['base_url']; ?>?mod=admin&controller=contacts&action=show_contacts"
+                            class="item__desc">Contacts</a>
+                        <img src="<?php echo $config['base_url']; ?>public/resources/images/chevron-right 2.png" alt=""
+                            class="item__svg" />
+                    </div>
+
                 </div>
             </div>
             <div class="khoian">
@@ -90,6 +105,14 @@ global $config;
                         <img src="<?php echo $config['base_url']; ?>public/resources/images/wallet-money 2.png" alt=""
                             class="item__img" />
                     </div>
+
+                    <!--item5  -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="item__img" fill="currentColor">
+                        <path
+                            d="M96 96C60.7 96 32 124.7 32 160L32 480C32 515.3 60.7 544 96 544L544 544C579.3 544 608 515.3 608 480L608 160C608 124.7 579.3 96 544 96L96 96zM176 352L240 352C284.2 352 320 387.8 320 432C320 440.8 312.8 448 304 448L112 448C103.2 448 96 440.8 96 432C96 387.8 131.8 352 176 352zM152 256C152 225.1 177.1 200 208 200C238.9 200 264 225.1 264 256C264 286.9 238.9 312 208 312C177.1 312 152 286.9 152 256zM392 208L504 208C517.3 208 528 218.7 528 232C528 245.3 517.3 256 504 256L392 256C378.7 256 368 245.3 368 232C368 218.7 378.7 208 392 208zM392 304L504 304C517.3 304 528 314.7 528 328C528 341.3 517.3 352 504 352L392 352C378.7 352 368 341.3 368 328C368 314.7 378.7 304 392 304z" />
+                    </svg>
+                    <a href="" class="item__desc">Contacts</a>
+
                 </div>
                 <script>
                 const navPC = document.querySelector(".item__list");
@@ -188,6 +211,8 @@ global $config;
                             </form>
                     </div>
                 </div>
+
+
                 <div class="khoigiua">
 
                     <div class="grid-row">

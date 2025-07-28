@@ -234,9 +234,15 @@ label {
 .khoigiua {
   padding: 0px 44px 26px 38px;
   display: grid;
-  grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1fr 1.5fr;
   grid-template-rows: repeat(1, 1fr);
   gap: 10px;
+}
+.khoichungcontact .khoigiua {
+  grid-template-columns: 1fr 1.2fr 1fr 1.5fr;
+}
+.oder .khoigiua {
+  grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1.5fr;
 }
 .grid-row {
   display: contents;
@@ -291,6 +297,8 @@ label {
   display: flex;
   gap: 5px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 .btn__update {
   border: #3d3900;
@@ -339,6 +347,9 @@ label {
 }
 .khoiup {
   padding: 51px 306px 56px;
+}
+.khoiup .desc {
+  margin-top: 10px;
 }
 .khoinhapup {
   width: 85%;
