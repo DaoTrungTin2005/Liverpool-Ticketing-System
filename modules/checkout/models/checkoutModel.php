@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 $account_id = isset($_SESSION['account']['id']) ? $_SESSION['account']['id'] : null;
 
 function insert_order($fullname, $phone, $email, $total_price, $account_id)
@@ -25,7 +22,7 @@ function insert_order($fullname, $phone, $email, $total_price, $account_id)
     ];
 }
 
-function insert_order_item($order_id, $ticket_id,$qty, $price)
+function insert_order_item($order_id, $ticket_id, $qty, $price)
 {
     $data = [
         'order_id' => $order_id,
@@ -56,10 +53,27 @@ function get_prices_by_match_and_datetime($match_name, $match_datetime)
 }
 
 function get_ticket_type_by_id($ticket_type_id) {
-    $ticket_type_id = (int) $ticket_type_id;
+    $ticket_type_id = (int)$ticket_type_id;
     $sql = "SELECT * FROM ticket_types WHERE id = {$ticket_type_id}";
     return db_fetch_row($sql);
 }
 
+function get_ticket_id_by_match_datetime_and_type($match_name, $match_datetime, $ticket_type_id) {
+    $ticket_type_id = (int)$ticket_type_id;
 
+    $match_name =  trim($match_name);
+    $match_datetime = trim($match_datetime);
+    $sql = "SELECT id FROM tickets 
+            WHERE match_name = '$match_name' 
+            AND match_datetime = '$match_datetime' 
+            AND ticket_type_id = $ticket_type_id 
+            ORDER BY id DESC LIMIT 1"; // Ưu tiên ID cao nhất
+    $result = db_fetch_row($sql);
+    if ($result) {
+        return (int)$result['id'];
+    } else {
+        error_log("Không tìm thấy ticket_id. Query: $sql, Params: match_name='$match_name', match_datetime='$match_datetime', ticket_type_id=$ticket_type_id");
+        return null;
+    }
+}
 ?>

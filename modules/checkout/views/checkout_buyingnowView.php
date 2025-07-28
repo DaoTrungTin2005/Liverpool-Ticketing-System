@@ -51,31 +51,33 @@
             </div>
 
             <div class="khoinhap">
-                <div action="" class="form fullname">
-                    <label for="" class="label">Full Name: </label>
-                    <input type="text" name="fullname" class="input" placeholder="Enter Full Name" />
+                <div class="form fullname">
+                    <label for="fullname" class="label">Full Name: </label>
+                    <input type="text" name="fullname" id="fullname" class="input" placeholder="Enter Full Name"
+                        required />
                 </div>
-
-                <div action="" name="phone" class="form phonenumber">
-                    <label for="" class="label">Phone Number: </label>
-                    <input type="text" name="phone" class="input" placeholder="Enter Phone Number" />
+                <div class="form phonenumber">
+                    <label for="phone" class="label">Phone Number: </label>
+                    <input type="text" name="phone" id="phone" class="input" placeholder="Enter Phone Number"
+                        required />
                 </div>
-
-                <div action="" name="email" class="form email">
-                    <label for="" class="label">Enter your email: </label>
-                    <input type="text" name="email" class="input" placeholder="Enter Your Email" />
+                <div class="form email">
+                    <label for="email" class="label">Enter your email: </label>
+                    <input type="email" name="email" id="email" class="input" placeholder="Enter Your Email" required />
                 </div>
             </div>
 
             <div class="khoithongtin">
-                <p class="desc"><?php echo $ticket['match_name']; ?> -
-
-
+                <p class="desc"><?php echo htmlspecialchars($ticket['match_name']); ?> -
+                    <?php echo date('d/m/Y H:i', strtotime($ticket['match_datetime'])); ?></p>
                 <div class="form">
-                    <select name="ticket_type_id" id="TypeTicket" class="inputticket">
+                    <select name="ticket_type_id" id="TypeTicket" class="inputticket"
+                        data-id="<?php echo $ticket['id']; ?>">
                         <?php foreach ($ticket_types as $type): ?>
-                        <option value="<?php echo $type['ticket_type_id']; ?>">
-                            <?php echo $type['ticket_type_name']; ?> - <?php echo currency_format($type['price']); ?>
+                        <option value="<?php echo $type['ticket_type_id']; ?>"
+                            data-price="<?php echo $type['price']; ?>">
+                            <?php echo htmlspecialchars($type['ticket_type_name']); ?> -
+                            <?php echo currency_format($type['price']); ?>
                         </option>
                         <?php endforeach; ?>
                     </select>
@@ -88,12 +90,13 @@
             ?>
 
             <div class="khoitongia">
-                <input type="hidden" name="total_price" value="<?php echo $default_price; ?>">
+                <input type="hidden" name="total_price" id="total_price" value="<?php echo $default_price; ?>">
                 <input type="hidden" name="ticket_id" value="<?php echo $ticket['id']; ?>">
 
                 <p class="desc">Total :</p>
                 <div class="item">
-                    <p class="desc tonggia gia"><?php echo currency_format($default_price); ?></p>
+                    <p class="desc tonggia gia" id="total_price_display"><?php echo currency_format($default_price); ?>
+                    </p>
                 </div>
             </div>
 
@@ -103,7 +106,52 @@
         </div>
     </form>
 
-    <script src="<?php echo $config['base_url']; ?>public/resources/js/thaotacpayment.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const ticketSelect = document.querySelector('#TypeTicket');
+        const totalPriceInput = document.querySelector('#total_price');
+        const totalPriceDisplay = document.querySelector('#total_price_display');
+
+        if (ticketSelect) {
+            ticketSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const price = parseFloat(selectedOption.getAttribute('data-price'));
+                const ticketId = this.getAttribute('data-id');
+                const ticketTypeId = this.value;
+
+                if (!isNaN(price)) {
+                    totalPriceDisplay.textContent = formatCurrency(price);
+                    totalPriceInput.value = price;
+
+                    // Gửi AJAX để cập nhật session
+                    fetch('?mod=checkout&controller=checkout&action=update_buynow_session', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: `ticket_id=${ticketId}&ticket_type_id=${ticketTypeId}&price=${price}`
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log('Session cập nhật thành công:', data);
+                            } else {
+                                console.error('Lỗi cập nhật session:', data.message);
+                            }
+                        })
+                        .catch(error => console.error('Lỗi:', error));
+                } else {
+                    totalPriceDisplay.textContent = 'NaN';
+                    totalPriceInput.value = 0;
+                }
+            });
+        }
+
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + ' đ';
+        }
+    });
+    </script>
 </body>
 
 </html>
