@@ -238,11 +238,23 @@ label {
   grid-template-rows: repeat(1, 1fr);
   gap: 10px;
 }
-.khoichungcontact .khoigiua {
+.contacts .khoigiua {
   grid-template-columns: 1fr 1.2fr 1fr 1.5fr;
 }
 .oder .khoigiua {
   grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1.5fr;
+}
+.accounts .khoigiua {
+  grid-template-columns: 1fr 1.2fr 1fr 1.5fr 1.5fr;
+}
+#messageContent{
+     width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
 .grid-row {
   display: contents;
@@ -284,6 +296,9 @@ label {
   position: absolute;
   left: 320px;
   border: currentColor;
+}
+.chungticket .but{
+  left: 430px;
 }
 .but:hover {
   box-shadow: 2px 4px 4px rgba(79, 42, 234, 0.17);
@@ -346,7 +361,13 @@ label {
   font-weight: 900;
 }
 .khoiup {
+  display: flex;
+  flex-direction: column;
   padding: 51px 306px 56px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 }
 .khoiup .desc {
   margin-top: 10px;

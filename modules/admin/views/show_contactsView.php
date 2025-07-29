@@ -15,8 +15,9 @@ global $config;
     <title>Admin</title>
 </head>
 
+
 <body>
-    <div class="khoichung">
+    <div class="khoichung contacts">
         <div class="khoitrai">
             <div class="khoiadmin">
                 <img src="<?php echo $config['base_url']; ?>public/resources/images/setting 1.jpg" alt="icon cai dat"
