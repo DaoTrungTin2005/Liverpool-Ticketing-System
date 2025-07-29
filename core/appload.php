@@ -14,7 +14,7 @@ require CONFIGPATH . DIRECTORY_SEPARATOR . 'database.php';
 require CONFIGPATH . DIRECTORY_SEPARATOR . 'config.php';
 
 
-require CONFIGPATH . DIRECTORY_SEPARATOR . 'email.php';
+
 
 
 require CONFIGPATH . DIRECTORY_SEPARATOR . 'autoload.php';
@@ -43,8 +43,6 @@ if (is_array($autoload)) {
 
 
 
-//
-//connect db
 db_connect($db);
 
 require COREPATH . DIRECTORY_SEPARATOR . 'router.php';

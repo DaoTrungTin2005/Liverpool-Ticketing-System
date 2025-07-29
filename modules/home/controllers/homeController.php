@@ -7,7 +7,7 @@ function construct()
 
 function homeAction()
 {
-    // Nếu có từ khoá tìm kiếm
+    
     if (isset($_GET['keyword']) && !empty(trim($_GET['keyword']))) {
         $keyword = $_GET['keyword'];
         $data['list_tickets'] = search_tickets_by_name($keyword);

@@ -10,7 +10,7 @@ function get_all_contacts_with_email()
             JOIN accounts ON contact.account_id = accounts.id
             ORDER BY contact.id DESC";
 
-    return db_fetch_array($sql); // trả về mảng các liên hệ
+    return db_fetch_array($sql); 
 }
 
 ?>

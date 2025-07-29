@@ -27,7 +27,7 @@ function checkout_addtocartAction() {
                 'cart' => $_SESSION['cart']
             ];
 
-            // Chuyển sang file thanh toán
+      
             redirect("modules/checkout/vnpay_create_payment.php");
             exit;
         } else {
@@ -40,9 +40,9 @@ function checkout_addtocartAction() {
 
 function checkout_buyingnowAction() {
     if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
-        // Chuyển hướng đến trang đăng nhập
+    
         redirect("?mod=auth&controller=auth&action=sign_in");
-        return; // Dừng luôn
+        return; 
     }
 
     if (!isset($_GET['id'])) {
@@ -60,10 +60,10 @@ function checkout_buyingnowAction() {
         return;
     }
 
-    // Lấy các loại vé cho cùng trận đấu
+
     $ticket_types = get_prices_by_match_and_datetime($ticket['match_name'], $ticket['match_datetime']);
 
-    // Gửi sang view
+
     $data = [
         'ticket' => $ticket,
         'ticket_types' => $ticket_types
@@ -79,7 +79,9 @@ function checkout_buynow_redirectAction() {
         $email = $_POST['email'] ?? '';
         $account_id = $_SESSION['account']['id'] ?? null;
 
-        // Lấy từ SESSION đã được update ở update_buynow_session
+        
+        
+                     // Lấy từ SESSION đã được update ở update_buynow_session
         $cart_item = $_SESSION['checkout_info']['cart'][0] ?? null;
 
         if (!$cart_item) {
@@ -99,7 +101,7 @@ function checkout_buynow_redirectAction() {
             return;
         }
 
-        // Lưu thông tin vào SESSION
+        // Lưu thông tin doo SESSION
         $_SESSION['checkout_info'] = [
             'fullname' => $fullname,
             'phone' => $phone,
@@ -109,7 +111,7 @@ function checkout_buynow_redirectAction() {
             'cart' => [$cart_item]
         ];
 
-        // Gửi đến VNPAY
+     
         redirect("modules/checkout/vnpay_create_payment.php");
         exit;
     }
@@ -127,20 +129,28 @@ function update_buynow_sessionAction() {
     $price = isset($_POST['price']) ? (float)$_POST['price'] : 0;
 
     if ($ticket_id > 0 && $ticket_type_id > 0) {
-        // Lấy thông tin vé ban đầu
+        
+   
         $ticket = get_ticket_by_id($ticket_id);
         if ($ticket) {
-            // Tìm ticket_id mới dựa trên ticket_type_id
+            
+          
             $new_ticket_id = get_ticket_id_by_match_datetime_and_type($ticket['match_name'], $ticket['match_datetime'], $ticket_type_id);
             if ($new_ticket_id) {
                 $ticket_type = get_ticket_type_by_id($ticket_type_id);
-                // Debug: Kiểm tra new_ticket_id
+                
+                
+                
                 error_log("New ticket_id: $new_ticket_id for match: {$ticket['match_name']}, type: $ticket_type_id");
+                
+                
                 // Cập nhật session checkout_info
                 if (isset($_SESSION['checkout_info']['cart']) && !empty($_SESSION['checkout_info']['cart'])) {
                     $cart_item = $_SESSION['checkout_info']['cart'][0];
                     if ($new_ticket_id != $ticket_id) {
-                        // Tạo lại mảng cart với key mới
+                        
+                        
+                   
                         unset($_SESSION['checkout_info']['cart'][0]);
                         $_SESSION['checkout_info']['cart'] = [
                             [
@@ -175,7 +185,9 @@ function update_buynow_sessionAction() {
                 }
                 echo json_encode(['success' => true, 'new_ticket_id' => $new_ticket_id]);
             } else {
-                // Debug: Nếu không tìm thấy ticket_id mới
+                
+                
+              
                 error_log("Không tìm thấy ticket_id mới. Match: {$ticket['match_name']}, Type: $ticket_type_id");
                 echo json_encode(['success' => false, 'message' => 'Không tìm thấy ticket_id mới. Match: ' . $ticket['match_name'] . ', Type: ' . $ticket_type_id]);
             }

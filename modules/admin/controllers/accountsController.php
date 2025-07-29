@@ -37,9 +37,7 @@ function show_accountsAction()
             $password = $_POST['password'];
             $email = $_POST['email'];
 
-            // isset($_POST['role']): kiểm tra xem key 'role' có tồn tại trong mảng $_POST hay không (tức là người dùng có chọn role không).
-            // ? $_POST['role']: nếu có tồn tại, thì gán giá trị đó cho biến $role.
-            // : null: nếu không tồn tại, thì gán giá trị null cho $role. (tránh hển thị lỗi nếu role ko có giá trị)
+
             $role = isset($_POST['role']) ? $_POST['role'] : null;
 
             // Kiểm tra dữ liệu
@@ -68,15 +66,14 @@ function show_accountsAction()
                 $error['email'] = "Email đã tồn tại";
             }
 
-            // Nếu không có lỗi thì insert vào DB
+
             if (empty($error)) {
                 $data = [
                     'username' => $username,
                     'password' => md5($password),
                     'email' => $email,
 
-                    // Kiểm tra xem giá trị radio button có phải là "ADMIN" không
-                    //? 1 : 2	Nếu đúng → gán 1, nếu sai → gán 2
+
                     'role_id' => ($role == 'ADMIN') ? 1 : 2,
                 ];
                 insert_account($data);

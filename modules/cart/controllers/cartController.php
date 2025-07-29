@@ -22,9 +22,9 @@ function show_details_cartAction()
 function add_to_cartAction()
 {
     
-        // kiểm tra nếu chưa đăng nhập
+
     if (!isset($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
-        // Chuyển hướng đến trang đăng nhập
+  
         redirect("?mod=auth&controller=auth&action=sign_in");
         return; 
     }
@@ -71,8 +71,7 @@ function add_to_cartAction()
 
 
 // cập nhật giỏ hàng trong $_SESSION['cart'].
-// Khi người dùng click vào nút SVG + hoặc −, JavaScript sẽ gửi request AJAX (thường bằng fetch hoặc XMLHttpRequest) tới hàm PHP này (update_qtyAction).
-// PHP sẽ cập nhật lại $_SESSION['cart'] theo yêu cầu.
+//co xai AJAX
 function update_qtyAction()
 {
     header('Content-Type: application/json');
@@ -173,7 +172,7 @@ function deleteAction()
         }
     }
 
-    // Redirect lại trang giỏ hàng sau khi xóa
+
     redirect("?mod=cart&controller=cart&action=show_details_cart");
 
     exit();

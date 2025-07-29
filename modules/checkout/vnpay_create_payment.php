@@ -3,16 +3,16 @@ session_start();
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 require_once '../../config/vnpay.php';
 
-// // Kiểm tra dữ liệu đầu vào
+
 if (!isset($_SESSION['checkout_info']['total_price']) || !is_numeric($_SESSION['checkout_info']['total_price'])) {
     die("Lỗi: Số tiền thanh toán không hợp lệ.");
 }
 
 // Tạo mã đơn hàng duy nhất
 $order_id = time();
-$order_desc = 'Thanh toán vé xem Liverpool'; // Không mã hóa ở đây, sẽ xử lý khi tạo hash
+$order_desc = 'Thanh toán vé xem Liverpool'; 
 $order_type = 'billpayment';
-$amount = (int) ($_SESSION['checkout_info']['total_price'] * 100); // Nhân 100
+$amount = (int) ($_SESSION['checkout_info']['total_price'] * 100); 
 $locale = 'vn';
 
 $vnp_TmnCode = $config['vnpay']['vnp_TmnCode'];

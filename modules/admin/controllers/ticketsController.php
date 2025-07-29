@@ -1,7 +1,7 @@
 <?php
 function construct()
 {
-    // Khi action là _404 → không gọi check_admin() nữa
+
     // Tránh vòng lặp redirect vô hạn
     if ($_GET['action'] != '_404') {
         check_admin();
@@ -83,7 +83,7 @@ function update_ticketsAction()
         $ticket_type_id = $_POST['vitri'] ?? 0;
         $price = $_POST['price'] ?? 0;
 
-        // Giữ ảnh cũ 
+        
         $image_name = $ticket['image'];
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
@@ -91,13 +91,13 @@ function update_ticketsAction()
             $image_name = basename($_FILES['image']['name']);
             $target_path = $upload_dir . $image_name;
 
-            // Kiểm tra có bản ghi nào khác vẫn dùng ảnh cũ ko
+            // Ktracó bản ghi nào khác vẫn dùng ảnh cũ hongggggg
             $old_image_path = $upload_dir . $ticket['image'];
             $image_used_by_others = db_fetch_row("SELECT * FROM tickets WHERE image = '{$ticket['image']}' AND id != {$id}");
 
-            // Nếu ảnh cũ k còn được dùng bởi vé khác (id != $id) thì xóa file ảnh cũ .
+            // Nếu ảnh cũ k còn được dùng bởi vé khác (id != $id) thì xóa file ảnh cũ 
             if (empty($image_used_by_others) && file_exists($old_image_path)) {
-                unlink($old_image_path); // Chỉ xóa nếu không còn ai dùng
+                unlink($old_image_path); 
             }
 
 
@@ -111,7 +111,7 @@ function update_ticketsAction()
         exit;
     }
 
-    // truyền bien dô
+
     load_view('update_tickets', ['ticket' => $ticket]);
 }
 
