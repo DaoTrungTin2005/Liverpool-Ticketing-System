@@ -7,15 +7,16 @@
             check_admin();
         }
 
-        load_model('contacts');
+        load_model('orders');
     }
+
 
 
 
 
 function show_ordersAction()
 {
-
-    load_view('show_orders', );
+    $data["orders"] =  get_orders();
+    load_view('show_orders', $data);
 
 }

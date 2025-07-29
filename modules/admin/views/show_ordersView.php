@@ -221,16 +221,23 @@ global $config;
                         <p class="truong">Total</p>
                         <p class="truong">Time Payment</p>
                     </div>
+
+                    <?php foreach ($orders as $order): ?>
                     <div class="grid-row">
-                        <p class="row">001A</p>
-                        <p class="row">Dat</p>
-                        <p class="row">Admin</p>
-                        <p class="row">Tinoi@gmail.conbo</p>
-                        <p class="row">12/07/1930</p>
+                        <p class="row"><?php echo $order['id']; ?></p>
+                        <p class="row"><?php echo $order['fullname']; ?></p>
+                        <p class="row"><?php echo $order['phone']; ?></p>
+                        <p class="row"><?php echo number_format($order['total_amount']); ?></p>
+                        <p class="row"><?php echo $order['created_at']; ?></p>
                     </div>
+                    <?php endforeach; ?>
+
                 </div>
             </div>
         </div>
+
+
+
         <div class="khoiupdate khoitanghinh" id="khoiupdate">
             <div class="khoiup">
                 <p class="desc descup">Update</p>
@@ -256,6 +263,8 @@ global $config;
                     </div>
                 </form>
             </div>
+
+
             <div class="khoiselectup">
                 <button class="btn btn__cancel" id="cancel">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg__sec" fill="currentColor">
