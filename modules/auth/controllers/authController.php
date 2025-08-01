@@ -23,7 +23,7 @@ function sign_inAction()
 
         if (empty($error)) {
 
-            $data = get_account_by_username($username); // model xử lý SELECT * FROM accounts WHERE username = '$username'
+            $data = get_account_by_username($username); 
 
             if (!empty($data)) {
                 if (md5($password) === $data['password']) {
@@ -119,14 +119,14 @@ function sign_upAction()
         }
     }
 
-    load_view('sign_up'); // Không truyền error
+    load_view('sign_up'); 
 }
 
 function logoutAction()
 {
     session_destroy();
 
-    redirect("?mod=auth&controller=auth&action=sign_in"); // Quay về trang đăng nhập
+    redirect("?mod=auth&controller=auth&action=sign_in"); 
 }
 
 function _404Action()
