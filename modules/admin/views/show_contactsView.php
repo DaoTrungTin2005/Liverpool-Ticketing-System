@@ -184,7 +184,7 @@ global $config;
 
             <div class="khoinhap">
                 <div class="khoitren">
-                    <p class="tren-desc">All Accounts</p>
+                    <p class="tren-desc">All CONTACTS</p>
                     <div class="tren-topic">
                         <form action="" class="form">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
