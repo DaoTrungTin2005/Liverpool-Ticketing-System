@@ -9,16 +9,7 @@ function get_ticket_by_id($id)
     return db_fetch_row($sql);
 }
 
-function get_prices_by_match_and_datetime($match_name, $match_datetime)
-{
 
-
-    $sql = "SELECT ticket_type_id, price 
-            FROM tickets 
-            WHERE match_name = '{$match_name}' AND match_datetime = '{$match_datetime}'";
-
-    return db_fetch_array($sql);
-}
 
 function get_price_by_type($match_name, $match_datetime, $ticket_type_id)
 {
@@ -31,8 +22,7 @@ function get_price_by_type($match_name, $match_datetime, $ticket_type_id)
 }
 
 function get_ticket_id_by_match_and_type($match_name, $match_datetime, $ticket_type_id) {
-    $match_name = ($match_name);
-    $match_datetime = ($match_datetime);
+
     $ticket_type_id = (int)$ticket_type_id;
 
     $sql = "SELECT id FROM tickets 

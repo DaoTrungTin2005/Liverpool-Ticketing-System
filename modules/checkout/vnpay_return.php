@@ -52,7 +52,10 @@ if ($myHash === $vnp_SecureHash) {
         echo "<p>Số tiền: " . number_format($vnpData['vnp_Amount'] / 100, 0, ',', '.') . " đ</p>";
         echo "<p>Thông tin đơn hàng: " . htmlspecialchars(urldecode($vnpData['vnp_OrderInfo'])) . "</p>";
 
-        // Lưu thông tin giao dịch tạm vào session để xử lý ở controller
+
+
+
+        // Lưu thông tin giao dịch tạm vào session để xử lý 
         $_SESSION['vnpay_payment_success'] = [
             'txn_ref' => $vnpData['vnp_TxnRef'],
             'amount' => (int)$vnpData['vnp_Amount'],
@@ -75,43 +78,42 @@ if ($myHash === $vnp_SecureHash) {
         $order = insert_order($fullname, $phone, $email, $total_price, $account_id);
         $order_id = $order['order_id'];
 
-        // Lưu từng item trong giỏ hàng hoặc Buy Now
+        
         if (!empty($_SESSION['cart'])) {
-            // Trường hợp giỏ hàng
+            
+            // giỏ hàng mua nhìu 
             foreach ($_SESSION['cart'] as $item) {
                 $price = (int)str_replace(',', '', $item['price']);
                 $qty = $item['qty'] ?? 1;
                 insert_order_item($order_id, $item['id'], $qty, $price);
             }
-        }  elseif (!empty($_SESSION['checkout_info']['cart'])) {
-    $cart_item = $_SESSION['checkout_info']['cart'][0];
-    
- 
-    echo "<pre style='color:blue'>DEBUG Ticket ID: ";
-    var_dump($cart_item['id']);
-    echo "</pre>";
-
-    $price = (int)$cart_item['price'];
-    $qty = 1; 
-    $ticket_id = $cart_item['id'];
-
-    insert_order_item($order_id, $ticket_id, $qty, $price);
-}
+        } elseif (!empty($_SESSION['checkout_info']['cart'])) {
+            
+            
+            // buy now
+            $cart_item = $_SESSION['checkout_info']['cart'][0];
 
 
-        //  trạng thái đơn hàng là 'paid'
+            $price = (int)$cart_item['price'];
+            $qty = 1;
+            $ticket_id = $cart_item['id'];
+
+            insert_order_item($order_id, $ticket_id, $qty, $price);
+        }
+
+
+        //  trạng thái đh 'paid'
         db_update('orders', ['payment_status' => 'paid'], "id = $order_id");
 
-        
+
         unset($_SESSION['cart']);
         unset($_SESSION['checkout_info']);
         unset($_SESSION['vnpay_payment_success']);
         unset($_SESSION['debug_hash_send']);
 
-       
+
         $_SESSION['success'] = "Thanh toán và đặt vé thành công! Mã đơn: " . $order['order_code'];
         echo $_SESSION['success'];
-
     } else {
         echo "<h2 style='color:red;'> Giao dịch thất bại</h2>";
         echo "<p>Mã lỗi: " . htmlspecialchars($vnpData['vnp_ResponseCode']) . "</p>";
@@ -125,7 +127,7 @@ if ($myHash === $vnp_SecureHash) {
     echo "<p><strong>Chuỗi dữ liệu hash:</strong> " . htmlspecialchars($hashData) . "</p>";
     echo "<p><strong>Dữ liệu từ VNPay:</strong> <pre>" . print_r($vnpData, true) . "</pre></p>";
 
-  
+
     if (isset($_SESSION['debug_hash_send'])) {
         echo "<hr>";
         echo "<h3> Dữ liệu gửi đi trước đó:</h3>";
@@ -135,4 +137,3 @@ if ($myHash === $vnp_SecureHash) {
         echo "<p><strong>Redirect URL:</strong> " . htmlspecialchars($_SESSION['debug_hash_send']['url']) . "</p>";
     }
 }
-?>

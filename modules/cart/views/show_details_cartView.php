@@ -175,10 +175,7 @@
                                 <select name="ticket_type_id" id="TypeTicket" class="inputticket"
                                     data-id="<?php echo $item['id']; ?>"
                                     data-match-name="<?php echo $item['match_name']; ?>"
-                                    data-match-datetime="<?php echo $item['match_datetime']; ?>"
-                                    data-price-normal="<?php echo $item['price_normal']; ?>"
-                                    data-price-average="<?php echo $item['price_average']; ?>"
-                                    data-price-vip="<?php echo $item['price_vip']; ?>">>
+                                    data-match-datetime="<?php echo $item['match_datetime']; ?>">
 
                                     <option value="1" class="Ticket"
                                         data-price="<?php echo get_price_by_type($item['match_name'], $item['match_datetime'], 1); ?>"

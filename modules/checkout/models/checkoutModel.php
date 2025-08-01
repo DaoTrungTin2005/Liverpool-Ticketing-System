@@ -72,7 +72,6 @@ function get_ticket_id_by_match_datetime_and_type($match_name, $match_datetime, 
     if ($result) {
         return (int)$result['id'];
     } else {
-        error_log("Không tìm thấy ticket_id. Query: $sql, Params: match_name='$match_name', match_datetime='$match_datetime', ticket_type_id=$ticket_type_id");
         return null;
     }
 }

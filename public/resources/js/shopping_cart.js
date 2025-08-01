@@ -1,26 +1,28 @@
-//  XỬ LÍ SỐ LƯƠNG TĂNG GIẢM 
-
-// Tìm tất cả các dòng sản phẩm (.row.soluong) trong giỏ hàng.
-// Lặp qua từng dòng, xử lý riêng biệt từng sản phẩm.
+//  XỬ LÍ SỐ LƯƠNG 
 
 document.querySelectorAll(".row.soluong").forEach(function (itemRow) {
     const itemId = itemRow.getAttribute("data-id");
     const plus = itemRow.querySelector(".svgplus");
     const minus = itemRow.querySelector(".svgminus");
 
-    // ✅ Tìm đúng <select> có cùng data-id
+    //              ìm drop down cái mà   chọn loại,       cái id đúng mà nãy mình chọn
     const select = document.querySelector(`.inputticket[data-id="${itemId}"]`);
 
+    
     const getTicketTypeId = () => {
-        return select ? select.value : 2; // fallback là 2 nếu lỗi
+        return select ? select.value : 1; 
     };
 
     plus.addEventListener("click", function (e) {
         e.preventDefault();
         const ticketTypeId = getTicketTypeId();
+
+        //Gửi req
         fetch("?mod=cart&controller=cart&action=update_qty", {
             method: "POST",
             headers: {
+
+                //tb gửi dạng chuỗi form
                 "Content-Type": "application/x-www-form-urlencoded",
             },
             body: `id=${itemId}&type=plus&ticket_type_id=${ticketTypeId}`,
@@ -45,36 +47,30 @@ document.querySelectorAll(".row.soluong").forEach(function (itemRow) {
 });
 
 
-// Mỗi lần click + hoặc -:
-
-// Lấy id của vé
-
-// Lấy loại vé (ticket_type_id) hiện tại
-
-// Gửi POST request về PHP backend xử lý
-
-// Sau khi cập nhật session xong thì reload lại để giao diện cập nhật
-
-
-
 
 //========================================================
-// XỬ LÍ LOẠI 
+// XỬ LÍ LOẠIiiiii 
 
 document.addEventListener('DOMContentLoaded', function () {
+
     const ticketSelects = document.querySelectorAll('.inputticket');
 
+    // lặp qua dr d
     ticketSelects.forEach(select => {
         select.addEventListener('change', function () {
+
+            // lay gia cưa dr d đó
             const selectedOption = this.options[this.selectedIndex];
             const price = selectedOption.getAttribute('data-price');
 
-            const ticketTypeId = this.value; // ✅ Lấy đúng loại vé đã chọn
-            const itemId = this.getAttribute("data-id"); // ✅ Lấy ID của item
+            const ticketTypeId = this.value; 
+            const itemId = this.getAttribute("data-id"); 
 
-            // Tìm đến .row.type rồi tìm các phần liên quan
+            // dòng loại vé chứa dr d  htai 
             const parent = this.closest('.row.type');
-            const container = parent.parentNode; // cha bao toàn bộ 1 item sản phẩm
+
+            // tìm thêm 1 cấp chaaa                   cái mà bao toàn
+            const container = parent.parentNode; 
 
             const giaElement = container.querySelector('.gia');
             const qtyElement = container.querySelector('#soluong');
@@ -113,34 +109,41 @@ function formatCurrency(amount) {
 //==================================================================
 function updateTotalFinal() {
     let total = 0;
+
+    //từng ite m 
     const tongGiaElements = document.querySelectorAll('.tonggia');
-    console.log("Đã tìm thấy", tongGiaElements.length, "phần tử .tonggia");
+
 
     tongGiaElements.forEach(function (item) {
+
+        // nd góc
         const originalText = item.textContent;
-        const cleanedText = originalText.replace(/[^\d]/g, ''); // Xoá dấu "." và "đ"
+        const cleanedText = originalText.replace(/[^\d]/g, ''); //xóa kt
+
+
         const number = parseInt(cleanedText, 10);
 
-        console.log(`'${originalText}' ➜ '${cleanedText}' ➜`, number);
+
 
         if (!isNaN(number)) {
             total += number;
         }
     });
 
+    // gán ngược lại
     const finalTotalElement = document.querySelector('.tongfinal');
     if (finalTotalElement) {
         finalTotalElement.textContent = formatCurrency(total);
     } else {
-        console.warn("Không tìm thấy phần tử .tongfinal");
+        console.warn("K tìm thấy phần tử .tongfinal");
     }
 }
 
 function formatCurrency(amount) {
-    return amount.toLocaleString('vi-VN') + ' đ';
+    return amount.toLocaleString('en-US') + ' đ';
 }
 
-// Gọi hàm khi DOM đã sẵn sàng
+
 document.addEventListener('DOMContentLoaded', function () {
     updateTotalFinal();
 });

@@ -85,11 +85,13 @@
             </div>
 
             <?php
-                // Mặc định chọn loại đầu tiên để tính tổng
+              
                 $default_price = $ticket_types[0]['price'];
             ?>
 
             <div class="khoitongia">
+
+
                 <input type="hidden" name="total_price" id="total_price" value="<?php echo $default_price; ?>">
                 <input type="hidden" name="ticket_id" value="<?php echo $ticket['id']; ?>">
 
@@ -114,16 +116,21 @@
 
         if (ticketSelect) {
             ticketSelect.addEventListener('change', function() {
+
                 const selectedOption = this.options[this.selectedIndex];
                 const price = parseFloat(selectedOption.getAttribute('data-price'));
+
                 const ticketId = this.getAttribute('data-id');
                 const ticketTypeId = this.value;
 
                 if (!isNaN(price)) {
+                    // hiển thị lê gd
                     totalPriceDisplay.textContent = formatCurrency(price);
+
+                    // gán gtri để ửi lên sv
                     totalPriceInput.value = price;
 
-                    // Gửi AJAX để cập nhật session
+
                     fetch('?mod=checkout&controller=checkout&action=update_buynow_session', {
                             method: 'POST',
                             headers: {

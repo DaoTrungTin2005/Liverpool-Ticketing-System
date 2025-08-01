@@ -38,13 +38,13 @@ function delete_ticket_by_id($id) {
 }
 
 function search_tickets($keyword) {
-    $keyword = ($keyword); // an toàn
+
     $sql = "SELECT t.*, tt.name AS ticket_type_name 
             FROM tickets t 
             JOIN ticket_types tt ON t.ticket_type_id = tt.id 
             WHERE t.match_name LIKE '%{$keyword}%' 
                OR t.match_datetime LIKE '%{$keyword}%'
                OR t.price LIKE '%{$keyword}%'
-            -- ORDER BY t.id ASC";
+            ORDER BY t.id ASC";
     return db_fetch_array($sql);
 }
