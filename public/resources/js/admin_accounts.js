@@ -4,6 +4,7 @@ const updateButtons = document.querySelectorAll(".btn__update");
 // để ẩn hi
 const formUpdate = document.getElementById("khoiupdate");
 
+// bắt input để mốt gán
 const userIdInput = document.getElementById("input-userid");
 const usernameInput = document.getElementById("input-username");
 const emailInput = document.getElementById("input-email");
@@ -70,12 +71,12 @@ if (cancelButton) {
         });
     });
 
-    // bấm No → ẩn modal
+   
     noButton.addEventListener("click", function () {
         deleteModal.classList.add("khoitanghinh"); 
     });
 
-    //  chuyển hướng để xóa
+    //  chuyển hướng be
 
 
     yesButton.addEventListener("click", function () {
